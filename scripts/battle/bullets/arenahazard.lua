@@ -13,6 +13,8 @@ function ArenaHazard:init(x, y, rot)
     -- Rotation of the bullet (in radians)
     self.rotation = rot
 
+    self.parry = false
+
     -- Don't destroy this bullet when it damages the player
     self.destroy_on_hit = false
 end
