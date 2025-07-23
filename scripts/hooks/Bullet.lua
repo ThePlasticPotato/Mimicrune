@@ -8,7 +8,7 @@ end
 function Bullet:onCollide(soul)
     if soul.parry_timer > 0 and self:canParry() then
         Assets.playSound("metalhit", 1.5, 1.5)
-        Game:giveTension(10)
+        Game:giveTension(8)
         soul.parry_timer = 0
         soul.parry_cd = math.min(soul.parry_cd, 0.75)
         soul.parry_draw_timer = 1.0
