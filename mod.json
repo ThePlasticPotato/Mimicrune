@@ -4,7 +4,7 @@
     // Displays on the main menu.
     "name": "Mimicrune",
     // Displays underneath the name. Optional.
-    "subtitle": "",
+    "subtitle": "An alternate story in a scarier world.",
 
     // The version of your mod.
     "version": "v1.0.0",
@@ -27,6 +27,15 @@
         "items": ["glowshard", "darkburger", "darkburger", "darkburger"],
         "key_items": ["cell_phone", "shadowcrystal"]
     },
+    
+    "keybinds": [
+        {
+            "name": "Parry",
+            "id": "parry",
+            "keys": ["v"],
+            "gamepad": ["gamepad:x"]
+        }
+    ],
 
     // Equipment for your party. Not specifying equipment defaults to the following.
     "equipment": {
