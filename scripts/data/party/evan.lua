@@ -56,7 +56,7 @@ function character:init()
     --self:setArmor(2, "amber_card")
 
     -- Default light world equipment item IDs (saves current equipment)
-    self.lw_weapon_default = "light/stick"
+    self.lw_weapon_default = "stick"
     self.lw_armor_default = "light/bandage"
 
     -- Character color (for action box outline and hp bar)

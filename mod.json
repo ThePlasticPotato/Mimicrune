@@ -40,8 +40,8 @@
     // Equipment for your party. Not specifying equipment defaults to the following.
     "equipment": {
         "evan": {
-            "weapon": "notsogreatsword",
-            "armor": ["faz_bowtie", "amber_card"]
+            "weapon": "weapons/notsogreatsword",
+            "armor": ["armors/faz_bowtie", "amber_card"]
         }
     },
 
