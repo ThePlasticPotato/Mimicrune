@@ -37,9 +37,9 @@ function character:init()
     -- Base stats (saved to the save file)
     self.stats = {
         health = 100,
-        attack = 6,
+        attack = 3,
         defense = 10,
-        magic = 8
+        magic = 5
     }
 
     -- Max stats from level-ups

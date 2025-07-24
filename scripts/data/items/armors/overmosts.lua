@@ -44,7 +44,7 @@ function item:init()
     self.reactions = {
         evan = "...not really my style...",
         cassidy = "The classic.",
-        fredbear = "I think it's a size or two too small."
+        fredbear = "(I think it's a bit too small.)"
     }
 
     -- Bonus name and icon (displayed in equip menu)

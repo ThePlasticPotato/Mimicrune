@@ -37,9 +37,9 @@ function character:init()
     -- Base stats (saved to the save file)
     self.stats = {
         health = 40,
-        attack = 10,
+        attack = 8,
         defense = 1,
-        magic = 14
+        magic = 12
     }
 
     -- Max stats from level-ups
@@ -78,6 +78,8 @@ function character:init()
     self.name_sprite = "party/cassidy/name"
     
     -- Pitch of the attack sound
+    self.attack_sprite = "effects/attack/wave"
+    self.attack_sound = "psywave"
     self.attack_pitch = 1.0
 
     -- Battle position offset (optional)

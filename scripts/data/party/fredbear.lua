@@ -37,7 +37,7 @@ function character:init()
     self.stats = {
         health = 225,
         attack = 4,
-        defense = 20,
+        defense = 16,
         magic = 2
     }
 
@@ -73,6 +73,7 @@ function character:init()
     self.name_sprite = "party/fredbear/name"
     
     -- Pitch of the attack sound
+    self.attack_sprite = "effects/attack/slap_f"
     self.attack_sound = "michit"
     self.attack_pitch = 1.0
 
