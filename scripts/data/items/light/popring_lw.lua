@@ -1,28 +1,28 @@
-local item, super = Class(Item, "stick")
+local item, super = Class(Item, "popring_lw")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Stick"
+    self.name = "PopRing"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
 
     -- Item type (item, key, weapon, armor)
     self.type = "weapon"
     -- Item icon (for equipment)
-    self.icon = "ui/menu/icon/greatsword"
+    self.icon = "ui/menu/icon/lollipop"
     -- Whether this item is for the light world
     self.light = true
 
     -- Battle description
-    self.effect = "...It's a sword.'"
+    self.effect = "...It's a ring.'"
     -- Shop description
     self.shop = "Kind of dull."
     -- Menu description
-    self.description = "A greatsword. Not bad for defense,\nbut its edge is kind of dull..."
+    self.description = "A candy ring."
     -- Light world check text
-    self.check = "A gnarled tree branch."
+    self.check = "A popring candy. Grape flavored."
 
     -- Default shop price (sell price is halved)
     self.price = 0
@@ -36,13 +36,13 @@ function item:init()
     }
 
     self.can_equip = {
-        evan = true
+        cassidy = true
     }
 
     self.reactions = {
         evan = "It's... not great... but it'll do...",
         cassidy = "Not my style.",
-        fredbear = "Oh, that's... that's a greatsword, alright... \n(Evan, where did you get this??)"
+        fredbear = "(Evan, where did you get this??)"
     }
 
     -- Bonus name and icon (displayed in equip menu)

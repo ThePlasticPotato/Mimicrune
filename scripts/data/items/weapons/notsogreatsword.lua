@@ -4,7 +4,7 @@ function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "NotSoGreatsword"
+    self.name = "NotSoGrtswrd"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
 
@@ -22,7 +22,7 @@ function item:init()
     -- Menu description
     self.description = "A greatsword. Not bad for defense,\nbut its edge is kind of dull..."
     -- Light world check text
-    self.check = "A well-used Fazbear Ent. branded pencilcase."
+    self.check = "A gnarled tree branch."
 
     -- Default shop price (sell price is halved)
     self.price = 0
@@ -41,8 +41,8 @@ function item:init()
 
     self.reactions = {
         evan = "It's... not great... but it'll do...",
-        cassidy = "Not my style.",
-        fredbear = "Oh, that's... that's a greatsword, alright... \n(Evan, where did you get this??)"
+        cassidy = "Is it... bent? Or is it ment to be?",
+        fredbear = "(Evan, where did you get this??)"
     }
 
     -- Bonus name and icon (displayed in equip menu)

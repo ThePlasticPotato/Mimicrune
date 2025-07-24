@@ -38,6 +38,12 @@ function item:init()
         cassidy = false
     }
 
+    self.reactions = {
+        evan = "...Do I look alright?",
+        cassidy = "That'd be far too much bow to handle.",
+        fredbear = "Snazzy as always!"
+    }
+
     -- Bonus name and icon (displayed in equip menu)
     self.bonus_name = "Style"
     self.bonus_icon = "ui/menu/icon/up"

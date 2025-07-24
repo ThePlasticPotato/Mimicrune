@@ -1,28 +1,28 @@
-local item, super = Class(Item, "stick")
+local item, super = Class(Item, "classicmic")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Stick"
+    self.name = "Classic Mic"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
 
     -- Item type (item, key, weapon, armor)
     self.type = "weapon"
     -- Item icon (for equipment)
-    self.icon = "ui/menu/icon/greatsword"
+    self.icon = "ui/menu/icon/mic"
     -- Whether this item is for the light world
-    self.light = true
+    self.light = false
 
     -- Battle description
-    self.effect = "...It's a sword.'"
+    self.effect = "...It's a microphone.'"
     -- Shop description
     self.shop = "Kind of dull."
     -- Menu description
-    self.description = "A greatsword. Not bad for defense,\nbut its edge is kind of dull..."
+    self.description = "Fredbear's trusty microphone.\nWell used."
     -- Light world check text
-    self.check = "A gnarled tree branch."
+    self.check = "A plastic microphone."
 
     -- Default shop price (sell price is halved)
     self.price = 0
@@ -31,18 +31,18 @@ function item:init()
 
     -- Equip bonuses (for weapons and armor)
     self.bonuses = {
-        attack = 2,
-        defense = 4
+        attack = 4,
+        defense = 1
     }
 
     self.can_equip = {
-        evan = true
+        fredbear = true
     }
 
     self.reactions = {
-        evan = "It's... not great... but it'll do...",
-        cassidy = "Not my style.",
-        fredbear = "Oh, that's... that's a greatsword, alright... \n(Evan, where did you get this??)"
+        evan = "(Does it even work??)",
+        cassidy = "I'm... not a singer.",
+        fredbear = "Testing, testing... good as new!"
     }
 
     -- Bonus name and icon (displayed in equip menu)

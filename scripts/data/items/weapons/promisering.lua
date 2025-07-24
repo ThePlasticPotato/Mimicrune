@@ -1,28 +1,28 @@
-local item, super = Class(Item, "stick")
+local item, super = Class(Item, "promisering")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Stick"
+    self.name = "Promise Ring"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
 
     -- Item type (item, key, weapon, armor)
     self.type = "weapon"
     -- Item icon (for equipment)
-    self.icon = "ui/menu/icon/greatsword"
+    self.icon = "ui/menu/icon/ring"
     -- Whether this item is for the light world
-    self.light = true
+    self.light = false
 
     -- Battle description
-    self.effect = "...It's a sword.'"
+    self.effect = "...It's a promise."
     -- Shop description
-    self.shop = "Kind of dull."
+    self.shop = "Represents a great promise."
     -- Menu description
-    self.description = "A greatsword. Not bad for defense,\nbut its edge is kind of dull..."
+    self.description = "A ring, holding deep meaning.\nYou feel power coursing within..."
     -- Light world check text
-    self.check = "A gnarled tree branch."
+    self.check = "It's a ring."
 
     -- Default shop price (sell price is halved)
     self.price = 0
@@ -31,23 +31,25 @@ function item:init()
 
     -- Equip bonuses (for weapons and armor)
     self.bonuses = {
-        attack = 2,
-        defense = 4
+        attack = 10,
+        magic = 16
     }
 
+-- Bonus name and icon (displayed in equip menu)
+    self.bonus_name = "Power UP"
+    self.bonus_icon = "ui/menu/icon/fire"
+
     self.can_equip = {
-        evan = true
+        cassidy = true
     }
 
     self.reactions = {
-        evan = "It's... not great... but it'll do...",
-        cassidy = "Not my style.",
-        fredbear = "Oh, that's... that's a greatsword, alright... \n(Evan, where did you get this??)"
+        evan = "(...this is... not for me...)",
+        cassidy = "...What? ...Don't look at me like that...",
+        fredbear = "It's beautiful. But it's not mine."
     }
 
-    -- Bonus name and icon (displayed in equip menu)
-    self.bonus_name = nil
-    self.bonus_icon = nil
+    
 
     -- Consumable target mode (ally, party, enemy, enemies, or none)
     self.target = "none"

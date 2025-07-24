@@ -1,84 +1,80 @@
-local character, super = Class(PartyMember, "evan")
+local character, super = Class(PartyMember, "fredbear")
 
 function character:init()
     super.init(self)
         -- Display name
-    self.name = "Evan"
+    self.name = "Fredbear"
 
     -- Actor (handles overworld/battle sprites)
-    self:setActor("evan")
-    self:setLightActor("evan_lw")
+    self:setActor("fredbear")
 
     -- Display level (saved to the save file)
     self.level = 1 -- todo: make this based on mimicrune chapters
     -- Default title / class (saved to the save file)
-    self.title = "Paladin\nStill learning.\nKind of a crybaby."
+    self.title = "Tank\nCuddly and fuzzy\nfriend in the dark."
 
     -- Determines which character the soul comes from (higher number = higher priority)
-    self.soul_priority = 2
+    self.soul_priority = 0
     -- The color of this character's soul (optional, defaults to red)
-    self.soul_color = {2/255, 1, 2/255}
+    self.soul_color = {118/255, 66/255, 238/255}
 
     -- Whether the party member can act / use spells
-    self.has_act = true
+    self.has_act = false
     self.has_spells = true
 
     -- Whether the party member can use their X-Action
-    self.has_xact = false
+    self.has_xact = true
     -- X-Action name (displayed in this character's spell menu)
-    self.xact_name = "E-Action"
+    self.xact_name = "F-Action"
 
     -- Spells
-    self:addSpell("heal_prayer")
+    self:addSpell("pacify")
 
     -- Current health (saved to the save file)
-    self.health = 100
+    self.health = 225
 
     -- Base stats (saved to the save file)
     self.stats = {
-        health = 100,
-        attack = 6,
-        defense = 10,
-        magic = 8
+        health = 225,
+        attack = 4,
+        defense = 20,
+        magic = 2
     }
 
     -- Max stats from level-ups
     self.max_stats = {
-        health = 200
+        health = 500
     }
 
     -- Weapon icon in equip menu
-    self.weapon_icon = "ui/menu/equip/greatsword"
+    self.weapon_icon = "ui/menu/equip/mic"
 
     -- Equipment (saved to the save file)
-    self:setWeapon("notsogreatsword")
+    self:setWeapon("classicmic")
     self:setArmor(1, "faz_bowtie")
     --self:setArmor(2, "amber_card")
 
-    -- Default light world equipment item IDs (saves current equipment)
-    self.lw_weapon_default = "stick"
-    self.lw_armor_default = "light/bandage"
-
     -- Character color (for action box outline and hp bar)
-    self.color = {2/255, 1, 2/255}
+    self.color = {118/255, 66/255, 238/255}
     -- Damage color (for the number when attacking enemies) (defaults to the main color)
-    self.dmg_color = {2/255, 1, 2/255}
+    self.dmg_color = {118/255, 66/255, 238/255}
     -- Attack bar color (for the target bar used in attack mode) (defaults to the main color)
-    self.attack_bar_color = {2/255, 1, 2/255}
+    self.attack_bar_color = {118/255, 66/255, 238/255}
     -- Attack box color (for the attack area in attack mode) (defaults to darkened main color)
-    self.attack_box_color = {0, 0.63, 0}
+    self.attack_box_color = {64/255, 23/255, 93/255}
     -- X-Action color (for the color of X-Action menu items) (defaults to the main color)
-    self.xact_color = {2/255, 1, 2/255}
+    self.xact_color = {118/255, 66/255, 238/255}
 
     -- Head icon in the equip / power menu
-    self.menu_icon = "party/evan/head"
+    self.menu_icon = "party/fredbear/head"
     -- Path to head icons used in battle
-    self.head_icons = "party/evan/icon"
+    self.head_icons = "party/fredbear/icon"
     -- Name sprite
-    self.name_sprite = "party/evan/name"
+    self.name_sprite = "party/fredbear/name"
     
     -- Pitch of the attack sound
-    self.attack_pitch = 0.8
+    self.attack_sound = "michit"
+    self.attack_pitch = 1.0
 
     -- Battle position offset (optional)
     self.battle_offset = nil

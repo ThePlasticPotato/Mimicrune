@@ -1,28 +1,28 @@
-local item, super = Class(Item, "stick")
+local item, super = Class(Item, "overmosts")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Stick"
+    self.name = "Overmosts"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
 
     -- Item type (item, key, weapon, armor)
-    self.type = "weapon"
+    self.type = "armor"
     -- Item icon (for equipment)
-    self.icon = "ui/menu/icon/greatsword"
+    self.icon = "ui/menu/icon/overalls"
     -- Whether this item is for the light world
-    self.light = true
+    self.light = false
 
     -- Battle description
-    self.effect = "...It's a sword.'"
+    self.effect = "...It's a pair of overmosts.'"
     -- Shop description
-    self.shop = "Kind of dull."
+    self.shop = "Mostly Overalls."
     -- Menu description
-    self.description = "A greatsword. Not bad for defense,\nbut its edge is kind of dull..."
+    self.description = "A pair of kinda mostly overalls.\nSorta. More like robes..."
     -- Light world check text
-    self.check = "A gnarled tree branch."
+    self.check = "Black-strap overalls."
 
     -- Default shop price (sell price is halved)
     self.price = 0
@@ -31,18 +31,20 @@ function item:init()
 
     -- Equip bonuses (for weapons and armor)
     self.bonuses = {
-        attack = 2,
-        defense = 4
+        defense = 4,
+        magic = 2
     }
 
     self.can_equip = {
-        evan = true
+        cassidy = true,
+        fredbear = false,
+        evan = false
     }
 
     self.reactions = {
-        evan = "It's... not great... but it'll do...",
-        cassidy = "Not my style.",
-        fredbear = "Oh, that's... that's a greatsword, alright... \n(Evan, where did you get this??)"
+        evan = "...not really my style...",
+        cassidy = "The classic.",
+        fredbear = "I think it's a size or two too small."
     }
 
     -- Bonus name and icon (displayed in equip menu)

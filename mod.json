@@ -20,11 +20,13 @@
     "map": "room1",
 
     // The party. The first character is the player.
-    "party": ["evan"],
+    "party": ["evan", "cassidy", "fredbear"],
 
     // The inventory. Contains three darkburgers, a cell phone and a shadow crystal by default.
     "inventory": {
         "items": ["glowshard", "darkburger", "darkburger", "darkburger"],
+        "armors": ["faz_bowtie", "overmosts"],
+        "weapons": [ "notsogreatsword", "promisering", "popring", "classicmic" ],
         "key_items": ["cell_phone", "shadowcrystal"]
     },
     
@@ -40,8 +42,8 @@
     // Equipment for your party. Not specifying equipment defaults to the following.
     "equipment": {
         "evan": {
-            "weapon": "weapons/notsogreatsword",
-            "armor": ["armors/faz_bowtie", "amber_card"]
+            "weapon": "notsogreatsword",
+            "armor": ["faz_bowtie", "amber_card"]
         }
     },
 
@@ -79,7 +81,7 @@
             // Whether spells should be usable in the overworld
             "overworldSpells": true,
             // Whether to use Dark Candy or Darker Candy
-            "darkCandyForm": "darker",
+            "darkCandyForm": "darker"
             // End of config
         }
     }
