@@ -57,7 +57,7 @@ function character:init()
 
     -- Default light world equipment item IDs (saves current equipment)
     self.lw_weapon_default = "popring_lw"
-    self.lw_armor_default = "overmosts_lw"
+    self.lw_armor_default = "overalls"
 
     -- Character color (for action box outline and hp bar)
     self.color = {1.0, 210/255, 53/255}
