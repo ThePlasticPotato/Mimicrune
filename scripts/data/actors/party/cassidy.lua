@@ -26,9 +26,9 @@ function actor:init()
 
     self.animations = {
                 -- Battle animations
-        ["battle/idle"]         = {"battle/idle", 0.2, true},
+        ["battle/idle"]         = {"battle/idle", 0.15, true},
 
-        ["battle/attack"]       = {"battle/attack", 1/15, false},
+        ["battle/attack"]       = {"battle/attack", 1/14, false},
         ["battle/act"]          = {"battle/act", 1/15, false},
         ["battle/spell"]        = {"battle/spell", 1/15, false, next="battle/idle"},
         ["battle/item"]         = {"battle/item", 1/12, false, next="battle/idle"},
@@ -43,7 +43,7 @@ function actor:init()
         ["battle/act_end"]      = {"battle/actend", 1/15, false, next="battle/idle"},
 
         ["battle/hurt"]         = {"battle/hurt", 1/15, false, temp=true, duration=0.5},
-        ["battle/defeat"]       = {"battle/defeat", 1/15, false},
+        ["battle/defeat"]       = {"battle/defeat", 1/15, true},
 
         ["battle/transition"]   = {"battle/battle_transition", 0.2, true},
         ["battle/intro"]        = {"battle/attack", 1/15, true},
@@ -54,20 +54,20 @@ function actor:init()
                 -- Battle offsets
         ["battle/idle"] = {-3, -1},
 
-        ["battle/attack"] = {-10, -6},
-        ["battle/attackready"] = {-10, -6},
-        ["battle/act"] = {-10, -6},
-        ["battle/actend"] = {-10, -6},
-        ["battle/actready"] = {-10, -6},
-        ["battle/item"] = {-10, -6},
-        ["battle/itemend"] = {-10, -6},
-        ["battle/itemready"] = {-10, -6},
-        ["battle/spell"] = {-10, -6},
-        ["battle/spellready"] = {-10, -6},
+        ["battle/attack"] = {-12, -8},
+        ["battle/attackready"] = {-12, -8},
+        ["battle/act"] = {-12, -8},
+        ["battle/actend"] = {-12, -8},
+        ["battle/actready"] = {-12, -8},
+        ["battle/item"] = {-12, -8},
+        ["battle/itemend"] = {-12, -8},
+        ["battle/itemready"] = {-12, -8},
+        ["battle/spell"] = {-12, -8},
+        ["battle/spellready"] = {-12, -8},
         ["battle/defend"] = {0, -3},
 
         ["battle/defeat"] = {-3, -5},
-        ["battle/hurt"] = {-10, -6},
+        ["battle/hurt"] = {-12, -8},
 
         ["battle/intro"] = {-10, -9},
         ["battle/victory"] = {-3, 0},

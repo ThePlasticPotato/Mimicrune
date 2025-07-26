@@ -88,4 +88,22 @@ function character:init()
     self.gameover_message = nil
 end
 
+function character:onAttackHit(enemy, damage)
+    if damage > 0 then
+        Assets.playSound("impact", 0.8)
+        Game.battle:shakeCamera(2)
+    end
+end
+
+function character:onLevelUp(level)
+    self:increaseStat("health", 4)
+    if level % 2 == 0 then
+        self:increaseStat("health", 1)
+    end
+    if level % 10 == 0 then
+        self:increaseStat("attack", 1)
+        self:increaseStat("magic", 1)
+    end
+end
+
 return character

@@ -28,8 +28,14 @@ function character:init()
     -- X-Action name (displayed in this character's spell menu)
     self.xact_name = "C-Action"
 
+    self.neural_power = 0
+    self.heat = 0
+    self.is_psychic = true
+
     -- Spells
-    self:addSpell("red_buster")
+    self:addSpell("meditate")
+    self:addSpell("psybeam")
+    self:addSpell("psywave")
 
     -- Current health (saved to the save file)
     self.health = 40
@@ -39,12 +45,14 @@ function character:init()
         health = 40,
         attack = 8,
         defense = 1,
-        magic = 12
+        magic = 12,
+        heat = 50
     }
 
     -- Max stats from level-ups
     self.max_stats = {
-        health = 100
+        health = 100,
+        heat = 200
     }
 
     -- Weapon icon in equip menu
@@ -91,6 +99,36 @@ function character:init()
 
     -- Message shown on gameover (optional)
     self.gameover_message = nil
+end
+
+function character:getGameOverMessage(main)
+    return {
+        "Evan-[wait:5] EVAN!\nCmon' we can't die here...[wait:5]\nGet up...! Please..."
+    }
+end
+
+function character:onAttackHit(enemy, damage)
+    if damage > 0 then
+        Assets.playSound("impact", 0.8)
+        Game.battle:shakeCamera(4)
+    end
+end
+
+function character:onTurnStart(battler)
+    if self:getFlag("neural_overheat", false) then
+        Game.battle:pushForcedAction(battler, "DEFEND", nil, nil, nil)
+    end
+end
+
+function character:onLevelUp(level)
+    self:increaseStat("health", 2)
+    if level % 2 == 0 then
+        self:increaseStat("health", 1)
+    end
+    if level % 10 == 0 then
+        self:increaseStat("attack", 1)
+        self:increaseStat("magic", 1)
+    end
 end
 
 return character

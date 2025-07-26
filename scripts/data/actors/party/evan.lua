@@ -43,7 +43,7 @@ function actor:init()
         ["battle/act_end"]      = {"battle/actend", 1/15, false, next="battle/idle"},
 
         ["battle/hurt"]         = {"battle/hurt", 1/15, false, temp=true, duration=0.5},
-        ["battle/defeat"]       = {"battle/defeat", 1/15, false},
+        ["battle/defeat"]       = {"battle/defeat", 0.2, true},
 
         ["battle/transition"]   = {"battle/battle_transition", 0.2, true},
         ["battle/intro"]        = {"battle/attack", 1/15, true},

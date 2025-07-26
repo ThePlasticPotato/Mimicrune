@@ -30,6 +30,7 @@ function character:init()
 
     -- Spells
     self:addSpell("heal_prayer")
+    self:addSpell("pacify")
 
     -- Current health (saved to the save file)
     self.health = 100
@@ -89,6 +90,17 @@ function character:init()
 
     -- Message shown on gameover (optional)
     self.gameover_message = nil
+end
+
+function character:onLevelUp(level)
+    self:increaseStat("health", 2)
+    if level % 2 == 0 then
+        self:increaseStat("defense", 1)
+    end
+    if level % 10 == 0 then
+        self:increaseStat("health", 1)
+        self:increaseStat("magic", 1)
+    end
 end
 
 return character

@@ -25,7 +25,10 @@ function Bullet:onCollide(soul)
 end
 
 function Bullet:canParry()
-    return self.parry
+    local party_leader = Game.battle.party[1]
+    local evan_present = party_leader.chara.name == "Evan"
+    local evan_down = party_leader.is_down
+    return self.parry and evan_present and not evan_down
 end
 
 return Bullet
