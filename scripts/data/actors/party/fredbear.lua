@@ -74,7 +74,7 @@ function actor:init()
     }
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = "assets/sounds/voices/party/fredbear"
+    self.voice = "assets/sounds/voice/party/fredbear"
     -- Path to this actor's portrait for dialogue (optional)
     self.portrait_path = "face/fredbear"
     -- Offset position for this actor's portrait (optional)

@@ -17,10 +17,10 @@
     "chapter": 4,
 
     // The map that you start in when first starting the mod.
-    "map": "room1",
+    "map": "void",
 
     // The party. The first character is the player.
-    "party": ["evan", "cassidy"],
+    "party": ["evan"],
 
     // The inventory. Contains three darkburgers, a cell phone and a shadow crystal by default.
     "inventory": {
@@ -58,7 +58,9 @@
     // in the file `window_icon.png`.
     // When your mod is configured as the engine's target mod, it's automatically done unless if
     // this option is explicitly set to false; else, it's done if this is set to true.
-    "setWindowTitleAndIcon": null,
+    "setWindowTitleAndIcon": true,
+
+    "useSaves": false,
 
     // Config values for the engine and any libraries you may have.
     // These config values can control chapter-specific features as well.

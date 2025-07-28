@@ -25,7 +25,7 @@ function actor:init()
     self.default = "walk"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = "assets/sounds/voices/party/cassidy"
+    self.voice = "assets/sounds/voice/party/cassidy"
     -- Path to this actor's portrait for dialogue (optional)
     self.portrait_path = "face/cassidy"
     -- Offset position for this actor's portrait (optional)

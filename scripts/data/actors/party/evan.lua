@@ -74,7 +74,7 @@ function actor:init()
     }
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = "assets/sounds/voices/party/evan"
+    self.voice = "assets/sounds/voice/party/evan"
     -- Path to this actor's portrait for dialogue (optional)
     self.portrait_path = "face/evan"
     -- Offset position for this actor's portrait (optional)

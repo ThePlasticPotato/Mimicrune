@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="10" height="5" tilewidth="40" tileheight="40" infinite="0" nextlayerid="2" nextobjectid="1">
+ <editorsettings>
+  <export target="void.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="generic"/>
+  <property name="light" type="bool" value="false"/>
+ </properties>
+ <layer id="1" name="Tile Layer 1" width="10" height="5">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

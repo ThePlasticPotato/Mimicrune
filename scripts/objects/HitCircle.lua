@@ -4,7 +4,7 @@ function HitCircle:init(x, y, speed, radius)
     self.speed = speed
     super:init(self, x, y)
     --self.rotation = angle
-    self:setOrigin(0, 0)
+    self:setOrigin(0.5, 0.5)
     self.radius = radius or 30
     self.layer = WORLD_LAYERS["ui"] + 100
 
