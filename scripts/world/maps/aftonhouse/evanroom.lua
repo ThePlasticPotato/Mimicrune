@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 34,
+  nextobjectid = 36,
   properties = {
     ["light"] = true
   },
@@ -282,20 +282,20 @@ return {
           }
         },
         {
-          id = 32,
+          id = 35,
           name = "aftonhouse/evandoor",
           type = "",
-          shape = "rectangle",
-          x = 298,
-          y = 82,
-          width = 66,
-          height = 110,
+          shape = "point",
+          x = 331,
+          y = 173,
+          width = 0,
+          height = 0,
           rotation = 0,
           visible = true,
           properties = {
             ["lock"] = false,
-            ["target_dir"] = "up",
-            ["target_map"] = "aftonhouse_upstairs",
+            ["target_dir"] = "down",
+            ["target_map"] = "aftonhouse/upstairs",
             ["target_marker"] = "entry_evanroom"
           }
         }

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="36" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="28">
+ <editorsettings>
+  <export target="upstairs.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="light" type="bool" value="true"/>
+ </properties>
+ <imagelayer id="3" name="aftonhouse_upstairs">
+  <image source="../../../../assets/sprites/rooms/aftonhouse_upstairs.png" width="1414" height="480"/>
+ </imagelayer>
+ <objectgroup color="#00007f" id="6" name="collision">
+  <object id="4" x="285.5" y="78" width="680.5" height="179.5"/>
+  <object id="5" x="1028" y="320">
+   <polygon points="0,0 0.5,-240 -62.5,-240 -62,-63"/>
+  </object>
+  <object id="6" x="1177" y="322">
+   <polygon points="0,0 78.5,79 79.5,-166.5 3,-242.5"/>
+  </object>
+  <object id="7" x="1028" y="78.5" width="44" height="242.5"/>
+  <object id="8" x="1138.5" y="77.5" width="41" height="244"/>
+  <object id="9" x="1071.5" y="50.5" width="67" height="236.5"/>
+  <object id="21" x="556.667" y="242" width="136.333" height="37"/>
+  <object id="22" x="285.667" y="257">
+   <polygon points="0,0 -143.667,143.333 -143.333,-100.333 -67.6667,-177 0.333333,-179"/>
+  </object>
+  <object id="24" x="142" y="400" width="1113.33" height="32.6667"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects">
+  <object id="1" name="couch" x="483" y="346" width="282" height="54">
+   <properties>
+    <property name="sprite" value="props/aftonhouse/aftonhouse_upstairs_couch"/>
+   </properties>
+  </object>
+  <object id="2" name="interactable" x="748" y="241.5">
+   <properties>
+    <property name="text">* It's abstract art.
+* It's like some king of... portal...</property>
+   </properties>
+   <point/>
+  </object>
+  <object id="3" name="interactable" x="507" y="241.5">
+   <properties>
+    <property name="text">* It's abstract art.
+* It's like some king of... nortal...</property>
+   </properties>
+   <point/>
+  </object>
+  <object id="10" name="aftonhouse/door" x="396.167" y="260.5">
+   <properties>
+    <property name="lock" type="bool" value="false"/>
+    <property name="target_dir" value="down"/>
+    <property name="target_map" value="aftonhouse/evanroom"/>
+    <property name="target_marker" value="entry"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="11" name="aftonhouse/door" x="852.5" y="263.5">
+   <properties>
+    <property name="lock" type="bool" value="true"/>
+    <property name="lock_text" value="* Elizabeth's room. It's locked."/>
+    <property name="target_dir" value="down"/>
+    <property name="target_map" value="aftonhouse/elizaroom"/>
+    <property name="target_marker" value="entry"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="20" name="aftonhouse/door" x="264" y="288.833">
+   <properties>
+    <property name="lock" type="bool" value="true"/>
+    <property name="lock_text" value="* The bathroom. It's locked."/>
+    <property name="target_dir" value="left"/>
+    <property name="target_map" value="aftonhouse/bathup"/>
+    <property name="target_marker" value="entry"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="25" name="aftonhouse/door" x="188.833" y="366">
+   <properties>
+    <property name="lock" type="bool" value="true"/>
+    <property name="lock_text" value="* Michael's room. It's locked."/>
+    <property name="target_dir" value="left"/>
+    <property name="target_map" value="aftonhouse/mikeroom"/>
+    <property name="target_marker" value="entry"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="26" name="aftonhouse/door" x="1207.83" y="362.333">
+   <properties>
+    <property name="lock" type="bool" value="true"/>
+    <property name="lock_text" value="* Mom and Dad's room. It's locked."/>
+    <property name="target_dir" value="right"/>
+    <property name="target_map" value="aftonhouse/masterroom"/>
+    <property name="target_marker" value="entry"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="27" name="interactable" x="984.33" y="291.5">
+   <properties>
+    <property name="text" value="* It's a painting of a purple guy."/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#5500ff" id="5" name="markers">
+  <object id="12" name="entry_evanroom" x="395.667" y="281.333">
+   <point/>
+  </object>
+  <object id="13" name="entry_elizaroom" x="851.333" y="280.667">
+   <point/>
+  </object>
+  <object id="14" name="entry_bathroom" x="286.333" y="288">
+   <point/>
+  </object>
+  <object id="15" name="entry_mikeroom" x="214" y="370">
+   <point/>
+  </object>
+  <object id="16" name="entry_masterroom" x="1189.33" y="364.333">
+   <point/>
+  </object>
+  <object id="17" name="entry_stairs" x="1114" y="339.667">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

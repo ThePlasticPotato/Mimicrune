@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="34">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="36">
  <editorsettings>
   <export target="evanroom.lua" format="lua"/>
  </editorsettings>
@@ -52,13 +52,14 @@
     <property name="text" value="* But it was already made."/>
    </properties>
   </object>
-  <object id="32" name="aftonhouse/evandoor" x="298" y="82" width="66" height="110">
+  <object id="35" name="aftonhouse/evandoor" x="331" y="173">
    <properties>
     <property name="lock" type="bool" value="false"/>
-    <property name="target_dir" value="up"/>
-    <property name="target_map" value="aftonhouse_upstairs"/>
+    <property name="target_dir" value="down"/>
+    <property name="target_map" value="aftonhouse/upstairs"/>
     <property name="target_marker" value="entry_evanroom"/>
    </properties>
+   <point/>
   </object>
  </objectgroup>
  <objectgroup color="#8800ff" id="3" name="markers">

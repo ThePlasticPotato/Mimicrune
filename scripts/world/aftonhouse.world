@@ -4,7 +4,14 @@
             "fileName": "maps/aftonhouse/evanroom.tmx",
             "height": 480,
             "width": 640,
-            "x": 0,
+            "x": 680,
+            "y": -480
+        },
+        {
+            "fileName": "maps/aftonhouse/upstairs.tmx",
+            "height": 480,
+            "width": 1440,
+            "x": 640,
             "y": 0
         }
     ],

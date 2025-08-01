@@ -1,12 +1,13 @@
+--- @class Door : Event
 local Door, super = Class(Event)
 
 function Door:init(data)
-    super.init(self, data.x, data.y, data.width, data.height)
-    self.lock = data.lock or false
-    self.lock_text = data.lock_text
-    self.target_map = data.target_map
-    self.target_marker = data.target_marker or "entry"
-    self.target_dir = data.target_dir or "down"
+    super.init(self, data)
+    self.lock = data.properties["lock"] or false
+    self.lock_text = data.properties["lock_text"]
+    self.target_map = data.properties["target_map"]
+    self.target_marker = data.properties["target_marker"] or "entry"
+    self.target_dir = data.properties["target_dir"] or "down"
 end
 
 function Door:onInteract(player, dir)
@@ -21,4 +22,5 @@ function Door:onInteract(player, dir)
     end
     return true
 end
+
 return Door

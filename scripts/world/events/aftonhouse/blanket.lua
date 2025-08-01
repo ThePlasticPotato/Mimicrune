@@ -3,10 +3,10 @@ local Blanket, super = Class(Event)
 function Blanket:init(data)
     super.init(self, data.x, data.y, 46, 52, data)
     self.layer = WORLD_LAYERS["above_soul"]
-    self.interact_text = data.text
+    self.interact_text = data.properties["text"]
     self.sprite_location = "props/aftonhouse/evanroom_blanket_"
 
-    self.state = Game:getFlag("bed_made", "full") or data.state
+    self.state = Game:getFlag("bed_made", "full") or data.properties["state"]
     self:setSprite(self.sprite_location..self.state)
 end
 
@@ -24,7 +24,7 @@ function Blanket:onInteract(player, dir)
         return true
     end
     if (self.state == "empty" and not Game.world:hasCutscene()) then
-        Game.world:showText("* But it was already made.")
+        Game.world:showText(self.interact_text)
         return true
     end
     return false
