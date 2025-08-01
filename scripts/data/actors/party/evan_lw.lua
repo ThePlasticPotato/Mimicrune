@@ -25,11 +25,23 @@ function actor:init()
     self.default = "walk"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = "assets/sounds/voice/party/evan"
+    self.voice = "party/evan"
     -- Path to this actor's portrait for dialogue (optional)
     self.portrait_path = "face/evan"
     -- Offset position for this actor's portrait (optional)
-    self.portrait_offset = nil
+    self.portrait_offset = {-2, 0}
+
+    self.animations = {
+        ["splat"]         = {"splat", 0.2, true},
+        ["lift"]    = {"lift", 0.2, true},
+        ["sat"]     = {"sat", 0.2, true},
+    }
+
+    self.offsets = {
+        ["splat"] = {-10, 8},
+        ["lift"] = {-10, 8},
+        ["sat"] = {-10, 8},
+    }
 
     -- Whether this actor as a follower will blush when close to the player
     self.can_blush = true

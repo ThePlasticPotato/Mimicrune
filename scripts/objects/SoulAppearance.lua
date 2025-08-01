@@ -2,13 +2,19 @@
 ---@overload fun(...) : SoulAppearance
 local SoulAppearance, super = Class(Object)
 
-function SoulAppearance:init(x, y)
+function SoulAppearance:init(x, y, tiny, shouldbob)
     super.init(self, x, y)
 
-    self:setScale(2)
-    self:setOrigin(0, 0)
+    if (tiny ~= true) then
+        self:setScale(2)
+        self:setOrigin(0, 0)
+    else
+        self:setScale(1)
+        self:setOrigin(0.5, 0.5)
+    end
+    self.should_bob = shouldbob or true
 
-    self.sprite = Assets.getTexture("player/heart_blur")
+    self.sprite = Assets.getTexture("player/heart")
     self.width = self.sprite:getWidth()
     self.height = self.sprite:getHeight()
 
@@ -18,7 +24,11 @@ function SoulAppearance:init(x, y)
     self.pos_offset = 0.0
     self.runtime = 0.0
 
-    Assets.playSound("AUDIO_APPEARANCE")
+    local pitch = 1.0
+    if (tiny) then
+        pitch = 1.5
+    end
+    Assets.playSound("AUDIO_APPEARANCE", 1.0, pitch)
     self:setColor(2/255, 1, 2/255, 1)
 end
 
@@ -51,7 +61,12 @@ function SoulAppearance:draw()
     end
 
     if (self.t >= self.m) then
-        self.pos_offset = self.pos_offset + (math.sin(self.runtime)/10)
+        if (self.should_bob) then
+            self.pos_offset = self.pos_offset + (math.sin(self.runtime)/10)
+        else
+            self.pos_offset = Utils.approach(self.pos_offset, 0, DT)
+        end
+        
         Draw.draw(self.sprite, 0, self.pos_offset)
     end
 

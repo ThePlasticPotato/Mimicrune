@@ -288,6 +288,19 @@ return {
         soulglow:remove()
         healparticles:remove()
         Game.world.camera:shake(2, 2)
-        cutscene:text("* EVAN![wait:20]\n* WAKE UP! Dad made breakfast, and you're gonna be late again!")
+        cutscene:text("[voice:elizabeth]* EVAN![wait:20]\n* WAKE UP! Dad made breakfast, and you're gonna be late again!")
+        cutscene:waitForTextbox()
+        cutscene:endCutscene()
+        Game.world:startCutscene("connection", "intro_transition")
+    end,
+
+    intro_transition = function(cutscene, event)
+        Game.world.player.visible = false
+        Game.world:mapTransition("aftonhouse/evanroom")
+        Game.world.player.visible = false
+        cutscene:wait(cutscene:fadeIn(1))
+        Game.world.player.visible = false
+        cutscene:endCutscene()
+        Game.world:startCutscene("aftonhouse", "wake_up")
     end
 }

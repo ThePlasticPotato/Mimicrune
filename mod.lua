@@ -5,7 +5,6 @@ end
 
 function Mod:postInit(new_file)
     if new_file then
-        Game.world:startCutscene("connection", "connection_established")
-        Game.world.player.visible = false
+        Game.world:startCutscene("connection", "intro_transition")
     end
 end
