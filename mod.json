@@ -27,7 +27,7 @@
         "items": ["glowshard", "darkburger", "darkburger", "darkburger"],
         "armors": ["faz_bowtie", "overmosts"],
         "weapons": [ "notsogreatsword", "promisering", "popring", "classicmic" ],
-        "key_items": ["cell_phone", "shadowcrystal"]
+        "key_items": ["cell_phone"]
     },
     
     "keybinds": [

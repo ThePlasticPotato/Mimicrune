@@ -10,8 +10,9 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 7,
-  nextobjectid = 28,
+  nextobjectid = 30,
   properties = {
+    ["inside"] = true,
     ["light"] = true
   },
   tilesets = {},
@@ -131,7 +132,7 @@ return {
           x = 1071.5,
           y = 50.5,
           width = 67,
-          height = 236.5,
+          height = 213.833,
           rotation = 0,
           visible = true,
           properties = {}
@@ -200,7 +201,7 @@ return {
       objects = {
         {
           id = 1,
-          name = "couch",
+          name = "aftonhouse/couch",
           type = "",
           shape = "rectangle",
           x = 483,
@@ -292,10 +293,10 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["lock"] = true,
+            ["lock"] = false,
             ["lock_text"] = "* The bathroom. It's locked.",
             ["target_dir"] = "left",
-            ["target_map"] = "aftonhouse/bathup",
+            ["target_map"] = "aftonhouse/upbathroom",
             ["target_marker"] = "entry"
           }
         },
@@ -351,6 +352,39 @@ return {
           properties = {
             ["text"] = "* It's a painting of a purple guy."
           }
+        },
+        {
+          id = 28,
+          name = "interactable",
+          type = "",
+          shape = "point",
+          x = 949.333,
+          y = 267.333,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["text"] = "* It's a plant.\n* ...not a very good one."
+          }
+        },
+        {
+          id = 29,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 1072,
+          y = 265.333,
+          width = 66.6667,
+          height = 31.3333,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["facing"] = "down",
+            ["map"] = "aftonhouse/downstairs",
+            ["marker"] = "entry_stairs",
+            ["stairs"] = true
+          }
         }
       }
     },
@@ -373,8 +407,8 @@ return {
           name = "entry_evanroom",
           type = "",
           shape = "point",
-          x = 395.667,
-          y = 281.333,
+          x = 396.334,
+          y = 286.333,
           width = 0,
           height = 0,
           rotation = 0,
@@ -386,8 +420,8 @@ return {
           name = "entry_elizaroom",
           type = "",
           shape = "point",
-          x = 851.333,
-          y = 280.667,
+          x = 851,
+          y = 293.667,
           width = 0,
           height = 0,
           rotation = 0,
@@ -399,8 +433,8 @@ return {
           name = "entry_bathroom",
           type = "",
           shape = "point",
-          x = 286.333,
-          y = 288,
+          x = 300,
+          y = 293.333,
           width = 0,
           height = 0,
           rotation = 0,
@@ -412,8 +446,8 @@ return {
           name = "entry_mikeroom",
           type = "",
           shape = "point",
-          x = 214,
-          y = 370,
+          x = 232.667,
+          y = 377.333,
           width = 0,
           height = 0,
           rotation = 0,
@@ -425,8 +459,8 @@ return {
           name = "entry_masterroom",
           type = "",
           shape = "point",
-          x = 1189.33,
-          y = 364.333,
+          x = 1177,
+          y = 367.666,
           width = 0,
           height = 0,
           rotation = 0,

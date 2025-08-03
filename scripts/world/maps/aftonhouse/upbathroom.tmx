@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="15">
+ <editorsettings>
+  <export target="upbathroom.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="inside" type="bool" value="true"/>
+  <property name="light" type="bool" value="true"/>
+ </properties>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <imagelayer id="2" name="aftonhouse_upstairs_bathroom">
+  <image source="../../../../assets/sprites/rooms/aftonhouse_upstairs_bathroom.png" width="640" height="480"/>
+ </imagelayer>
+ <objectgroup color="#00007f" id="5" name="collision">
+  <object id="1" x="89.5" y="341.5" width="445.5" height="38.5"/>
+  <object id="2" x="95" y="341">
+   <polygon points="0,0 46.5,-49 144.5,-49 153,-78.5 153,-222.5 -4,-221.5 -4.5,-2"/>
+  </object>
+  <object id="3" x="248" y="104" width="205" height="158"/>
+  <object id="4" x="453.333" y="261">
+   <polygon points="0,0 81.6667,81.6667 81,-141 -0.666667,-141.333"/>
+  </object>
+  <object id="5" x="535" y="115.333" width="58.6667" height="264.333"/>
+  <object id="6" x="72.6667" y="117" width="17" height="263"/>
+  <object id="7" x="294.667" y="225.667">
+   <polygon points="0,0 0,44 11.3333,53.6667 94.3333,53.6667 98.6667,47 98.6667,-10"/>
+  </object>
+  <object id="9" x="408" y="239.667" width="41.3333" height="30.3333">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="3" name="objects">
+  <object id="11" name="aftonhouse/door" x="479.333" y="298.667">
+   <properties>
+    <property name="lock" type="bool" value="false"/>
+    <property name="target_dir" value="right"/>
+    <property name="target_map" value="aftonhouse/upstairs"/>
+    <property name="target_marker" value="entry_bathroom"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="12" name="aftonhouse/toilet" x="431.667" y="270.333">
+   <point/>
+  </object>
+  <object id="13" name="interactable" x="362" y="268.333">
+   <properties>
+    <property name="text" value="* But your hands were already clean."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="14" name="interactable" x="130.333" y="309.667">
+   <properties>
+    <property name="text" value="* It's raining out there."/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#5500ff" id="4" name="markers">
+  <object id="10" name="entry" x="448.333" y="303.667">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

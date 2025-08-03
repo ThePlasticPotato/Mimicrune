@@ -1,6 +1,13 @@
 return {
     wake_up = function (cutscene, event)
         local spawnWakeX, spawnWakeY = Game.world.map:getMarker("spawn")
+        --story flags
+        Game:setFlag("fredbear_get", false)
+        Game:setFlag("frontdoor_unlocked", false)
+        Game:setFlag("frontdoor_message", "* It's storming too hard to go outside right now...")
+        Game:setFlag("frontdoor_expression", "neutral_side")
+        Game:setFlag("afton_intro_done", false)
+
         Game.world.player.visible = true
         Game.world.player:setFacing("left")
         cutscene:wait(4)
@@ -56,6 +63,11 @@ return {
         soulpulse:fadeOutAndRemove(0.8)
         cutscene:wait(2)
         cutscene:text("* (...it's warm.)", "happy", nil, { ["talk"] = false, ["wait"] = true })
+
         cutscene:endCutscene()
+    end,
+
+    afton_intro = function (cutscene, event)
+        Game:setFlag("afton_intro_done", true)
     end
 }

@@ -301,6 +301,7 @@ return {
         cutscene:wait(cutscene:fadeIn(1))
         Game.world.player.visible = false
         cutscene:endCutscene()
+        Game.stage:setWeather("thunder", true)
         Game.world:startCutscene("aftonhouse", "wake_up")
     end
 }

@@ -21,6 +21,7 @@ function FredbearPlushie:onInteract(player, dir)
         cutscene:setSpeaker("evan")
         cutscene:text("* Fredbear![wait:10][react:1]", "laugh", {reactions = { {"(How did you get over here???)", 200, 58, "awkward_left_sweat", "evan"}, }})
     end)
+    Game.inventory:tryGiveItem("fredbear_plush")
     self:remove()
 end
 

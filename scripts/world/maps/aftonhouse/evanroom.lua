@@ -12,6 +12,7 @@ return {
   nextlayerid = 7,
   nextobjectid = 36,
   properties = {
+    ["inside"] = true,
     ["light"] = true
   },
   tilesets = {},

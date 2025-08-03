@@ -48,6 +48,13 @@ function character:init()
         health = 200
     }
 
+    self.lw_health = 30
+    self.lw_stats = {
+        health = 30,
+        attack = 4,
+        defense = 12
+    }
+
     -- Weapon icon in equip menu
     self.weapon_icon = "ui/menu/equip/greatsword"
 
@@ -101,6 +108,10 @@ function character:onLevelUp(level)
         self:increaseStat("health", 1)
         self:increaseStat("magic", 1)
     end
+end
+
+function character:getLightHeadIcon()
+    return "party/evan/light/head"
 end
 
 return character

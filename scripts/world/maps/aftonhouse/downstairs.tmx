@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="8" nextobjectid="62">
+ <editorsettings>
+  <export target="downstairs.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="inside" type="bool" value="true"/>
+  <property name="light" type="bool" value="true"/>
+ </properties>
+ <layer id="1" name="Tile Layer 1" width="36" height="24">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <imagelayer id="3" name="aftonhouse_downstairs">
+  <image source="../../../../assets/sprites/rooms/aftonhouse_downstairs.png" width="1414" height="960"/>
+ </imagelayer>
+ <objectgroup color="#00007f" id="6" name="collision">
+  <object id="6" x="326" y="556.545" width="44.1818" height="245.091"/>
+  <object id="8" x="218.182" y="508.909" width="41.6364" height="293.273"/>
+  <object id="9" x="141.818" y="880.182" width="1121.45" height="35.4545"/>
+  <object id="12" x="1110" y="438.364" width="247.818" height="298.121"/>
+  <object id="13" x="1344.07" y="140.481" width="247.818" height="298.121"/>
+  <object id="14" x="24.3333" y="438" width="899.333" height="300"/>
+  <object id="15" x="-2" y="-43.3333" width="65.6667" height="417.333"/>
+  <object id="16" x="62" y="-54" width="637" height="53"/>
+  <object id="18" x="332" y="-17.3333" width="1074.67" height="256.667"/>
+  <object id="19" x="978" y="218.75" width="127.75" height="31.375"/>
+  <object id="20" x="620.091" y="221.636" width="57.5455" height="23.9091"/>
+  <object id="21" x="856.091" y="218.273" width="57.6364" height="27.3636"/>
+  <object id="22" x="561.818" y="230.364" width="30.3636" height="24.5455"/>
+  <object id="23" x="1162.13" y="216.625" width="43.25" height="31"/>
+  <object id="24" x="430.909" y="705.818" width="34.7273" height="49.0909"/>
+  <object id="25" x="511.091" y="710.545" width="86.7273" height="58.9091"/>
+  <object id="27" x="626.743" y="732.409" width="136.333" height="37"/>
+  <object id="28" x="803.636" y="707.545" width="86.7273" height="58.9091"/>
+  <object id="29" x="141.5" y="881">
+   <polygon points="0,0 81,-81.5 79,-239 -30,-137.5"/>
+  </object>
+  <object id="30" x="1111" y="736">
+   <polygon points="0,0 148.5,149 145.5,-133.5"/>
+  </object>
+  <object id="31" x="1344.5" y="384.5">
+   <polygon points="0,0 -157,-155.5 -1,-244"/>
+  </object>
+  <object id="32" x="333" y="238.5">
+   <polygon points="0,0 -76.5,-75 -76.5,-255.5 -1,-256.5"/>
+  </object>
+  <object id="33" x="64" y="374.5">
+   <polygon points="0,0 1.5,10 50.5,60 105,65.5 11.5,80 -31.5,3.5 -14.5,-16.5"/>
+  </object>
+  <object id="40" x="370.182" y="801.636">
+   <polygon points="0,0 63.4545,-63.6364 0.181818,-63.6364"/>
+  </object>
+  <object id="61" x="259.625" y="796.5">
+   <polygon points="0,0 28.5,-27 28.625,-71.375 -7.75,-69.875"/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#5500ff" id="5" name="markers">
+  <object id="5" name="entry_stairs" x="285.818" y="831.03">
+   <point/>
+  </object>
+  <object id="48" name="entry_kitchen" x="160" y="120">
+   <point/>
+  </object>
+  <object id="49" name="entry" x="767.333" y="294.667">
+   <point/>
+  </object>
+  <object id="50" name="entry_office" x="1200.67" y="322">
+   <point/>
+  </object>
+  <object id="51" name="entry_garage" x="230" y="854.667">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects">
+  <object id="1" name="aftonhouse/couch" x="554" y="826" width="282" height="54">
+   <properties>
+    <property name="sprite" value="props/aftonhouse/aftonhouse_upstairs_couch"/>
+   </properties>
+  </object>
+  <object id="2" name="interactable" x="986" y="124.667" width="112.333" height="125.667">
+   <properties>
+    <property name="text" value="* It's a closet. Might be the fourth they added..."/>
+   </properties>
+  </object>
+  <object id="3" name="aftonhouse/door" x="1251.33" y="232.667" width="28.6667" height="86.3333">
+   <properties>
+    <property name="lock" type="bool" value="true"/>
+    <property name="lock_text" value="* Dad's office. It's locked."/>
+    <property name="target_dir" value="right"/>
+    <property name="target_map" value="aftonhouse/office"/>
+    <property name="target_marker" value="entry"/>
+   </properties>
+  </object>
+  <object id="4" name="transition" x="280.424" y="737" width="46.1212" height="42.2424">
+   <properties>
+    <property name="facing" value="down"/>
+    <property name="map" value="aftonhouse/upstairs"/>
+    <property name="marker" value="entry_stairs"/>
+    <property name="stairs" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="35" name="interactable" x="469.333" y="227.333">
+   <properties>
+    <property name="text" value="* It's raining out there."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="36" name="aftonhouse/frontdoor" x="703.333" y="132" width="128.667" height="107.333"/>
+  <object id="37" name="interactable" x="649.333" y="234">
+   <properties>
+    <property name="text" value="* A fern. You aren't too frond of this one."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="38" name="interactable" x="1181.33" y="245.333">
+   <properties>
+    <property name="text" value="* A shrub. It's best to leaf it be."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="39" name="interactable" x="446.667" y="752.667">
+   <properties>
+    <property name="text1" value="* A sprout. The thought that one day, this may grow into a boring houseplant..."/>
+    <property name="text2" value="* What? Were you expecting more?"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="41" name="interactable" x="738" y="742.667">
+   <properties>
+    <property name="text" value="* Vidya games."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="42" name="interactable" x="645.333" y="742">
+   <properties>
+    <property name="text" value="* The remote for the TV. It's out of batteries..."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="43" name="interactable" x="845.333" y="753.333">
+   <properties>
+    <property name="text">* Elizabeth's favorite spot.
+* Seems like she forgot her pillow.</property>
+   </properties>
+   <point/>
+  </object>
+  <object id="44" name="interactable" x="1130.5" y="771.5">
+   <properties>
+    <property name="text" value="* A painting. It leaves you at a loss for words..."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="45" name="aftonhouse/door" x="182.667" y="844.333">
+   <properties>
+    <property name="lock" type="bool" value="true"/>
+    <property name="lock_text" value="* This goes to the garage. It's locked."/>
+    <property name="target_dir" value="left"/>
+    <property name="target_map" value="aftonhouse/garage"/>
+    <property name="target_marker" value="entry_downstairs"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="46" name="interactable" x="282.5" y="185.75">
+   <properties>
+    <property name="text" value="* It's a painting, but sans anything interesting to note."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="47" name="transition" x="64.2727" y="0.212133" width="192.788" height="42.2424">
+   <properties>
+    <property name="facing" value="up"/>
+    <property name="map" value="aftonhouse/kitchen"/>
+    <property name="marker" value="entry_downstairs"/>
+    <property name="stairs" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="52" name="interactable" x="576.667" y="256">
+   <properties>
+    <property name="text">* A coat hanger.
+* It lacks any coats to be hung...</property>
+   </properties>
+   <point/>
+  </object>
+  <object id="60" name="interactable" x="885.5" y="231">
+   <properties>
+    <property name="text" value="* It's raining out there."/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="objects_above">
+  <object id="59" name="aftonhouse/arch" x="924" y="426">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

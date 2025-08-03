@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="36" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="28">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="36" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="30">
  <editorsettings>
   <export target="upstairs.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="inside" type="bool" value="true"/>
   <property name="light" type="bool" value="true"/>
  </properties>
  <imagelayer id="3" name="aftonhouse_upstairs">
@@ -19,7 +20,7 @@
   </object>
   <object id="7" x="1028" y="78.5" width="44" height="242.5"/>
   <object id="8" x="1138.5" y="77.5" width="41" height="244"/>
-  <object id="9" x="1071.5" y="50.5" width="67" height="236.5"/>
+  <object id="9" x="1071.5" y="50.5" width="67" height="213.833"/>
   <object id="21" x="556.667" y="242" width="136.333" height="37"/>
   <object id="22" x="285.667" y="257">
    <polygon points="0,0 -143.667,143.333 -143.333,-100.333 -67.6667,-177 0.333333,-179"/>
@@ -27,7 +28,7 @@
   <object id="24" x="142" y="400" width="1113.33" height="32.6667"/>
  </objectgroup>
  <objectgroup color="#ff00ff" id="4" name="objects">
-  <object id="1" name="couch" x="483" y="346" width="282" height="54">
+  <object id="1" name="aftonhouse/couch" x="483" y="346" width="282" height="54">
    <properties>
     <property name="sprite" value="props/aftonhouse/aftonhouse_upstairs_couch"/>
    </properties>
@@ -67,10 +68,10 @@
   </object>
   <object id="20" name="aftonhouse/door" x="264" y="288.833">
    <properties>
-    <property name="lock" type="bool" value="true"/>
+    <property name="lock" type="bool" value="false"/>
     <property name="lock_text" value="* The bathroom. It's locked."/>
     <property name="target_dir" value="left"/>
-    <property name="target_map" value="aftonhouse/bathup"/>
+    <property name="target_map" value="aftonhouse/upbathroom"/>
     <property name="target_marker" value="entry"/>
    </properties>
    <point/>
@@ -101,21 +102,36 @@
    </properties>
    <point/>
   </object>
+  <object id="28" name="interactable" x="949.333" y="267.333">
+   <properties>
+    <property name="text">* It's a plant.
+* ...not a very good one.</property>
+   </properties>
+   <point/>
+  </object>
+  <object id="29" name="transition" x="1072" y="265.333" width="66.6667" height="31.3333">
+   <properties>
+    <property name="facing" value="down"/>
+    <property name="map" value="aftonhouse/downstairs"/>
+    <property name="marker" value="entry_stairs"/>
+    <property name="stairs" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#5500ff" id="5" name="markers">
-  <object id="12" name="entry_evanroom" x="395.667" y="281.333">
+  <object id="12" name="entry_evanroom" x="396.334" y="286.333">
    <point/>
   </object>
-  <object id="13" name="entry_elizaroom" x="851.333" y="280.667">
+  <object id="13" name="entry_elizaroom" x="851" y="293.667">
    <point/>
   </object>
-  <object id="14" name="entry_bathroom" x="286.333" y="288">
+  <object id="14" name="entry_bathroom" x="300" y="293.333">
    <point/>
   </object>
-  <object id="15" name="entry_mikeroom" x="214" y="370">
+  <object id="15" name="entry_mikeroom" x="232.667" y="377.333">
    <point/>
   </object>
-  <object id="16" name="entry_masterroom" x="1189.33" y="364.333">
+  <object id="16" name="entry_masterroom" x="1177" y="367.666">
    <point/>
   </object>
   <object id="17" name="entry_stairs" x="1114" y="339.667">

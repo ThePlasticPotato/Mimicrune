@@ -106,4 +106,8 @@ function character:onLevelUp(level)
     end
 end
 
+function character:getLightHeadIcon()
+    return "party/fredbear/light"
+end
+
 return character

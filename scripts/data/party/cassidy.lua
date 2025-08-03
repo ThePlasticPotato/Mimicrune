@@ -55,6 +55,13 @@ function character:init()
         heat = 200
     }
 
+    self.lw_health = 5
+        self.lw_stats = {
+        health = 5,
+        attack = 8,
+        defense = 2
+    }
+
     -- Weapon icon in equip menu
     self.weapon_icon = "ui/menu/equip/ring"
 
@@ -129,6 +136,10 @@ function character:onLevelUp(level)
         self:increaseStat("attack", 1)
         self:increaseStat("magic", 1)
     end
+end
+
+function character:getLightHeadIcon()
+    return "party/cassidy/light/head"
 end
 
 return character

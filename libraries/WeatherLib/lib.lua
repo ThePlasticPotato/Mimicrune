@@ -169,7 +169,10 @@ function WeatherLib:init()
             Game.stage.weather_type = first
             Game.stage.last_weather = {typer, keep, sfx, addto}
             Game:setFlag("weather_save", {typer, keep, sfx})
-            if Game.world.map.inside or Game.world.map.data.properties["inside"] then Game.stage:pauseWeather("inside") end
+            if Game.world.map.inside or Game.world.map.data.properties["inside"] then
+                Game.stage:setWeatherLayer(1)
+                --Game.stage:pauseWeather("inside")
+            end
             --print(typer)
             self.addto = addto
         end
