@@ -6,8 +6,13 @@ end
 
 function Mod:postInit(new_file)
     if new_file then
-        Game:setFlag("has_cell_phone", true)
-        Game.world:registerCall("test", nil)
-        Game.world:startCutscene("connection", "intro_transition")
+        if (Kristal.hasAnySaves()) then
+            Game.world:mapTransition("fileselect")
+        else
+            Game:setFlag("has_cell_phone", true)
+            Game.world:startCutscene("connection", "intro_transition")
+        end
+    else
+        Game.world:mapTransition("fileselect")
     end
 end

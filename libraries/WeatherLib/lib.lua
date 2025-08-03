@@ -170,12 +170,25 @@ function WeatherLib:init()
             Game.stage.last_weather = {typer, keep, sfx, addto}
             Game:setFlag("weather_save", {typer, keep, sfx})
             if Game.world.map.inside or Game.world.map.data.properties["inside"] then
-                Game.stage:setWeatherLayer(1)
-                --Game.stage:pauseWeather("inside")
+                Game.stage:setWeatherLayer(-1)
+                weather.weathersounds.volume = weather.weathersounds.volume / 4
+                weather.weathersounds.pitch = weather.weathersounds.pitch - 0.09
             end
             --print(typer)
             self.addto = addto
         end
+    end)
+
+    Utils.hook(Stage, "getWeatherMask", function(orig, self)
+        orig(self)
+        local currentMap = Game.world.map.id
+        return Assets.getTexture("masks/"..currentMap.."_mask")
+    end)
+
+    Utils.hook(Stage, "getWeatherInverseMask", function(orig, self)
+        orig(self)
+        local currentMap = Game.world.map.id
+        return Assets.getTexture("masks/"..currentMap.."_inverse_mask")
     end)
 
     Utils.hook(Stage, "hasWeather", function(orig, self, weather)
@@ -389,6 +402,7 @@ function WeatherLib:init()
 
         if self.map.inside or self.map.data.properties["inside"] then
             Game.stage:pauseWeather("inside")
+            Game.stage:setWeatherLayer(-10)
         else
             if Game.stage.pause_reason == "inside" then Game.stage:playWeather() Game.stage.wpaused = false print("played") end
         end

@@ -302,6 +302,7 @@ return {
         Game.world.player.visible = false
         cutscene:endCutscene()
         Game.stage:setWeather("thunder", true)
+        Game:setFlag("current_weather", "thunder")
         Game.world:startCutscene("aftonhouse", "wake_up")
     end
 }
