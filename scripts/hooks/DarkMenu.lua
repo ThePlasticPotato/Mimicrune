@@ -44,7 +44,7 @@ function DarkMenu:init()
     self.description_panel = PanelMenuBackground("ui/menu/panels/dark/hand/menu", 0, 0, "hand_open", "hand_open", "ui_move_panel", "ui_select_panel", "ui_error_panel", "ui_cancel_small_camera", nil, 0, 0, false)
     self.description_panel.layer = 10
     self:addChild(self.description_panel)
-    self.description = Text("", 20, 10, SCREEN_WIDTH - 20, 80 - 16)
+    self.description = Text("", 20, 10, 540, 80 - 16)
     self.description.visible = false
     self.description_panel:addChild(self.description)
 
@@ -108,14 +108,14 @@ function DarkMenu:addButtons()
         end
     })
 
-    -- SKILLS
+    -- SPELLS
     self:addButton({
-        ["state"]          = "SKILLMENU",
-        ["sprite"]         = Assets.getTexture("ui/menu/btn/power"),
-        ["hovered_sprite"] = Assets.getTexture("ui/menu/btn/power_h"),
-        ["desc_sprite"]    = Assets.getTexture("ui/menu/desc/power"),
+        ["state"]          = "SPELLMENU",
+        ["sprite"]         = Assets.getTexture("ui/menu/btn/spells"),
+        ["hovered_sprite"] = Assets.getTexture("ui/menu/btn/spells_h"),
+        ["desc_sprite"]    = Assets.getTexture("ui/menu/desc/spells"),
         ["callback"]       = function()
-            self.box = DarkPowerMenu()
+            self.box = DarkSpellMenu()
             self.box.layer = 1
             self:addChild(self.box)
 

@@ -1,5 +1,4 @@
 return function(cutscene)
-    cutscene:wait(6)
     Game.legend.music:play("legend")
     cutscene:setSpeed(1 / 2.1)
     cutscene:musicWait(0.54)

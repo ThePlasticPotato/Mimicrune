@@ -12,7 +12,7 @@ function spell:init()
     self.effect = "Psychic Damage"
 
     -- Menu description
-    self.description = "Sends a wave of psychic power rippling over\nall foes. Depends on Attack & Magic."
+    self.description = "Sends a wave of psychic power rippling over all foes."
 
     -- TP cost
     self.cost = 0
@@ -21,6 +21,8 @@ function spell:init()
 
     -- Target mode (ally, party, enemy, enemies, or none)
     self.target = "enemy"
+
+    self.psychic = true
 
     -- Tags that apply to this spell
     self.tags = {"psy", "damage"}

@@ -12,7 +12,7 @@ function spell:init()
     self.effect = "Psychic Damage"
 
     -- Menu description
-    self.description = "Sends a beam of psychic power ripping through\none foe. Depends on Attack & Magic."
+    self.description = "Sends a beam of psychic power ripping through one foe."
 
     -- TP cost
     self.cost = 0
@@ -24,6 +24,8 @@ function spell:init()
 
     self.cast_anim = "psybeam"
     self.select_anim = "psybeamready"
+
+    self.psychic = true
 
     -- Tags that apply to this spell
     self.tags = {"psy", "damage"}

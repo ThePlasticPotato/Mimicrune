@@ -11,13 +11,15 @@ function spell:init()
     -- Battle description
     self.effect = "Recover\nMind"
     -- Menu description
-    self.description = "Focuses mental energy to recover power and\nreduce heat. Depends on Magic."
+    self.description = "Focuses mental energy to recover power and reduce heat. Depends on Magic."
 
     -- TP cost
     self.cost = 30
 
     -- Target mode (ally, party, enemy, enemies, or none)
     self.target = "none"
+
+    self.required = true
 
     -- Tags that apply to this spell
     self.tags = {"psy", "heal"}

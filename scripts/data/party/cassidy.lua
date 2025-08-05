@@ -33,9 +33,9 @@ function character:init()
     self.is_psychic = true
 
     -- Spells
-    self:addSpell("meditate")
-    self:addSpell("psybeam")
-    self:addSpell("psywave")
+    self:addKnownSpell("meditate", true)
+    self:addKnownSpell("psybeam", false)
+    self:addKnownSpell("psywave", false)
 
     -- Current health (saved to the save file)
     self.health = 40
