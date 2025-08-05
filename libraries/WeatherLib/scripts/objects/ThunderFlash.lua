@@ -65,7 +65,7 @@ function ThunderFlash:draw()
         love.graphics.setStencil(self.inverseStencil)
     end
 
-    love.graphics.setBlendMode("screen")
+    love.graphics.setBlendMode("alpha")
     Draw.setColor(0, 0, 0.05, self.flashtimer/self.flashtime)
     love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
     love.graphics.setBlendMode("alpha")
