@@ -164,11 +164,12 @@ function DarkSpellMenu:update()
         if Input.pressed("down", true) then
             self.selected_spell = self.selected_spell + 1
         end
-        self.selected_spell = Utils.clamp(self.selected_spell, 1, 6)
+        local max_spells = self.party:getSelected():getStat("max_spells", 6)
+        self.selected_spell = Utils.clamp(self.selected_spell, 1, max_spells)
         if self.selected_spell ~= old_selected then
             local spell_limit = self:getSpellLimit()
             local min_scroll = math.max(1, self.selected_spell - (spell_limit - 1))
-            local max_scroll = math.min(math.max(1, 6 - (spell_limit - 1)), self.selected_spell)
+            local max_scroll = math.min(math.max(1, max_spells - (spell_limit - 1)), self.selected_spell)
             self.scroll_y = Utils.clamp(self.scroll_y, min_scroll, max_scroll)
 
             self.ui_move:stop()
@@ -221,7 +222,7 @@ function DarkSpellMenu:update()
         end
         self.selected_known = Utils.clamp(self.selected_known, 1, 30)
         if self.selected_known ~= old_selected then
-            local spell_limit = 6
+            local spell_limit = self:getSpellLimit()
             local min_scroll = math.max(1, self.selected_known - (spell_limit - 1))
             local max_scroll = math.min(math.max(1, 30 - (spell_limit - 1)), self.selected_known)
             self.known_scroll = Utils.clamp(self.known_scroll, min_scroll, max_scroll)
@@ -291,7 +292,7 @@ function DarkSpellMenu:drawKnown()
     Draw.setColor(1, 1, 1)
     Draw.draw(self.tp_sprite, tp_x, tp_y - 5)
 
-    local spell_limit = 6
+    local spell_limit = self:getSpellLimit()
 
     for i = self.known_scroll, math.min(max_display, self.known_scroll + (spell_limit - 1)) do
         local offset = i - self.known_scroll
@@ -369,6 +370,8 @@ end
 
 function DarkSpellMenu:drawSpells()
     local spells = self:getSpells()
+    local max_spells = self.party:getSelected():getStat("max_spells", 6)
+    local spell_weight = self.party:getSelected():getSpellWeight()
 
     local tp_x, tp_y
     local name_x, name_y
@@ -386,7 +389,7 @@ function DarkSpellMenu:drawSpells()
 
     local spell_limit = self:getSpellLimit()
 
-    for i = self.scroll_y, math.min(6, self.scroll_y + (spell_limit - 1)) do
+    for i = self.scroll_y, math.min(max_spells, self.scroll_y + (spell_limit - 1)) do
         local offset = i - self.scroll_y
         local spell = spells[i]
         if (not spell) then
@@ -404,7 +407,7 @@ function DarkSpellMenu:drawSpells()
     end
 
     -- Draw scroll arrows if needed
-    if 6 > spell_limit then
+    if max_spells > spell_limit then
         Draw.setColor(1, 1, 1)
 
         -- Move the arrows up and down only if we're in the spell selection state
@@ -423,13 +426,13 @@ function DarkSpellMenu:drawSpells()
         end
     end
 
-    if (#spells < 6) then
+    if (spell_weight < max_spells) then
         Draw.setColor(1, 1, 1)
     else
         Draw.setColor(0.8, 0, 0)
     end
     love.graphics.setFont(self.small_font)
-    love.graphics.print("("..tostring(#spells).."/6)", tp_x, tp_y-8)
+    love.graphics.print("("..tostring(spell_weight).."/"..tostring(max_spells)..")", tp_x, tp_y-8)
     love.graphics.setFont(self.font)
     Draw.setColor(1, 1, 1)
     if self.state == "SPELLS" then

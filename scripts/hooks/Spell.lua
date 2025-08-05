@@ -2,6 +2,7 @@
 ---@field pcost number|nil
 ---@field pheat number|nil
 ---@field required boolean
+---@field slot_weight number
 local Spell, super = Utils.hookScript(Spell)
 
 function Spell:init()
@@ -10,6 +11,11 @@ function Spell:init()
     self.pcost = nil
     self.pheat = nil
     self.required = false
+    self.slot_weight = 1
+end
+
+function Spell:getWeight(chara)
+    return self.slot_weight
 end
 
 function Spell:getNPCost(chara)

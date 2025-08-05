@@ -12,7 +12,9 @@ function PartyMember:init()
     self.heat = 0
     self.is_psychic = false
     self.stats["heat"] = 0
+    self.stats["max_spells"] = 6
     self.max_stats["heat"] = 0
+    self.max_stats["max_spells"] = 6
 end
 
 --- Adds `spell` to this party member's list of known spells. \
@@ -24,7 +26,7 @@ function PartyMember:addKnownSpell(spell, activate)
         spell = Registry.createSpell(spell)
     end
     table.insert(self.known_spells, spell)
-    if spell.required then--(activate == true and Utils.tableLength(self.spells) < 6) then
+    if (spell.required or activate == true) and Utils.tableLength(self.spells) < self:getStat("max_spells", 6) then
         table.insert(self.spells, spell)
     end
 end
@@ -74,6 +76,33 @@ function PartyMember:removeKnownSpell(spell)
             table.remove(self.spells, i)
             return
         end
+    end
+end
+
+--- Retrieves the current weight of equipped spells. By default, this is just the number of spells equipped.
+--- @return number weight
+function PartyMember:getSpellWeight()
+    local weight = 0
+    for i,v in ipairs(self.spells) do
+        weight = weight + v:getWeight()
+    end
+    return weight
+end
+
+function PartyMember:update()
+    super.update(self)
+    if (self:getFlag("max_spells_updated", false)) then
+        local current_weight = self:getSpellWeight()
+        local max_weight = self:getStat("max_weight", 6)
+        if (current_weight > max_weight) then
+            local i = 1
+            local flipped = Utils.reverse(self:getSpells())
+            while (self:getSpellWeight() > max_weight) do
+                Utils.removeFromTable(self.spells, flipped[i])
+                i = i+1
+            end
+        end
+        self:setFlag("max_spells_updated", false)
     end
 end
 
