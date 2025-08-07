@@ -23,6 +23,7 @@ function actor:init()
     self.path = "party/cassidy/dark"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "walk"
+    self.default_run = "run"
 
     self.animations = {
                 -- Battle animations

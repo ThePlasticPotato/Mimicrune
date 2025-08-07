@@ -23,6 +23,7 @@ function actor:init()
     self.path = "party/evan/light"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "walk"
+    self.default_run = "run"
 
     -- Sound to play when this actor speaks (optional)
     self.voice = "party/evan"
@@ -38,6 +39,7 @@ function actor:init()
     }
 
     self.offsets = {
+        ["run"] = {-5, -2},
         ["splat"] = {-10, 8},
         ["lift"] = {-10, 8},
         ["sat"] = {-10, 8},

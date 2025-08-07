@@ -220,6 +220,10 @@ function BattleUI:drawState()
         end
 
     elseif Game.battle.state == "ENEMYSELECT" or Game.battle.state == "XACTENEMYSELECT" then
+        if (self.neurometer) then
+            self.neurometer.potential_heat = nil
+            self.neurometer.potential_power = nil
+        end
         local enemies = Game.battle.enemies_index
 
         local page = math.ceil(Game.battle.current_menu_y / 3) - 1
@@ -419,6 +423,10 @@ function BattleUI:drawState()
             Draw.draw(self.arrow_sprite, 20, 70 - (math.sin(Kristal.getTime()*6) * 2), 0, 1, -1)
         end
     elseif Game.battle.state == "PARTYSELECT" then
+        if (self.neurometer) then
+            self.neurometer.potential_heat = nil
+            self.neurometer.potential_power = nil
+        end
         local page = math.ceil(Game.battle.current_menu_y / 3) - 1
         local max_page = math.ceil(#Game.battle.party / 3) - 1
         local page_offset = page * 3
@@ -450,6 +458,10 @@ function BattleUI:drawState()
         end
     end
     if Game.battle.state == "ATTACKING" or self.attacking then
+        if (self.neurometer) then
+            self.neurometer.potential_heat = nil
+            self.neurometer.potential_power = nil
+        end
         Draw.setColor(PALETTE["battle_attack_lines"])
         if not Game:getConfig("oldUIPositions") then
             -- Chapter 2 attack lines

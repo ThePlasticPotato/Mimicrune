@@ -23,6 +23,7 @@ function actor:init()
     self.path = "party/cassidy/light"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "walk"
+    self.default_run = "run"
 
     -- Sound to play when this actor speaks (optional)
     self.voice = "assets/sounds/voice/party/cassidy"

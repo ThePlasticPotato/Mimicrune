@@ -12,6 +12,7 @@ function Mod:postInit(new_file)
         else
             Game:setFlag("has_cell_phone", true)
             Game.world:startCutscene("connection", "intro_transition")
+            Game:setFlag("audible_footsteps", true)
         end
     else
         Game.world:mapTransition("fileselect")

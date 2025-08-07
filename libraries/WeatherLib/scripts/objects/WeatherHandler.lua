@@ -189,7 +189,7 @@ function WeatherHandler:update()
 
                     self.addto:addChild(ThunderFlash(self))
                     wait(0.5)
-                    if self.sfx then Assets.stopAndPlaySound("thunder", 0.5, 0.6) end
+                    if self.sfx then Assets.stopAndPlaySound("thunder", self.weathersounds:getVolume() + 0.1, 0.6) end
                 end)
                 --self.addto:addChild(ThunderFlash())
                 self.thundertimerreset = true
