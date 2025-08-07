@@ -28,7 +28,8 @@ function character:init()
     self.xact_name = "F-Action"
 
     -- Spells
-    self:addSpell("pacify")
+    self:addKnownSpell("bodybash", true)
+    self:addKnownSpell("hypesong", true)
 
     -- Current health (saved to the save file)
     self.health = 225
@@ -45,6 +46,8 @@ function character:init()
     self.max_stats = {
         health = 500
     }
+
+    self.is_musical = true
 
     -- Weapon icon in equip menu
     self.weapon_icon = "ui/menu/equip/mic"
@@ -93,6 +96,18 @@ function character:onAttackHit(enemy, damage)
         Assets.playSound("impact", 0.8)
         Game.battle:shakeCamera(2)
     end
+end
+
+function character:onTurnStart(battler)
+    super.onTurnStart(self, battler)
+    if (battler.sing_level) then
+        battler.sing_level = 0
+    end
+    if (not battler.was_hit_last) then
+        self.notes = math.min(self.notes + 1, 3)
+        Assets.playSound("bell_bounce_short")
+    end
+    battler.was_hit_last = false
 end
 
 function character:onLevelUp(level)

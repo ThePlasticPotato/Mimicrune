@@ -122,9 +122,24 @@ function character:onAttackHit(enemy, damage)
 end
 
 function character:onTurnStart(battler)
-    if self:getFlag("neural_overheat", false) then
-        Game.battle:pushForcedAction(battler, "DEFEND", nil, nil, nil)
+    if (self.heat >= self:getStat("heat", 50) and not battler.overheat) then
+        battler:setOverheat(true)
+        Assets.playSound("overheat")
+        battler:flash()
     end
+    if (self.heat < self:getStat("heat", 50) and battler.overheat) then
+        battler:setOverheat(false)
+        Assets.playSound("power")
+    end
+    if battler.overheat then
+        battler:setAnimation("overheat")
+    else
+        if (self.neural_power < 100 and not battler.was_hit_last) then
+            self.neural_power = Utils.clamp(self.neural_power + (self:getStat("magic", 1)), 0, 100)
+        end
+    end
+
+    battler.was_hit_last = false
 end
 
 function character:onLevelUp(level)

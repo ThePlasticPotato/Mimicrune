@@ -1,4 +1,4 @@
-local spell, super = Class(Spell, "psywave")
+local spell, super = Class(Spell, "psysong")
 
 function spell:init()
     super.init(self)
@@ -9,7 +9,7 @@ function spell:init()
     self.cast_name = nil
 
     -- Battle description
-    self.effect = "Psychic Damage"
+    self.effect = "Psychic\nWave"
 
     -- Menu description
     self.description = "Sends a wave of psychic power rippling over all foes."

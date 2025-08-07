@@ -63,7 +63,7 @@ function DarkPowerMenu:drawSpells()
             Draw.setColor(pColor)
             love.graphics.print(npCost.."%P", tp_x, tp_y+12 + (offset * 25))
             Draw.setColor(hColor)
-            love.graphics.print(heat.."%H", tp_x+(12 * (npCost:len())+8), tp_y+12 + (offset * 25))
+            love.graphics.print(heat.."H", tp_x+(12 * (npCost:len())+8), tp_y+12 + (offset * 25))
             if (canCast) then Draw.setColor(1, 1, 1) else Draw.setColor(0.5, 0.5, 0.5) end
             love.graphics.setFont(self.font)
         else

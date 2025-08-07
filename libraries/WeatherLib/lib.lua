@@ -170,9 +170,13 @@ function WeatherLib:init()
             Game.stage.last_weather = {typer, keep, sfx, addto}
             Game:setFlag("weather_save", {typer, keep, sfx})
             if Game.world.map.inside or Game.world.map.data.properties["inside"] then
-                Game.stage:setWeatherLayer(-1)
-                weather.weathersounds.volume = weather.weathersounds.volume / 4
-                weather.weathersounds.pitch = weather.weathersounds.pitch - 0.09
+                Game.stage:setWeatherLayer(-10)
+                
+                self.weather.weathersounds.volume = weather.weathersounds.volume / 4
+                self.weather.weathersounds.pitch = weather.weathersounds.pitch - 0.09
+                Game.stage.was_weather_inside = true
+            else 
+                Game.stage.was_weather_inside = false
             end
             --print(typer)
             self.addto = addto
@@ -259,8 +263,8 @@ function WeatherLib:init()
             if Game.stage.weather then
                 for i, weather in ipairs(Game.stage.weather) do
                     weather.pause = true
-                    weather.weathersounds.volume = weather.weathersounds.volume / 4
-                    weather.weathersounds.pitch = weather.weathersounds.pitch - 0.09
+                    --weather.weathersounds.volume = weather.weathersounds.volume / 4
+                    --weather.weathersounds.pitch = weather.weathersounds.pitch - 0.09
                 end
             end
 
@@ -283,8 +287,8 @@ function WeatherLib:init()
             if Game.stage.weather then
                 for i, weather in ipairs(Game.stage.weather) do
                     weather.pause = false
-                    weather.weathersounds.volume = weather.weathersounds.volume * 4
-                    weather.weathersounds.pitch = weather.weathersounds.pitch + 0.09
+                    --weather.weathersounds.volume = weather.weathersounds.volume * 4
+                    --weather.weathersounds.pitch = weather.weathersounds.pitch + 0.09
                 end
             end
         end
@@ -397,14 +401,32 @@ function WeatherLib:init()
     Utils.hook(World, "setupMap", function(orig, self, map, ...)
         orig(self, map, ...)
         local weather = Game.stage.last_weather
-
+        if (Game.stage.was_weather_inside == nil) then Game.stage.was_weather_inside = false end
         Game.stage.overlay = {}
 
         if self.map.inside or self.map.data.properties["inside"] then
-            Game.stage:pauseWeather("inside")
+            --Game.stage:pauseWeather("inside")
             Game.stage:setWeatherLayer(-10)
+            if (not Game.stage.was_weather_inside) then
+                if (weather.weathersounds) then 
+                    weather.weathersounds.volume = weather.weathersounds.volume / 4
+                    weather.weathersounds.pitch = weather.weathersounds.pitch - 0.09
+                end
+                Game.stage.was_weather_inside = true
+            end
+            
         else
             if Game.stage.pause_reason == "inside" then Game.stage:playWeather() Game.stage.wpaused = false print("played") end
+            if (Game.stage.was_weather_inside) then
+                Game.stage:resetWeatherLayer()
+                Game.stage.was_weather_inside = false
+                
+                if (weather.weathersounds) then 
+                    weather.weathersounds.volume = weather.weathersounds.volume * 4
+                    weather.weathersounds.pitch = weather.weathersounds.pitch + 0.09
+                end
+            end
+            
         end
 
         if not Game.stage.keep_weather then

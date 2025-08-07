@@ -3,6 +3,8 @@
 ---@field neural_power number
 ---@field heat number
 ---@field is_psychic boolean
+---@field is_musical boolean
+---@field notes number
 local PartyMember, super = Utils.hookScript(PartyMember)
 
 function PartyMember:init()
@@ -11,6 +13,8 @@ function PartyMember:init()
     self.neural_power = 0
     self.heat = 0
     self.is_psychic = false
+    self.is_musical = false
+    self.notes = 0
     self.stats["heat"] = 0
     self.stats["max_spells"] = 6
     self.max_stats["heat"] = 0
@@ -84,7 +88,7 @@ end
 function PartyMember:getSpellWeight()
     local weight = 0
     for i,v in ipairs(self.spells) do
-        weight = weight + v:getWeight()
+        weight = weight + v:getWeight(self)
     end
     return weight
 end
@@ -97,8 +101,8 @@ function PartyMember:update()
         if (current_weight > max_weight) then
             local i = 1
             local flipped = Utils.reverse(self:getSpells())
-            while (self:getSpellWeight() > max_weight) do
-                Utils.removeFromTable(self.spells, flipped[i])
+            while (self:getSpellWeight() > max_weight and i <= #flipped) do
+                if (not flipped[i].required) then Utils.removeFromTable(self.spells, flipped[i]) end
                 i = i+1
             end
         end

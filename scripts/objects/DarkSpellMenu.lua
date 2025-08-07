@@ -200,6 +200,7 @@ function DarkSpellMenu:update()
             if (not spell and self.replacing) then
                 self.party:getSelected():removeSpell(self.replacing)
             else
+                if (spell == nil) then return end
                 if (self.replacing) then self.party:getSelected():replaceSpell(self.replacing, spell) else self.party:getSelected():addSpell(spell) end
             end
             
@@ -251,7 +252,7 @@ function DarkSpellMenu:draw()
     if Game:getConfig("oldUIPositions") then
         love.graphics.rectangle("fill", 212, 104, 6, 196)
     else
-        love.graphics.rectangle("fill", 212, 104, 6, 200)
+        love.graphics.rectangle("fill", 212, 104, 6, 196)
     end
 
     Draw.setColor(1, 1, 1, 1)
@@ -322,7 +323,7 @@ function DarkSpellMenu:drawKnown()
                 Draw.setColor(pColor)
                 love.graphics.print(npCost.."%P", tp_x, tp_y+12 + (offset * 25))
                 Draw.setColor(hColor)
-                love.graphics.print(heat.."%H", tp_x+(12 * (npCost:len())+8), tp_y+12 + (offset * 25))
+                love.graphics.print(heat.."H", tp_x+(12 * (npCost:len())+8), tp_y+12 + (offset * 25))
                 if (not equipped) then Draw.setColor(1, 1, 1) else Draw.setColor(0.5, 0.5, 0.5) end
                 love.graphics.setFont(self.font)
             else

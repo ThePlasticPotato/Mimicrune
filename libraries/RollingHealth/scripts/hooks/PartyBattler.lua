@@ -12,7 +12,12 @@ function PartyBattler:init(...)
     self.health_rolling_timer = 0
 end
 
-function PartyBattler:removeHealth(amount)
+function PartyBattler:removeHealth(amount, immediate)
+    if (immediate or (self.chara:getHealth() - amount > 0)) then
+        super.removeHealth(self, amount)
+        self.health_rolling_to = self.chara:getHealth()
+        return
+    end
     local health_roll_previous = self.health_rolling_to
     if (self.chara:getHealth() <= 0) then
         amount = Utils.round(amount / 4)
