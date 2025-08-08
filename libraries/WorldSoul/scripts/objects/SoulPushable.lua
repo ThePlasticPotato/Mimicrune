@@ -27,8 +27,9 @@ function SoulPushable:init(data)
     self.pushed_distance_y = 0
 
     self.solid = true
-
-    self:setSprite("party/fredbear/light")
+    if (properties["sprite"]) then
+        self:setSprite(properties["sprite"])
+    end
 end
 
 function SoulPushable:onSoulCollide(soul, DT)
