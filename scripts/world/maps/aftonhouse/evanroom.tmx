@@ -10,7 +10,7 @@
   <property name="step_sound" value=""/>
  </properties>
  <tileset firstgid="1" source="../../tilesets/debug.tsx"/>
- <layer id="1" name="stepsounds" width="16" height="12">
+ <layer id="1" name="stepsounds" width="16" height="12" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

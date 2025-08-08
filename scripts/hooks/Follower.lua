@@ -18,12 +18,4 @@ function Follower:update()
     end
 end
 
-function Follower:onFootstep(num)
-    super.onFootstep(self, num)
-    if (Game:getFlag("audible_footsteps", false) and Game.world and Game.world.map) then
-        local randpitch = Utils.random(-0.15, 0.15)
-        Assets.playSound(Game.world:getStepSound(self.x, self.y, num, self.actor), 0.85, 1 + randpitch)
-    end
-end
-
 return Follower

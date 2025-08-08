@@ -64,6 +64,8 @@ return {
         cutscene:wait(2)
         cutscene:text("* (...it's warm.)", "happy", nil, { ["talk"] = false, ["wait"] = true })
 
+        Game.stage:pushObjective("Get breakfast.", 8, true)
+
         cutscene:endCutscene()
     end,
 

@@ -35,7 +35,7 @@ return {
       id = 7,
       name = "stepsounds",
       class = "",
-      visible = true,
+      visible = false,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
