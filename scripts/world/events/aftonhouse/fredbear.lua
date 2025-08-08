@@ -25,5 +25,9 @@ function FredbearPlushie:onInteract(player, dir)
     self:remove()
 end
 
+function FredbearPlushie:onSoulInteract(soul)
+    super.onSoulInteract(self, soul)
+    Assets.playSound("honk")
+end
 
 return FredbearPlushie

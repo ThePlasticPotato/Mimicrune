@@ -30,4 +30,12 @@ function Blanket:onInteract(player, dir)
     return false
 end
 
+function Blanket:onSoulInteract(soul)
+    if (not Game:getFlag("intro_evan_interacted", false)) then
+        Game:setFlag("intro_evan_interacted", true)
+        soul.is_active = false
+        soul:slideTo(self.x + 46, self.y + (52/2), 0.6, "in-out-cubic")
+    end
+end
+
 return Blanket

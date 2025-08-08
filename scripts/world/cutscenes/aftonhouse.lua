@@ -11,15 +11,23 @@ return {
         Game.world.player.visible = true
         Game.world.player:setFacing("left")
         cutscene:wait(4)
-        local tinysoul = SoulAppearance(480, 240, true, true)
+        local tinysoul = SoulAppearance(330, 280, true, true)
         tinysoul.layer = WORLD_LAYERS["soul"]
         Game.world:addChild(tinysoul)
-        cutscene:wait(10)
-        tinysoul.should_bob = false
-        local faded = false
-        tinysoul:fadeTo(0.0, 0.8, function () faded = true end)
-        cutscene:wait(function () return faded end)
+        local worldsoul = WorldSoul(330, 280, {2/255, 1, 2/255, 1})
+        worldsoul.layer = WORLD_LAYERS["soul"]
+        worldsoul.visible = false
+        worldsoul.is_active = false
+        Game.world:addChild(worldsoul)
+        cutscene:wait(function () return tinysoul.t >= tinysoul.m end)
+        worldsoul.visible = true
+        worldsoul.is_active = true
         tinysoul:remove()
+        cutscene:wait(function () return Game:getFlag("intro_evan_interacted", false) end)
+        local faded = false
+        worldsoul:fadeTo(0.0, 0.8, function () faded = true end)
+        cutscene:wait(function () return faded end)
+        worldsoul:remove()
         cutscene:playSound("power")
         cutscene:wait(4)
 
