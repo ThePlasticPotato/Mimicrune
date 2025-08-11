@@ -4,7 +4,7 @@ function SoulGlow:init(x, y, soul)
     super.init(self, x, y)
 
     self:setScale(2)
-    self:setOrigin(0, 0)
+    self:setOrigin(0.5, 0.5)
 
     self.soul = soul
     self.width = 64
@@ -36,11 +36,11 @@ function SoulGlow:draw()
     if (self.radius >= 0) then
         love.graphics.setLineWidth(math.max(2, 4 + self.scale_offset))
         love.graphics.setColor(100/255, 1, 100/255, 0.05)
-        love.graphics.circle("line", 10, 10 + self.soul.pos_offset, (self.radius + self.scale_offset)*1.25)
+        love.graphics.circle("line", 32, 32 + self.soul.pos_offset, (self.radius + self.scale_offset)*1.25)
         love.graphics.setColor(220/255, 1, 220/255, 0.25)
-        love.graphics.circle("fill", 10, 10 + self.soul.pos_offset, (self.radius + self.scale_offset))
+        love.graphics.circle("fill", 32, 32 + self.soul.pos_offset, (self.radius + self.scale_offset))
         love.graphics.setColor(250/255, 1, 250/255, 0.5)
-        love.graphics.circle("fill", 10, 10 + self.soul.pos_offset, (self.radius + self.scale_offset)*0.75)
+        love.graphics.circle("fill", 32, 32 + self.soul.pos_offset, (self.radius + self.scale_offset)*0.75)
     end
     
     if (self.momentum > 0) then

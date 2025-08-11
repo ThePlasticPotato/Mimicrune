@@ -16,9 +16,9 @@ function SoulPushable:init(data)
     self.axis = properties["axis"] or "XY"
     self.dir_limit = {
         ["up"] = properties["axis_limit_up"] or (self.axis ~= "X" and -self.y or 0),
-        ["down"] = properties["axis_limit_up"] or (self.axis ~= "X" and SCREEN_HEIGHT - self.y or 0),
+        ["down"] = properties["axis_limit_up"] or (self.axis ~= "X" and Game.world.map.height - self.y or 0),
         ["left"] = properties["axis_limit_up"] or (self.axis ~= "Y" and -self.x or 0),
-        ["right"] = properties["axis_limit_up"] or (self.axis ~= "Y" and SCREEN_WIDTH - self.x or 0),
+        ["right"] = properties["axis_limit_up"] or (self.axis ~= "Y" and Game.world.map.width - self.x or 0),
     }
     self.soul_only = properties["soul_only"] or true
     self.currently_pushable = properties["pushable"] or true
@@ -103,6 +103,8 @@ function SoulPushable:onPush(facing, dist)
 
     self.x = target_x
     self.y = target_y
+    self.pushed_distance_x = self.pushed_distance_x + (dx * dist)
+    self.pushed_distance_y = self.pushed_distance_y + (dy * dist)
 end
 
 ---*(Override)* Called whenever the soul fails to push the pushable

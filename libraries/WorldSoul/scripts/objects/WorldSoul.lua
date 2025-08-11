@@ -6,7 +6,7 @@ function WorldSoul:init(x, y, color)
     super.init(self, x, y, color)
     Game.world.world_soul = self
     self.interact_buffer = 0
-    self:setColor(color or Game:getSoulColor())
+    self:setColor(color or {Game:getSoulColor()})
 
     self.sprite:set("player/heart")
     local hx, hy, hw, hh = self.collider.x - self.collider.radius, self.collider.y - self.collider.radius, self.collider.x + self.collider.radius, self.collider.y + self.collider.radius
@@ -16,8 +16,6 @@ function WorldSoul:init(x, y, color)
     self.persistent = true
     self.noclip = false
     self.speed = 2
-    self.parry_glow.visible = false
-    self.parry_sprite.visible = false
     self.is_active = true
 end
 

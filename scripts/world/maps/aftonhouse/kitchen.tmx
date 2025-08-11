@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="36" height="26" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="78">
+ <editorsettings>
+  <export target="kitchen.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="has_tile_sounds" type="bool" value="true"/>
+  <property name="inside" type="bool" value="true"/>
+  <property name="light" type="bool" value="true"/>
+  <property name="node_size" type="int" value="40"/>
+  <property name="step_sound" value="board"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/debug.tsx"/>
+ <layer id="1" name="stepsounds" width="36" height="26">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,11,11,11,0,0,0,0,0,0,0,0,0,0,0,0,0,11,11,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,0,0,9,9,9,0,0,0,0,0,0,0,
+0,0,0,0,0,0,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,0,0,0,9,9,9,0,0,0,0,0,0,0,
+0,0,0,0,10,9,0,11,11,11,11,11,11,11,11,11,11,11,11,11,0,0,0,0,0,0,9,9,9,0,0,0,0,0,0,0,
+0,0,0,0,10,9,0,0,0,0,0,0,0,0,0,0,0,0,10,10,0,0,0,0,0,0,9,9,9,0,0,0,0,0,0,0,
+0,0,0,0,10,0,0,0,0,0,0,0,0,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,16,16,16,16,16,0,0,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,16,16,16,16,16,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,0,0,
+0,0,0,0,0,0,16,16,16,16,16,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,0,0,
+0,0,0,0,10,0,0,16,16,16,16,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,0,0,
+0,0,0,0,10,0,0,16,16,16,16,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,10,0,0,0,0,16,16,16,0,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,10,0,0,0,0,0,0,0,10,10,10,10,10,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,10,0,0,0,0,0,0,0,10,10,10,10,10,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,10,10,10,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <imagelayer id="2" name="aftonhouse_kitchen">
+  <image source="../../../../assets/sprites/rooms/aftonhouse_kitchen.png" width="1440" height="1040"/>
+ </imagelayer>
+ <objectgroup color="#0000ff" id="3" name="collision">
+  <object id="37" x="280" y="646">
+   <polygon points="-3.27273,12.3636 93.6364,94.9091 100,114 50,134 30,124 -45.25,53.25 -45,27 -32.5,11.25"/>
+  </object>
+  <object id="38" x="220.125" y="537.375" width="71.75" height="71"/>
+  <object id="39" x="-69.3333" y="808" width="613.333" height="240"/>
+  <object id="40" x="736" y="808" width="714.667" height="240"/>
+  <object id="41" x="0" y="0" width="154" height="840"/>
+  <object id="42" x="-178.4" y="-38" width="1876.8" height="276"/>
+  <object id="43" x="375.667" y="170" width="579.917" height="84"/>
+  <object id="50" x="368" y="380.333" width="312" height="19.9167"/>
+  <object id="51" x="794" y="381.333" width="86" height="18.9167"/>
+  <object id="52" x="929.688" y="184.75" width="42.3125" height="111.5"/>
+  <object id="54" x="880" y="400">
+   <polygon points="0,0 20,0 90,-70 89.8849,-86.1389 91.7941,-86.1822 91.9318,-108 50.0227,-103.386 -0.181818,-18.6591"/>
+  </object>
+  <object id="55" x="320" y="210">
+   <polygon points="0,0 -180,180 -180,-10"/>
+  </object>
+  <object id="56" x="150" y="700">
+   <polygon points="0,0 70,70 180,120 0,110"/>
+  </object>
+  <object id="58" x="1230" y="810">
+   <polygon points="0,0 100,-100 100,-290 50,-340 10,-380 -50,-500 -130,-580 65.3333,-593.667 188,-378.333 191,7.33333"/>
+  </object>
+  <object id="60" x="310" y="600">
+   <polygon points="0,0 20,30 60,30 100,30 121.875,0.125 80,-20 40,-20"/>
+  </object>
+  <object id="61" x="898.091" y="580" width="314.159" height="105.273"/>
+  <object id="75" x="374.667" y="773" width="18.6667" height="17.3333"/>
+  <object id="76" x="231" y="622.333" width="20.3333" height="20.3333"/>
+  <object id="77" x="174.667" y="349.333" width="20" height="37"/>
+ </objectgroup>
+ <objectgroup color="#ff007f" id="6" name="objects_lower">
+  <object id="25" name="aftonhouse/chair" x="976" y="570">
+   <properties>
+    <property name="facing" value="down"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="26" name="aftonhouse/chair" x="1056" y="570">
+   <properties>
+    <property name="facing" value="down"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="27" name="aftonhouse/chair" x="1136" y="570">
+   <properties>
+    <property name="facing" value="down"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects_party">
+  <object id="2" name="transition" x="520" y="1000" width="240" height="40">
+   <properties>
+    <property name="facing" value="down"/>
+    <property name="map" value="aftonhouse/downstairs"/>
+    <property name="marker" value="entry_kitchen"/>
+    <property name="stairs" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="3" name="script" x="520" y="840" width="240" height="160">
+   <properties>
+    <property name="cutscene" value="aftonhouse.afton_intro"/>
+    <property name="once" type="bool" value="true"/>
+    <property name="set_flag" value="breakfast_scene_incomplete"/>
+   </properties>
+  </object>
+  <object id="4" name="sprite" x="160" y="330">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_leg_pot"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="5" name="sprite" x="540" y="68">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_window_pot"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="6" name="sprite" x="674" y="240">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_cabinet"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="7" name="sprite" x="368" y="342">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_counter_1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="8" name="sprite" x="794" y="294">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_counter_2"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="9" name="sprite" x="412" y="348">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_chips"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="10" name="sprite" x="898" y="570">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_table"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="11" name="sprite" x="1216" y="422">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_stache_pot"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="12" name="sprite" x="218" y="616">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_what_pot"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="13" name="sprite" x="358" y="758">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_violet_pot"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="14" name="sprite" x="310" y="570">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_coffeetable"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="16" name="sprite" x="214" y="522">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_couch_2"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="17" name="sprite" x="234" y="636">
+   <properties>
+    <property name="texture" value="props/aftonhouse/aftonhouse_kitchen_couch_1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="28" name="interactable" x="410" y="610">
+   <properties>
+    <property name="text" value="* The latest edition of &quot;Friend Inside Weekly&quot;."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="29" name="interactable" x="350.667" y="608.667">
+   <properties>
+    <property name="text" value="* It's a cup o' joe. Who IS this joe, anyways...?"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="44" name="interactable" x="185.5" y="377.5">
+   <properties>
+    <property name="text1" value="* It can try to decieve you with its stance, but you are not fooled..."/>
+    <property name="text2" value="* That is a normal plant pot with white plastic legs strapped on."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="45" name="interactable" x="428" y="370.5">
+   <properties>
+    <property name="text" value="* A bag of chips. A quick snack to make you feel chipper."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="46" name="interactable" x="330" y="240">
+   <properties>
+    <property name="text" value="* A fridge. It's stocked full of food..."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="47" name="interactable" x="480" y="240">
+   <properties>
+    <property name="cutscene" value="aftonhouse.sinkven"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="49" name="interactable" x="880" y="240">
+   <properties>
+    <property name="text" value="* An oven. Not to be confused with an of out the hot food in out the..."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="59" name="interactable" x="1038" y="239.5">
+   <properties>
+    <property name="text" value="* The pantry's secrets are not for you to behold."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="68" name="aftonhouse/chair" x="976" y="722">
+   <properties>
+    <property name="facing" value="up"/>
+    <property name="update_layer" type="bool" value="false"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="69" name="aftonhouse/chair" x="1056" y="722">
+   <properties>
+    <property name="facing" value="up"/>
+    <property name="update_layer" type="bool" value="false"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="70" name="aftonhouse/chair" x="1136" y="722">
+   <properties>
+    <property name="facing" value="up"/>
+    <property name="update_layer" type="bool" value="false"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="72" name="interactable" x="383" y="787.25">
+   <properties>
+    <property name="text" value="* A violet. The Afton's signature color."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="73" name="interactable" x="242" y="636.5">
+   <properties>
+    <property name="text" value="* What in the ANGEL's name is that supposed to be."/>
+   </properties>
+   <point/>
+  </object>
+  <object id="74" name="interactable" x="1243.75" y="449.75">
+   <properties>
+    <property name="text" value="* A plant. It reminds you of the plumber your dad hired last week..."/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ffaaff" id="5" name="objects_upper"/>
+ <objectgroup color="#5500ff" id="7" name="markers">
+  <object id="1" name="entry_downstairs" x="640" y="960">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

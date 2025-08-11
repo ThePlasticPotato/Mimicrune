@@ -7,7 +7,7 @@ function SoulAppearance:init(x, y, tiny, shouldbob)
 
     if (tiny ~= true) then
         self:setScale(2)
-        self:setOrigin(0, 0)
+        self:setOrigin(0.5, 0.5)
     else
         self:setScale(1)
         self:setOrigin(0.5, 0.5)

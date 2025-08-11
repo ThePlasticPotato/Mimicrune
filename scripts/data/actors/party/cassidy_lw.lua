@@ -25,6 +25,10 @@ function actor:init()
     self.default = "walk"
     self.default_run = "run"
 
+    self.animations = {
+        ["sit"] = {"sit", 0.15, true}
+    }
+
     -- Sound to play when this actor speaks (optional)
     self.voice = "assets/sounds/voice/party/cassidy"
     -- Path to this actor's portrait for dialogue (optional)

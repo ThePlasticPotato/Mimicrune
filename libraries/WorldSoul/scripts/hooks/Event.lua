@@ -21,7 +21,7 @@ function Event:onSoulInteract(soul)
     return false
 end
 
-Event.onInteract = nil
+Event.onSoulInteract = nil
 
 --- *(Override)* Called every frame the soul and event are colliding with each other
 ---@param soul    WorldSoul
@@ -30,7 +30,7 @@ function Event:onSoulCollide(soul, DT)
     -- Do stuff every frame the soul collides with the object
 end
 
-Event.onCollide = nil
+Event.onSoulCollide = nil
 
 --- *(Override)* Called whenever the soul enters this event // todo, not implemented cause world is weird
 ---@param soul WorldSoul
@@ -38,7 +38,7 @@ function Event:onSoulEnter(soul)
     -- Do stuff when the soul enters this object
 end
 
-Event.onEnter = nil
+Event.onSoulEnter = nil
 
 --- *(Override)* Called whenever the soul leaves this event // todo, not implemented cause world is weird
 ---@param soul WorldSoul
@@ -46,6 +46,6 @@ function Event:onSoulExit(soul)
     -- Do stuff when the soul leaves this object
 end
 
-Event.onExit = nil
+Event.onSoulExit = nil
 
 return Event

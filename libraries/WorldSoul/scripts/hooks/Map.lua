@@ -15,7 +15,7 @@ function Map:loadLayer(layer, depth)
         if Utils.startsWith(layer.name:lower(), "collision") and Utils.endsWith(layer.name:lower(), "soul") then
             self:loadSoulCollision(layer)
         end
-        if Utils.startsWith(layer.name:lower(), "pushableCollision") then
+        if Utils.startsWith(layer.name:lower(), "pushablecollision") then
             self:loadPushableCollision(layer)
         end
     end

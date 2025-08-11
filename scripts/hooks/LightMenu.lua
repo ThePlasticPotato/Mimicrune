@@ -12,11 +12,14 @@ function LightMenu:init()
     self.ui_move = self.panel_bg.ui_move
     self.ui_cancel = self.panel_bg.ui_cancel
     self.ui_error = self.panel_bg.ui_error
+    self.objective = ObjectivePopup(0, 220, nil, nil, Game:getFlag("current_objective"), 8, "none", false, false)
+    Game.stage:addChild(self.objective)
 end
 
 function LightMenu:onKeyPressed(key)
     if not self.panel_bg.operable then return end
     if (Input.isMenu(key) or Input.isCancel(key)) and self.state == "MAIN" then
+        self.objective:close()
         Game.world:closeMenu()
         return
     end

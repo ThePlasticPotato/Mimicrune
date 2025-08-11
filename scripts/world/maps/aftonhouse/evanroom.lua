@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 10,
-  nextobjectid = 47,
+  nextobjectid = 49,
   properties = {
     ["has_tile_sounds"] = true,
     ["inside"] = true,

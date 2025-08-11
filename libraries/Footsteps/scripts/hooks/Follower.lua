@@ -2,10 +2,11 @@
 local Follower, super = Utils.hookScript(Follower)
 
 function Follower:getStepVolume()
+    local walk_speed = self.target and self.target.walk_speed or 4
     if (Footsteps:getConfig("half_volume_followers")) then
-        return math.min(Footsteps:getConfig("step_volume") * (self.target.walk_speed / 4), Footsteps:getConfig("step_volume_max")) / 2
+        return math.min(Footsteps:getConfig("step_volume") * (walk_speed / 4), Footsteps:getConfig("step_volume_max")) / 2
     end
-    return math.min(Footsteps:getConfig("step_volume") * (self.target.walk_speed / 4), Footsteps:getConfig("step_volume_max"))
+    return math.min(Footsteps:getConfig("step_volume") * (walk_speed / 4), Footsteps:getConfig("step_volume_max"))
 end
 
 function Follower:onFootstep(num)

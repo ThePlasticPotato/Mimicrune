@@ -22,6 +22,7 @@ return {
         cutscene:wait(function () return tinysoul.t >= tinysoul.m end)
         worldsoul.visible = true
         worldsoul.is_active = true
+        Game.stage:pushObjective("FIND A SUITABLE VESSEL.", 4, true, "AUDIO_HIM", true)
         tinysoul:remove()
         cutscene:wait(function () return Game:getFlag("intro_evan_interacted", false) end)
         local faded = false
@@ -72,7 +73,7 @@ return {
         cutscene:wait(2)
         cutscene:text("* (...it's warm.)", "happy", nil, { ["talk"] = false, ["wait"] = true })
 
-        Game.stage:pushObjective("Get breakfast.", 8, true)
+        Game.stage:pushObjective("Get breakfast.", 5, true)
 
         cutscene:endCutscene()
     end,

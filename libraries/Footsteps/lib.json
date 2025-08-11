@@ -8,9 +8,7 @@
 
     "config": {
         "footsteps_audible_by_default": true,
-        // Determines the multiplier on step volume.
         "step_volume": 0.8,
-        // Determines the clamped max step volume.
         "step_volume_max": 2.3,
         "half_volume_followers": true
     }

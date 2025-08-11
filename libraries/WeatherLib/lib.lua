@@ -171,9 +171,10 @@ function WeatherLib:init()
             Game:setFlag("weather_save", {typer, keep, sfx})
             if Game.world.map.inside or Game.world.map.data.properties["inside"] then
                 Game.stage:setWeatherLayer(-10)
-                
-                self.weather.weathersounds.volume = weather.weathersounds.volume / 8
-                self.weather.weathersounds.pitch = weather.weathersounds.pitch - 0.09
+                for i, weather in ipairs(self.weather) do
+                    weather.weathersounds.volume = weather.weathersounds.volume / 8
+                    weather.weathersounds.pitch = weather.weathersounds.pitch - 0.09
+                end
                 Game.stage.was_weather_inside = true
             else 
                 Game.stage.was_weather_inside = false
