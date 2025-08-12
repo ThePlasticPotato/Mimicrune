@@ -5,6 +5,7 @@
 ---@field sit_offset table<number>
 ---@field original_layer number
 ---@field dismount_pos table<number>
+---@field currently_targeted boolean
 local Sittable, super = Class(Event)
 
 function Sittable:init(data)
@@ -23,6 +24,7 @@ function Sittable:init(data)
 
     self.solid = true
     self.interact_buffer = 2
+    self.currently_targeted = false
 end
 
 function Sittable:trySitting(chara, dir, play_sound)

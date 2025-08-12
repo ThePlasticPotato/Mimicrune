@@ -14,6 +14,7 @@ function LightStatMenu:init()
     self.chara_selecting = 1
 
     self.heart_siner = 0
+    self.swapping = 0
 end
 
 function LightStatMenu:draw()
@@ -62,6 +63,7 @@ end
 
 function LightStatMenu:update()
     super.super.update(self)
+    if (self.swapping > 0) then self.swapping = self.swapping - DT end
     self.heart_siner = self.heart_siner + DTMULT
     if self.panel_bg.operable == false then return end
     if Input.pressed("cancel") then
@@ -84,6 +86,24 @@ function LightStatMenu:update()
     if self.chara_selecting ~= old_selecting then
         self.panel_bg.ui_move:stop()
         self.panel_bg.ui_move:play()
+    end
+
+    if Input.pressed("confirm") and (self.swapping <= 0) then
+        self.swapping = 3
+        local chara = Game.party[self.chara_selecting]
+        local old_player = Game.world:getPartyCharacterInParty(Game.party[1])
+        local new_player = Game.world:getPartyCharacterInParty(chara)
+        if (old_player == new_player) then
+            self.panel_bg.ui_error:stop()
+            self.panel_bg.ui_error:play()
+            self.swapping = 0
+            return
+        end
+        Game:movePartyMember(chara, 1)
+        new_player:convertToPlayer()
+        old_player:convertToFollower(self.chara_selecting-1)
+        Assets.playSound("dtrans_flip")
+        self.chara_selecting = 1
     end
 end
 

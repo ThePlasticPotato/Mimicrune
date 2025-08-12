@@ -9,13 +9,13 @@ return {
   height = 26,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 9,
-  nextobjectid = 78,
+  nextlayerid = 10,
+  nextobjectid = 84,
   properties = {
     ["has_tile_sounds"] = true,
     ["inside"] = true,
     ["light"] = true,
-    ["node_size"] = 40,
+    ["node_size"] = 20,
     ["step_sound"] = "board"
   },
   tilesets = {
@@ -71,6 +71,39 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 9,
+      name = "controllers",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 78,
+          name = "toggle",
+          type = "",
+          shape = "point",
+          x = 502,
+          y = 984,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "breakfast_get",
+            ["flag_value"] = true,
+            ["target"] = { id = 2 }
+          }
+        }
       }
     },
     {
@@ -398,6 +431,19 @@ return {
           y = 349.333,
           width = 20,
           height = 37,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 79,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 333.667,
+          y = 1036,
+          width = 714.667,
+          height = 240,
           rotation = 0,
           visible = true,
           properties = {}
@@ -922,6 +968,21 @@ return {
           properties = {
             ["text"] = "* A plant. It reminds you of the plumber your dad hired last week..."
           }
+        },
+        {
+          id = 80,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 640,
+          y = 282,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "william"
+          }
         }
       }
     },
@@ -961,6 +1022,19 @@ return {
           shape = "point",
           x = 640,
           y = 960,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 83,
+          name = "purpleguy_pan",
+          type = "",
+          shape = "point",
+          x = 400.5,
+          y = 609.25,
           width = 0,
           height = 0,
           rotation = 0,

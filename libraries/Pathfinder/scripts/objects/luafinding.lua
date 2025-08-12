@@ -26,14 +26,14 @@ local function fetchOpenAdjacentNodes( pos, positionOpenCheck )
     local result = {}
 
     local adjacentPositions = {
-        Vector( 0, -1 ),
-        Vector( -1, 0 ),
-        Vector( 0, 1 ),
-        Vector( 1, 0 ),
-        Vector( -1, -1 ),
-        Vector( 1, -1 ),
-        Vector( -1, 1 ),
-        Vector( 1, 1 )
+        LVector( 0, -1 ),
+        LVector( -1, 0 ),
+        LVector( 0, 1 ),
+        LVector( 1, 0 ),
+        LVector( -1, -1 ),
+        LVector( 1, -1 ),
+        LVector( -1, 1 ),
+        LVector( 1, 1 )
     }
 
     for i = 1, #adjacentPositions do

@@ -22,27 +22,45 @@ end
 --- @param x number X position, relative to world
 --- @param y number Y position, relative to world
 --- @param collider Collider|nil Hitbox to check collision with.
+--- @param range number A range of nodes to search within. Defaults to 1.
 --- @return table<number>|nil node_pos 2D Vector of node pos. Nil if no valid nodes are within a 1 node radius of this position.
-function World:getNearestValidNode(x, y, collider)
+function World:getNearestValidNode(x, y, collider, range)
     local node = self:getNearestNode(x, y)
-    local ref_collider = collider and collider:clone()
-    if (ref_collider) then ref_collider.parent = self end
 
-    if (self:nodeIsValid(node[1], node[2], ref_collider)) then
+    if (self:nodeIsValid(node[1], node[2], collider)) then
         return node
-    elseif (collider and ref_collider) then
-        for off_x = -1, 1, 1 do
-            for off_y = -1, 1, 1 do
-                if (not (off_x == 0 and  off_y == 0) and math.abs(off_x) ~= math.abs(off_y)) then
+    elseif (collider and collider) then
+        local current = nil
+        local score = 999
+        local get_score = function (score_x, score_y) return math.abs(score_x) + math.abs(score_y) end
+        for off_x = -range, range, 1 do
+            for off_y = -range, range, 1 do
+                if (not (off_x == 0 and  off_y == 0)) then
                     local new_node = { node[1] + off_x, node[2] + off_y }
-                    local valid = self:nodeIsValid(new_node[1], new_node[2], ref_collider)
-                    if (valid) then
-                        return new_node
+                    local valid = self:nodeIsValid(new_node[1], new_node[2], collider)
+                    local new_score = get_score(off_x, off_y)
+                    if (valid and (new_score < score)) then
+                        current = new_node
+                        score = new_score
+                        if (score == 1) then return current end
                     end
                 end
             end
         end
+        return current
     end
+
+    -- for off_x = -1, 1, 1 do
+    --         for off_y = -1, 1, 1 do
+    --             if (not (off_x == 0 and  off_y == 0) and math.abs(off_x) ~= math.abs(off_y)) then
+    --                 local new_node = { node[1] + off_x, node[2] + off_y }
+    --                 local valid = self:nodeIsValid(new_node[1], new_node[2], ref_collider)
+    --                 if (valid) then
+    --                     return new_node
+    --                 end
+    --             end
+    --         end
+    --     end
     
     return nil
 end
@@ -50,25 +68,28 @@ end
 ---@param x number
 ---@param y number
 ---@param collider Collider
+---@return number original_x
+---@return number original_y
 function World:centerOnNode(x, y, collider)
     local world_pos = self:nodePosToWorld(x, y)
-    local width
-    local height
-    if (collider.radius) then
-        width = collider.radius * 2
-        height = collider.radius * 2
-    elseif (collider.width and collider.height) then
-        width = collider.width
-        height = collider.height
-    end
-    collider.x = world_pos[1] - (width / 2)
-    collider.y = world_pos[2] - (height / 2)
+
+    local original_offset_x = collider.x
+    local original_offset_y = collider.y
+    local relative_pos_x, relative_pos_y = self:getRelativePos(world_pos[1], world_pos[2], collider.parent)
+    collider.x = relative_pos_x - (original_offset_x / 2)
+    collider.y = relative_pos_y - (original_offset_y / 2)
+    return original_offset_x, original_offset_y
 end
 
+---@param x number
+---@param y number
+---@param collider Collider
 function World:nodeIsValid(x, y, collider)
     if (collider) then
-        self:centerOnNode(x, y, collider)
+        local og_x, og_y = self:centerOnNode(x, y, collider)
         local collided = self:checkCollision(collider, false) or not self:inBounds(self:nodePosToWorld(x, y))
+        collider.x = og_x
+        collider.y = og_y
         return not collided
     end
     return true
@@ -110,7 +131,7 @@ end
 ---@return table path
 function World:findPathTo(x, y, target_x, target_y, collider)
 
-    local path = Luafinding(Vector(x, y), Vector(target_x, target_y), function (pos) return self:nodeIsValid(pos.x, pos.y, collider) end):GetPath() or {}
+    local path = Luafinding(LVector(x, y), LVector(target_x, target_y), function (pos) return self:nodeIsValid(pos.x, pos.y, collider) end):GetPath() or {}
     if #path == 0 then Kristal.Console:log("But it was empty...") end
     local world_path = {}
 
@@ -186,24 +207,48 @@ function World:findPathTo(x, y, target_x, target_y, collider)
 
 end
 
+
+--- Returns all allowed pathfinding node neighbors.
+--- 
+--- `x` and `y` must be relative to this World.
+--- @param x number X position, relative to world
+--- @param y number Y position, relative to world
+--- @return table node_positions
+function World:getNeighbors(x, y)
+    local node = {x, y}
+    local neighbors = {}
+
+    for off_x = -1, 1, 1 do
+        for off_y = -1, 1, 1 do
+            if (not (off_x == 0 and  off_y == 0)) then
+                local new_node = { node[1] + off_x, node[2] + off_y }
+                table.insert(neighbors, new_node)
+            end
+        end
+    end
+    
+    
+    return neighbors
+end
+
 --- Returns all valid pathfinding node neighbors.
 --- 
 --- `x` and `y` must be relative to this World.
 --- @param x number X position, relative to world
 --- @param y number Y position, relative to world
 --- @param collider Collider|nil Hitbox to check collision with.
+--- @param range number A range of nodes to search within. Defaults to 1.
 --- @return table node_positions
-function World:getValidNeighbors(x, y, collider)
+function World:getValidNeighbors(x, y, collider, range)
     local node = {x, y}
     local neighbors = {}
-    local ref_collider = collider and collider:clone()
-    if (ref_collider) then ref_collider.parent = self end
+    if not range then range = 1 end
 
-    for off_x = -1, 1, 1 do
-        for off_y = -1, 1, 1 do
-            if (not (off_x == 0 and  off_y == 0) and math.abs(off_x) ~= math.abs(off_y)) then
+    for off_x = -range, range, 1 do
+        for off_y = -range, range, 1 do
+            if (not (off_x == 0 and  off_y == 0)) then
                 local new_node = { node[1] + off_x, node[2] + off_y }
-                local valid = self:nodeIsValid(new_node[1], new_node[2], ref_collider)
+                local valid = self:nodeIsValid(new_node[1], new_node[2], collider)
                 if (valid) then
                     table.insert(neighbors, new_node)
                 end

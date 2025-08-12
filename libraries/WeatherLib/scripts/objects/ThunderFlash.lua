@@ -15,9 +15,9 @@ function ThunderFlash:init(handler)
     self.parallax_x, self.parallax_y = 0, 0
     self.flashtimer, self.flashtime = 20, 30
     if not Game.stage.weather_layer then
-        if handler.addto == Game.world then
+        if handler and handler.addto == Game.world then
             self:setLayer(WORLD_LAYERS["below_ui"] + 1)
-        elseif handler.addto == Game.battle then
+        elseif handler and handler.addto == Game.battle then
             self:setLayer(BATTLE_LAYERS["below_ui"] + 1)
         end
     else
@@ -57,16 +57,6 @@ function ThunderFlash:draw()
 
     love.graphics.setBlendMode("add")
     Draw.setColor(1, 1, 1, self.flashtimer/self.flashtime)
-    love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
-    love.graphics.setBlendMode("alpha")
-
-    if (inside and self.mask) then
-        love.graphics.setStencil()
-        love.graphics.setStencil(self.inverseStencil)
-    end
-
-    love.graphics.setBlendMode("alpha")
-    Draw.setColor(0, 0, 0.05, self.flashtimer/self.flashtime)
     love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
     love.graphics.setBlendMode("alpha")
 

@@ -12,7 +12,8 @@ function LightMenu:init()
     self.ui_move = self.panel_bg.ui_move
     self.ui_cancel = self.panel_bg.ui_cancel
     self.ui_error = self.panel_bg.ui_error
-    self.objective = ObjectivePopup(0, 220, nil, nil, Game:getFlag("current_objective"), 8, "none", false, false)
+    self.objective = ObjectivePopup(0, 20, nil, nil, Game:getFlag("current_objective"), nil, "none", false, false, true)
+    self.objective.layer = self.layer - 0.1
     Game.stage:addChild(self.objective)
 end
 
@@ -91,7 +92,19 @@ function LightMenu:closeBox(immediate)
 end
 
 function LightMenu:transitionOut()
-    self.panel_bg:close(false, function () self:close() end)
+    local could_open = Game.world.can_open_menu
+    Game.world.can_open_menu = false
+    self.panel_bg:close(false, function ()
+        Game.world.can_open_menu = could_open
+        self:close()  
+        end)
+end
+
+function LightMenu:close()
+    if (Game.world and Game.world.menu == self) then
+        Game.world.menu = nil
+    end
+    self:remove()
 end
 
 function LightMenu:draw()

@@ -17,6 +17,7 @@ function Chair:sit(chara)
     self.occupying_chara = chara
     self.dismount_pos = {chara.x - self.x, chara.y - self.y}
     self.original_layer = chara.layer
+    self.currently_targeted = false
 end
 
 ---@param chara Character
@@ -36,7 +37,7 @@ function Chair:onInteract(player, dir)
 
     if (sat and Game.world.followers) then
         for index, value in ipairs(Game.world.followers) do
-            value:attemptSit(self, dir)
+            if (player.sitting ~= value.sitting) then value:attemptSit(self, dir) end
         end
     end
 

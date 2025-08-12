@@ -1,50 +1,49 @@
+LVector = {}
+LVector.__index = LVector
 
-Vector = {}
-Vector.__index = Vector
-
-function Vector.newVector( x, y )
-    return setmetatable( { x = x or 0, y = y or 0 }, Vector )
+function LVector.newVector( x, y )
+    return setmetatable( { x = x or 0, y = y or 0 }, LVector )
 end
 
 function isvector( vTbl )
-    return getmetatable( vTbl ) == Vector
+    return getmetatable( vTbl ) == LVector
 end
 
-function Vector.__unm( vTbl )
-    return Vector.newVector( -vTbl.x, -vTbl.y )
+function LVector.__unm( vTbl )
+    return LVector.newVector( -vTbl.x, -vTbl.y )
 end
 
-function Vector.__add( a, b )
-    return Vector.newVector( a.x + b.x, a.y + b.y )
+function LVector.__add( a, b )
+    return LVector.newVector( a.x + b.x, a.y + b.y )
 end
 
-function Vector.__sub( a, b )
-    return Vector.newVector( a.x - b.x, a.y - b.y )
+function LVector.__sub( a, b )
+    return LVector.newVector( a.x - b.x, a.y - b.y )
 end
 
-function Vector.__mul( a, b )
+function LVector.__mul( a, b )
     if type( a ) == "number" then
-        return Vector.newVector( a * b.x, a * b.y )
+        return LVector.newVector( a * b.x, a * b.y )
     elseif type( b ) == "number" then
-        return Vector.newVector( a.x * b, a.y * b )
+        return LVector.newVector( a.x * b, a.y * b )
     else
-        return Vector.newVector( a.x * b.x, a.y * b.y )
+        return LVector.newVector( a.x * b.x, a.y * b.y )
     end
 end
 
-function Vector.__div( a, b )
-    return Vector.newVector( a.x / b, a.y / b )
+function LVector.__div( a, b )
+    return LVector.newVector( a.x / b, a.y / b )
 end
 
-function Vector.__eq( a, b )
+function LVector.__eq( a, b )
     return a.x == b.x and a.y == b.y
 end
 
-function Vector:__tostring()
+function LVector:__tostring()
     return "(" .. self.x .. ", " .. self.y .. ")"
 end
 
-function Vector:ID()
+function LVector:ID()
     if self._ID == nil then
         local x, y = self.x, self.y
         self._ID = 0.5 * ( ( x + y ) * ( x + y + 1 ) + y )
@@ -53,4 +52,4 @@ function Vector:ID()
     return self._ID
 end
 
-return setmetatable( Vector, { __call = function( _, ... ) return Vector.newVector( ... ) end } )
+return setmetatable( LVector, { __call = function( _, ... ) return LVector.newVector( ... ) end } )
