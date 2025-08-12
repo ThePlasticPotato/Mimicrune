@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="36" height="26" tilewidth="40" tileheight="40" infinite="0" nextlayerid="10" nextobjectid="84">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="36" height="26" tilewidth="40" tileheight="40" infinite="0" nextlayerid="10" nextobjectid="85">
  <editorsettings>
   <export target="kitchen.lua" format="lua"/>
  </editorsettings>
@@ -293,6 +293,12 @@
   <object id="80" name="npc" x="640" y="282">
    <properties>
     <property name="actor" value="william"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="84" name="npc" x="1019.25" y="509.5">
+   <properties>
+    <property name="actor" value="elizabeth_lw"/>
    </properties>
    <point/>
   </object>

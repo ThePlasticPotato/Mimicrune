@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 10,
-  nextobjectid = 84,
+  nextobjectid = 85,
   properties = {
     ["has_tile_sounds"] = true,
     ["inside"] = true,
@@ -982,6 +982,21 @@ return {
           visible = true,
           properties = {
             ["actor"] = "william"
+          }
+        },
+        {
+          id = 84,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 1019.25,
+          y = 509.5,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "elizabeth_lw"
           }
         }
       }

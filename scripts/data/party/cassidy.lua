@@ -145,7 +145,7 @@ end
 function character:onLevelUp(level)
     self:increaseStat("health", 2)
     if level % 2 == 0 then
-        self:increaseStat("health", 1)
+        self:increaseStat("magic", 1)
     end
     if level % 10 == 0 then
         self:increaseStat("attack", 1)

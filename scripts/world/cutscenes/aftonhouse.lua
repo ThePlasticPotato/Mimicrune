@@ -82,7 +82,12 @@ return {
     ---@param cutscene WorldCutscene
     afton_intro = function (cutscene, event)
         local afton = cutscene:getCharacter("william")
+        local elizabeth = cutscene:getCharacter("elizabeth_lw")
         afton:setFacing("up")
+        local elizachair = cutscene:getEvent(25)
+        elizabeth.should_sit = true
+        elizabeth:setFacing("down")
+        elizachair:trySitting(elizabeth, "down", false)
         -- scuffed but oh well
         local afton_original_layer = afton.layer
         afton:setLayer(1001)
@@ -144,8 +149,15 @@ return {
         local choice = cutscene:choicer({"Where's Mike?", "PURPLE GUY!?", "Ooh, pancakes!"}, {highlight = {COLORS.green, COLORS.purple, COLORS.yellow}})
 
         if (choice == 1) then
-            cutscene:text("* Probably sleeping like a [wave:1]rock[wave:0].[wait:4] You two are alike in that.", "unamused", "elizabeth")
-            cutscene:wait(4)
+            cutscene:panTo(elizabeth, 1, "in-out-cubic", function () 
+                elizabeth:setAnimation("sit_turn_left")
+                cutscene:text("* Probably sleeping like a [wave:1]rock[wave:0].[wait:4] You two are alike in that.", "unamused", "elizabeth") 
+                end)
+            cutscene:wait(2)
+            elizabeth:setAnimation("sit_turn_left_end", function () elizabeth:setAnimation("sit") end)
+            cutscene:wait(1)
+            cutscene:panTo(afton, 1, "in-out-cubic")
+            cutscene:wait(2)
             cutscene:text("* Anyways...[wait:4][face:grin] pancakes!", "squint_left")
         elseif(choice == 2) then
             cutscene:text("* [speed:0.1]. . .[wait:4]", "confused", "william", { auto = true })
@@ -154,7 +166,7 @@ return {
             cutscene:panTo("purpleguy_pan", 1, "in-out-cubic", function () cutscene:text("* I was surprised too. Not exactly cover material, that one...", "neutral_side") end)
             cutscene:wait(1)
             cutscene:panTo(afton, 1, "in-out-cubic")
-            cutscene:wait(4)
+            cutscene:wait(2)
             cutscene:text("* Anyways... [face:smug]pancakes!", "smile")
         else
             cutscene:text("* [wave:1]Pancakes![wave:0]", "happy", "evan_lw")

@@ -1,9 +1,9 @@
-local actor, super = Class(Actor, "elizabeth")
+local actor, super = Class(Actor, "michael_lw")
 
 function actor:init()
     super.init(self)
         -- Display name (optional)
-    self.name = "Elizabeth"
+    self.name = "Michael"
 
     -- Width and height for this actor, used to determine its center
     self.width = 19
@@ -20,15 +20,15 @@ function actor:init()
     self.color = {118/255, 66/255, 238/255}
 
     -- Path to this actor's sprites (defaults to "")
-    self.path = "npcs/elizabeth/light"
+    self.path = "party/michael/light"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
     self.default = "walk"
     self.default_run = "run"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = "elizabeth"
+    self.voice = "michael"
     -- Path to this actor's portrait for dialogue (optional)
-    self.portrait_path = "face/elizabeth"
+    self.portrait_path = "face/michael"
     -- Offset position for this actor's portrait (optional)
     self.portrait_offset = {-2, 0}
 
