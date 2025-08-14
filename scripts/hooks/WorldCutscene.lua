@@ -8,4 +8,12 @@ function WorldCutscene:musicWait(time)
     return self:wait(function() return Game.world.music:tell() >= time end)
 end
 
+function WorldCutscene:allowLimitedInteraction()
+    Game.world.limited_interaction = true
+end
+
+function WorldCutscene:disableLimitedInteraction()
+    Game.world.limited_interaction = false
+end
+
 return WorldCutscene

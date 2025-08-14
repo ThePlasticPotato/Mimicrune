@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 10,
-  nextobjectid = 85,
+  nextobjectid = 91,
   properties = {
     ["has_tile_sounds"] = true,
     ["inside"] = true,
@@ -71,39 +71,6 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-      }
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 9,
-      name = "controllers",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {
-        {
-          id = 78,
-          name = "toggle",
-          type = "",
-          shape = "point",
-          x = 502,
-          y = 984,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["flag"] = "breakfast_get",
-            ["flag_value"] = true,
-            ["target"] = { id = 2 }
-          }
-        }
       }
     },
     {
@@ -447,6 +414,39 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 9,
+      name = "controllers",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 78,
+          name = "toggle",
+          type = "",
+          shape = "point",
+          x = 502,
+          y = 984,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["flag"] = "breakfast_get",
+            ["flag_value"] = true,
+            ["target"] = { id = 2 }
+          }
         }
       }
     },
@@ -981,7 +981,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "william"
+            ["actor"] = "william",
+            ["flagcheck"] = "!afton_intro_done"
           }
         },
         {
@@ -996,7 +997,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "elizabeth_lw"
+            ["actor"] = "elizabeth_lw",
+            ["flagcheck"] = "!afton_intro_done"
           }
         }
       }
@@ -1050,6 +1052,45 @@ return {
           shape = "point",
           x = 400.5,
           y = 609.25,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 87,
+          name = "walk_target_1",
+          type = "",
+          shape = "point",
+          x = 836,
+          y = 632,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 88,
+          name = "walk_target_2",
+          type = "",
+          shape = "point",
+          x = 640,
+          y = 1000,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 89,
+          name = "elizabeth_pancake_spot",
+          type = "",
+          shape = "point",
+          x = 976,
+          y = 596,
           width = 0,
           height = 0,
           rotation = 0,

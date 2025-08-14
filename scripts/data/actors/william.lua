@@ -32,6 +32,10 @@ function actor:init()
     -- Offset position for this actor's portrait (optional)
     self.portrait_offset = {-2, 0}
 
+    self.talk_sprites = {
+        ["talk_pancakes"] = 0.25
+    }
+
     self.animations = {
         ["walk_apron"]         = {"walk_apron", 0.2, true},
         ["walk_pancakes"]    = {"walk_pancakes", 0.2, true},

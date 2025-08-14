@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="36" height="26" tilewidth="40" tileheight="40" infinite="0" nextlayerid="10" nextobjectid="85">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="36" height="26" tilewidth="40" tileheight="40" infinite="0" nextlayerid="10" nextobjectid="91">
  <editorsettings>
   <export target="kitchen.lua" format="lua"/>
  </editorsettings>
@@ -41,16 +41,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="9" name="controllers">
-  <object id="78" name="toggle" x="502" y="984">
-   <properties>
-    <property name="flag" value="breakfast_get"/>
-    <property name="flag_value" type="bool" value="true"/>
-    <property name="target" type="object" value="2"/>
-   </properties>
-   <point/>
-  </object>
- </objectgroup>
  <imagelayer id="2" name="aftonhouse_kitchen">
   <image source="../../../../assets/sprites/rooms/aftonhouse_kitchen.png" width="1440" height="1040"/>
  </imagelayer>
@@ -87,6 +77,16 @@
   <object id="76" x="231" y="622.333" width="20.3333" height="20.3333"/>
   <object id="77" x="174.667" y="349.333" width="20" height="37"/>
   <object id="79" x="333.667" y="1036" width="714.667" height="240"/>
+ </objectgroup>
+ <objectgroup id="9" name="controllers">
+  <object id="78" name="toggle" x="502" y="984">
+   <properties>
+    <property name="flag" value="breakfast_get"/>
+    <property name="flag_value" type="bool" value="true"/>
+    <property name="target" type="object" value="2"/>
+   </properties>
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup color="#ff007f" id="6" name="objects_lower">
   <object id="25" name="aftonhouse/chair" x="976" y="570">
@@ -293,12 +293,14 @@
   <object id="80" name="npc" x="640" y="282">
    <properties>
     <property name="actor" value="william"/>
+    <property name="flagcheck" value="!afton_intro_done"/>
    </properties>
    <point/>
   </object>
   <object id="84" name="npc" x="1019.25" y="509.5">
    <properties>
     <property name="actor" value="elizabeth_lw"/>
+    <property name="flagcheck" value="!afton_intro_done"/>
    </properties>
    <point/>
   </object>
@@ -309,6 +311,15 @@
    <point/>
   </object>
   <object id="83" name="purpleguy_pan" x="400.5" y="609.25">
+   <point/>
+  </object>
+  <object id="87" name="walk_target_1" x="836" y="632">
+   <point/>
+  </object>
+  <object id="88" name="walk_target_2" x="640" y="1000">
+   <point/>
+  </object>
+  <object id="89" name="elizabeth_pancake_spot" x="976" y="596">
    <point/>
   </object>
  </objectgroup>

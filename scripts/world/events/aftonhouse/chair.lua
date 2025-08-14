@@ -41,9 +41,8 @@ function Chair:onInteract(player, dir)
         end
     end
 
-    if (sat and Game:getFlag("intro:aftonhouse_sat_down", false)) then
-        Game:setFlag("intro:aftonhouse_sat_down", true)
-        --todo: start cutscene here once I make it
+    if (sat and not Game:getFlag("aftonhouse_sat_down", false)) then
+        Game:setFlag("aftonhouse_sat_down", true)
     end
 end
 
