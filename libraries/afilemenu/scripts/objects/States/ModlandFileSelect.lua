@@ -117,6 +117,13 @@ function ModlandFileSelect:onKeyPressed(key, is_repeat)
                         local fade = true
                         local path = "saves/" .. Mod.info.id .. "/file_" .. id .. ".json"
                         local new_file = not love.filesystem.getInfo(path)
+
+                        local weather = Game:getFlag("weather_save")
+                        --print(weather, " (this is the weather)")
+                        if weather and Game.stage.weather_type ~= weather[1] then
+                            Game.stage:setWeather(weather[1], weather[2], weather[3], Game.stage:getWeatherParent())
+                        end
+
                         if new_file then
                             Game.world:closeMenu()
                             Game.world:loadMap(Kristal.getLibConfig("afilemenu", "map"))
@@ -431,8 +438,8 @@ function ModlandFileSelect:update()
         if (file_selected) then
             local file_data = file_selected.data
             if (file_data) then
-                if (file_data.flags.current_weather) then
-                    if (Game.stage.weather_type ~= file_data.flags.current_weather) then Game.stage:setWeather(file_data.flags.current_weather, false) end
+                if (file_data.flags.weather_save) then
+                    if ((Game.stage.weather_type == "clear" or Game.stage.weather_type == nil) and Game.stage.weather_type ~= file_data.flags.weather_save[1]) then Game.stage:setWeather(file_data.flags.weather_save[1], true) end
                     return
                 end
             else

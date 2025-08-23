@@ -520,11 +520,11 @@ function WeatherLib:init()
 end
 
 function WeatherLib:postInit()
-    local weather = Game:getFlag("weather_save")
-    --print(weather, " (this is the weather)")
-    if weather then
-        Game.stage:setWeather(weather[1], weather[2], weather[3], Game.stage:getWeatherParent())
-    end
+    -- local weather = Game:getFlag("weather_save")
+    -- --print(weather, " (this is the weather)")
+    -- if weather then
+    --     Game.stage:setWeather(weather[1], weather[2], weather[3], Game.stage:getWeatherParent())
+    -- end
 end
 
 ------------------------------ function copies, added V1.1.0

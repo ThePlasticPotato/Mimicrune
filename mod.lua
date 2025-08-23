@@ -1,6 +1,4 @@
 function Mod:init()
-    Assets.newShader("glitch")
-    Assets.newShader("crt")
     print("Loaded "..self.info.name.."!")
 end
 
