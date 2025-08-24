@@ -41,7 +41,8 @@ function Interactable:onSoulInteract(soul)
 end
 
 function Interactable:onInteract(player, dir)
-    if (not self.soul_only) then super.onInteract(self, player, dir) end
+    if (not self.soul_only) then return super.onInteract(self, player, dir) end
+    return false
 end
 
 return Interactable

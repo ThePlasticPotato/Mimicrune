@@ -1,8 +1,10 @@
 return {
     established = function(cutscene, event)
+        Game.world.player.visible = false
+        Game.world.player.y = 1000
         local delta_coincidences = {"TORIEL", "SANS", "PAPYRUS", "KNIGHT", "LANCER", "ROUXLS", "BERDLY", "JOCKINGTON", "JOCK", "CATTY", "TEMMIE", "MK", "ASGORE", "UNDYNE", "GERSON"}
         local hero_coincidences = {"KRIS", "RALSEI", "NOELLE"} -- Susie special dialogue
-        local mr_coincidences = {"EVAN", "CASSIDY", "CASS", "FRED", "FREDBEAR", "FREDDY", "AFTON"}
+        local mr_coincidences = {"EVAN", "CASSIDY", "CASS", "FRED", "FREDBEAR", "FREDDY", "AFTON", "BONNIE", "CHICA", "FOXY", "SPRING"}
         local text
         local function gonerTextFade(wait)
             local this_text = text
@@ -119,6 +121,31 @@ return {
         end)
         Game.save_name = player_name
         cutscene:wait(2)
+
+        if (player_name == "MIMIC") then
+            Game.world.music:stop()
+            background:remove()
+            cutscene:wait(2)
+
+            local jumpscare = Jumpscare("mimic", function()
+                error({msg = [[
+                Error: src/engine/tunnel/voidrelay.lua:1987: Connection failure.
+
+                stack traceback:
+
+                voidrelay.lua:1225: in function 'authenticate'
+                voidrelay.lua:413: in function 'connect'
+                wdserver.lua:666: in function 'locate'
+                wdserver.lua:23: in function 'init'
+                ]]})
+            end)
+            Game.world:addChild(jumpscare)
+            return
+            -- gonerText("WHAT A CURIOUS[wait:20]\nCOINCIDENCE.")
+            -- cutscene:wait(2)
+            -- gonerText("YOU MUST HOLD[wait:10]\nA TERRIBLE POWER, INDEED.")
+        end
+
         gonerText("I[wait:10] SEE.")
 
         cutscene:wait(4)
@@ -146,11 +173,6 @@ return {
             gonerText("WHAT A CURIOUS[wait:20]\nCOINCIDENCE.")
             cutscene:wait(2)
             gonerText("YOU HOLD[wait:10]\nGREAT PROMISE, INDEED.")
-        end
-        if (player_name == "MIMIC") then
-            gonerText("WHAT A CURIOUS[wait:20]\nCOINCIDENCE.")
-            cutscene:wait(2)
-            gonerText("YOU MUST HOLD[wait:10]\nA TERRIBLE POWER, INDEED.")
         end
         cutscene:wait(4)
         gonerText("'"..player_name.."'")
@@ -190,7 +212,10 @@ return {
         cutscene:fadeIn(0.5)
     end,
 
+    ---@param cutscene WorldCutscene
+    ---@param event any
     terminated = function(cutscene, event)
+        Game.world:addFX(ShaderFX("vhs", {["iTime"] = function () return Kristal.getTime() end, ["texsize"] = {SCREEN_WIDTH, SCREEN_HEIGHT}, ["noiseTex"] = Assets.getTexture("static_gray")}), "veehaitchess")
         local text
         local function interloperTextFade(wait)
             local this_text = text
@@ -281,9 +306,10 @@ return {
         cutscene:wait(1)
         interloperText("And, if[wait:10]\nwe are to meet again, "..Game.save_name..",[wait:5]\nremember this...")
         cutscene:wait(6)
-        cutscene:fadeOut(10, {["color"] = COLORS.white})
+        local fade = cutscene:fadeOut(10, {["color"] = COLORS.white})
         interloperText("Your[wait:20]\nname[wait:20]\nis[wait:5].[wait:5].[wait:5].")
-        cutscene:wait(10)
+        cutscene:wait(fade)
+        Game.world:removeFX("veehaitchess")
         beamsoul2:remove()
         soulglow:remove()
         healparticles:remove()
@@ -295,11 +321,12 @@ return {
 
     intro_transition = function(cutscene, event)
         Game.world.player.visible = false
+        Game.world:removeFX("veehaitchess")
         Game.world:mapTransition("aftonhouse/evanroom")
         Game.world.player.visible = false
         cutscene:wait(cutscene:fadeIn(1))
-        Game.world.player.visible = false
         cutscene:endCutscene()
+        Game.world.player.visible = true
         Game.stage:setWeather("thunder", true)
         Game:setFlag("current_weather", "thunder")
         Game.world:startCutscene("aftonhouse", "wake_up")

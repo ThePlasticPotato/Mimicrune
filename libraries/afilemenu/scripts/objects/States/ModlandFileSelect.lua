@@ -125,7 +125,7 @@ function ModlandFileSelect:onKeyPressed(key, is_repeat)
                         if new_file then
                             Game.world:closeMenu()
                             Game.world:loadMap(Kristal.getLibConfig("afilemenu", "map"))
-                            Game.world:startCutscene("connection", "connection_established")
+                            Game.world:startCutscene("connection", "established")
                             Game.save_name = Kristal.Config["defaultName"] or Game.save_name
                         else
                             local data = JSON.decode(love.filesystem.read(path))
