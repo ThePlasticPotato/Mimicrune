@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 37,
+  nextobjectid = 38,
   properties = {
     ["name"] = "Test Map - Room 1"
   },
@@ -507,6 +507,24 @@ return {
             ["actor"] = "wall",
             ["flagcheck"] = "wall_hit",
             ["text1"] = "* I Am the Wall Guardian.[wait:5]\n* This Wall is Off Limits for you\nno-good wall slammers."
+          }
+        },
+        {
+          id = 37,
+          name = "attackable",
+          type = "",
+          shape = "rectangle",
+          x = 80,
+          y = 760,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["max_hp"] = 5,
+            ["should_explode"] = true,
+            ["solid"] = true,
+            ["sprite"] = "party/fredbear/light"
           }
         }
       }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="37">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="38">
  <editorsettings>
   <export target="room1.lua" format="lua"/>
  </editorsettings>
@@ -127,6 +127,14 @@ you.</property>
 no-good wall slammers.</property>
    </properties>
    <point/>
+  </object>
+  <object id="37" name="attackable" x="80" y="760" width="40" height="40">
+   <properties>
+    <property name="max_hp" type="int" value="5"/>
+    <property name="should_explode" type="bool" value="true"/>
+    <property name="solid" type="bool" value="true"/>
+    <property name="sprite" value="party/fredbear/light"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="5" name="markers">
