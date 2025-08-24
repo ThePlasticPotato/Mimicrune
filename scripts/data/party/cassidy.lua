@@ -110,7 +110,7 @@ end
 
 function character:getGameOverMessage(main)
     return {
-        "Evan-[wait:5] EVAN!\nCmon' we can't die here...[wait:5]\nGet up...! Please..."
+        "Evan-[wait:5] EVAN!\nCmon'..[wait:5]\nGet up...! Please..."
     }
 end
 

@@ -107,6 +107,7 @@ function ModlandFileSelect:onKeyPressed(key, is_repeat)
                         or Mod.info.nameInput == "none" or Mod.info.nameInput == false
                         or Kristal.Config["skipNameEntry"] and Mod.info.nameInput ~= "force"
 
+                    Game.stage:resetWeather("clear")
                     if skip_naming then
                         self:setState("TRANSITIONING")
                         local save_name = nil
@@ -120,9 +121,6 @@ function ModlandFileSelect:onKeyPressed(key, is_repeat)
 
                         local weather = Game:getFlag("weather_save")
                         --print(weather, " (this is the weather)")
-                        if weather and Game.stage.weather_type ~= weather[1] then
-                            Game.stage:setWeather(weather[1], weather[2], weather[3], Game.stage:getWeatherParent())
-                        end
 
                         if new_file then
                             Game.world:closeMenu()
@@ -132,6 +130,9 @@ function ModlandFileSelect:onKeyPressed(key, is_repeat)
                         else
                             local data = JSON.decode(love.filesystem.read(path))
                             Game:load(data, id, fade)
+                        end
+                        if weather and Game.stage.weather_type ~= weather[1] then
+                            Game.stage:setWeather(weather[1], weather[2], weather[3], Game.stage:getWeatherParent())
                         end
                         Kristal.callEvent("afmPostInit", new_file)
                     else
@@ -439,7 +440,7 @@ function ModlandFileSelect:update()
             local file_data = file_selected.data
             if (file_data) then
                 if (file_data.flags.weather_save) then
-                    if ((Game.stage.weather_type == "clear" or Game.stage.weather_type == nil) and Game.stage.weather_type ~= file_data.flags.weather_save[1]) then Game.stage:setWeather(file_data.flags.weather_save[1], true) end
+                    if ((Game.stage.weather_type == "clear" or Game.stage.weather_type == nil) and Game.stage.weather_type ~= file_data.flags.weather_save[1]) then Game.stage:setWeather(file_data.flags.weather_save[1], false, false) end
                     return
                 end
             else
