@@ -42,6 +42,28 @@ function PartyBattler:update()
         Game.battle.music_additional:fade(0.0, nil, function () Game.battle.music_additional:stop() end)
         self.singing = false
     end
+    if (self.chara.is_psychic) then
+        if (self.chara.heat >= self.chara:getStat("heat", 50) and not self.overheat) then
+            self:setOverheat(true)
+            self:toggleOverlay(true)
+            self.overlay_sprite:setAnimation("battle/overheat")
+            Assets.playSound("overheat")
+            self:flash()
+            self:statusMessage("msg", "overheat")
+        end
+        if (self.chara.heat < self.chara:getStat("heat", 50) and self.overheat) then
+            self:setOverheat(false)
+            if not self.is_down then self:toggleOverlay(false) end
+            self:flash()
+            Assets.playSound("power")
+            self:setAnimation("idle")
+        end
+    end
+end
+
+function PartyBattler:revive()
+    self.is_down = false
+    if (not self.overheat) then self:toggleOverlay(false) else self.overlay_sprite:setAnimation("battle/overheat") end
 end
 
 --- Whether the party member is in a state where they can take their turn (not sleeping or downed)
@@ -54,6 +76,9 @@ function PartyBattler:hurt(amount, exact, color, options)
     super.hurt(self, amount, exact, color, options)
     if (amount > 0) then
         self.was_hit_last = true
+    end
+    if (self.chara.is_psychic) then
+        self.chara.heat = self.chara.heat + 5
     end
 end
 

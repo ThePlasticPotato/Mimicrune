@@ -144,7 +144,7 @@ function BattleUI:drawState()
             Game:setTensionPreview(0)
         end
 
-        if current_item.data.pcost and current_item.data:getNPCost() ~= 0 then
+        if current_item.data and current_item.data.pcost and current_item.data:getNPCost() ~= 0 then
             Draw.setColor(PALETTE["tension_desc"])
             local npCost = current_item.data.pcost
             local max_heat = 50
@@ -197,7 +197,7 @@ function BattleUI:drawState()
         end
 
         Draw.setColor(1, 1, 1, 1)
-        if current_item.data.note_min and current_item.data.note_min ~= 0 then
+        if current_item.data and current_item.data.note_min and current_item.data.note_min ~= 0 then
             local has_notes = 3
             if (Game.battle.current_selecting and Game.battle.party[Game.battle.current_selecting]) then
                 local chara = Game.battle.party[Game.battle.current_selecting].chara
