@@ -1,5 +1,6 @@
 return function(cutscene)
     Game.legend.music:play("legend")
+    Game.legend.music:setLooping(false)
     cutscene:setSpeed(1 / 2.1)
     cutscene:musicWait(0.54)
 
@@ -185,7 +186,7 @@ return function(cutscene)
     dialogue25.state.typing_sound = "party/cassidy"
     dialogue25.y = 158
 
-    cutscene:musicWait(130.9)
+    cutscene:musicWait(130)
     Game.legend.music:stop() --THIS STOPS THE MUSIC 
     Game.legend.fader:fadeOut(function()  -- THIS WILL MAKE THE FADEOUT EFFECT TAKE MORE TIME INSTED OF THE DEFAULT TIME ESTABLISHED
         cutscene:removeSlides()

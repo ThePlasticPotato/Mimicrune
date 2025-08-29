@@ -174,6 +174,11 @@ return {
             cutscene:wait(2)
             gonerText("YOU HOLD[wait:10]\nGREAT PROMISE, INDEED.")
         end
+        if (player_name == "NARRA") then
+            gonerText("THANK YOU FOR YOUR[wait:20]\nHONESTY.")
+            cutscene:wait(2)
+            gonerText("THIS BODES WELL FOR[wait:20]\nWHAT COMES NEXT.")
+        end
         cutscene:wait(4)
         gonerText("'"..player_name.."'")
         cutscene:wait(2)
@@ -260,7 +265,11 @@ return {
         cutscene:wait(2)
         interloperText("Connection[wait:10] terminated.")
         cutscene:wait(2)
-        interloperText("I'm sorry, "..Game.save_name..",[wait:10] if\nthat even is your real name,")
+        local addition = "[wait:10] if\nthat even is your real name,"
+        if (Game.save_name == "NARRA") then
+            addition = ""
+        end
+        interloperText("I'm sorry, "..Game.save_name..","..addition)
         cutscene:wait(1)
         interloperText("But I'm afraid you've been\nmisinformed.")
         cutscene:wait(4)
