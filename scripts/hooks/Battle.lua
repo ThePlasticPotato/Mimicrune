@@ -181,7 +181,7 @@ function Battle:commitSingleAction(action)
             if action.heat then
                 battler.chara.heat = battler.chara.heat + action.heat
             end
-            if action.data and action.data:hasTag("buff") then
+            if action.data and action.data.hasTag and action.data:hasTag("buff") then
                 self.should_prioritize_fredbear = true
             end
             battler:setAnimation(anim)
@@ -233,7 +233,7 @@ function Battle:removeSingleAction(action)
         battler.chara.heat = battler.chara.heat - action.heat
     end
     
-    if action.data and action.data:hasTag("buff") then
+    if action.data and action.data.hasTag and action.data:hasTag("buff") then
         self.should_prioritize_fredbear = false
     end
 
