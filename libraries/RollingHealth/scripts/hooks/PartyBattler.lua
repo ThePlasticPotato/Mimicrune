@@ -26,6 +26,7 @@ function PartyBattler:removeHealth(amount, immediate)
         self.health_rolling_to = self.health_rolling_to - amount
     end
     self.health_rolling_to = math.max(self.health_rolling_to, 0)
+    self:statusMessage("msg", "mortal", nil, true)
     -- if self.health_rolling_to > self.chara:getHealth() and health_roll_previous < self.chara:getHealth() then
     --     self.health_rolling_timer = -getConfig("roll_delay")
     -- end
