@@ -4,11 +4,11 @@ end
 
 function Mod:postInit(new_file)
     Game.world.player.visible = false
-    if (Kristal.hasAnySaves()) then
+    if false then --(Kristal.hasAnySaves()) then
         Game.world:mapTransition("fileselect")
     else
         Game:setFlag("has_cell_phone", true)
-        Game.world:startCutscene("connection", "intro_transition")
+        Game.world:startCutscene("connection", "streamer_mode")
         Game:setFlag("audible_footsteps", true)
     end
 
