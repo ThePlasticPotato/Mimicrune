@@ -11,17 +11,6 @@ end
 function Follower:update()
     super.update(self)
     local target = self:getTarget()
-    if (target and target.was_running and not self.was_running) then
-        self.was_running = true
-        self:resetSprite()
-    elseif (target and target.was_running == false and self.was_running) then
-        self.was_running = false
-        self:resetSprite()
-    end
-    if (target and target.was_running == false and self.sitting and self.sprite.current_default == "run") then
-        self.was_running = false
-        self:resetSprite()
-    end
     self.should_sit = Game.world.player.sitting
 end
 
