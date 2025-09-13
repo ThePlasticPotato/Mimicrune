@@ -504,7 +504,7 @@ return {
         
         Game.world.music:stop()
         cutscene:playSound("AUDIO_interception")
-        Game.world:addFX(ShaderFX("glitch", { ["iTime"] = function () return Kristal.getTime() end, ["glitchScale"] = 0.4}, true), "glitchy")
+        Game.world:addFX(ShaderFX("glitch", { ["iTime"] = function () return Kristal.getTime() end, ["glitchScale"] = 0.4}, false), "glitchy")
         Game:setBorder("DEVICE_ERROR", 0)
 
         cutscene:wait(2)
@@ -512,7 +512,7 @@ return {
         cutscene:wait(4)
 
         gonerText("...CURIOUS.[wait:20]\n THERE APPEARS TO BE AN", true, true)
-        Game.world:addFX(ShaderFX("glitch", { ["iTime"] = function () return Kristal.getTime() end, ["glitchScale"] = 0.6}, true), "glitchy")
+        Game.world:addFX(ShaderFX("glitch", { ["iTime"] = function () return Kristal.getTime() end, ["glitchScale"] = 0.6}, false), "glitchy")
         cutscene:playSound("AUDIO_interception", 1.0, 1.2)
         Game:setBorder("DEVICE_BROKEN", 0)
         cutscene:wait(2)
