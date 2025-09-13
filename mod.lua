@@ -3,12 +3,12 @@ function Mod:init()
 end
 
 function Mod:postInit(new_file)
-    Game.world.player.visible = false
     -- I'm assuming this logic was commented out for a reason, so I've added a
     -- command line argument `$ love . --force-intro` to bypass it.
-    if (Kristal.hasAnySaves() and not (Kristal.Args["force-intro"])) then
+    if (new_file and Kristal.hasAnySaves() and not (Kristal.Args["force-intro"])) then
         Game.world:mapTransition("fileselect")
-    else
+    elseif new_file then
+        Game.world.player.visible = false
         Game:setFlag("has_cell_phone", true)
         Game.world:startCutscene("connection", "streamer_mode")
         Game:setFlag("audible_footsteps", true)
