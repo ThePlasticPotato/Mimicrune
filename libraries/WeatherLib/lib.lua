@@ -1,4 +1,6 @@
-WeatherLib = {}
+local lib = {}
+Registry.registerGlobal("WeatherLib", lib)
+WeatherLib = lib
 
 function WeatherLib:init()
 
@@ -409,7 +411,7 @@ function WeatherLib:init()
             --Game.stage:pauseWeather("inside")
             Game.stage:setWeatherLayer(-10)
             if (not Game.stage.was_weather_inside) then
-                for i, weather in ipairs(Game.stage.weather) do
+                for i, weather in ipairs(Game.stage.weather or {}) do
                     weather.weathersounds.volume = weather.weathersounds.volume / 8
                     weather.weathersounds.pitch = weather.weathersounds.pitch - 0.09
                 end
