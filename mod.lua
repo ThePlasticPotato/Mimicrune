@@ -4,7 +4,9 @@ end
 
 function Mod:postInit(new_file)
     Game.world.player.visible = false
-    if false then --(Kristal.hasAnySaves()) then
+    -- I'm assuming this logic was commented out for a reason, so I've added a
+    -- command line argument `$ love . --force-intro` to bypass it.
+    if (Kristal.hasAnySaves() and not (Kristal.Args["force-intro"])) then
         Game.world:mapTransition("fileselect")
     else
         Game:setFlag("has_cell_phone", true)
