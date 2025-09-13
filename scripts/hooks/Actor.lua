@@ -18,10 +18,6 @@ function Actor:init()
 
 end
 
-function Actor:getDefault()
-    if (Game.world and Game.world.player and Game.world.player.run_timer > 60) then return self.default_run else return super.getDefault(self) end
-end
-
 function Actor:getStepSoundOverride()
     return nil
 end
