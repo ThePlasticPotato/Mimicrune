@@ -208,7 +208,7 @@ return {
         cutscene:wait(2)
         cutscene:text("* Coming right up!", "smug")
         local reached = false
-        afton:pathfindChase(Game.world.player, {once = true, after = function () reached = true end, speed = 8})
+        afton:pathfindChase(Game.world.player, {once = true, after = function () reached = true end, speed = 8, chase_distance = 32})
         cutscene:wait(function () return reached end)
         local _, plate_dir = Utils.getFacingVector(should_face)
         plate_dir = plate_dir * 96

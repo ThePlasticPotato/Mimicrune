@@ -68,3 +68,17 @@ function Mod:shakifyText(text)
     
     return output_text.."[tempshake:0]"
 end
+
+---@param map Map
+---@param music string
+function Mod:onMapMusic(map, music)
+    if map.data and map.data.properties and map.data.properties["can_hum"] then
+        Game.world.should_hum = true
+    else
+        Game.world.should_hum = false
+    end
+
+    if (Utils.contains(map.id, "town") and Utils.contains(music, "day") and Game:getFlag("quiet_music", false)) then
+        return "area/light/town/rain"
+    end
+end

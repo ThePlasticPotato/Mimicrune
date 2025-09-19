@@ -12,7 +12,10 @@ return {
   nextlayerid = 17,
   nextobjectid = 19,
   properties = {
+    ["can_hum"] = true,
     ["has_tile_sounds"] = true,
+    ["hum_delay"] = 1,
+    ["hum_track"] = "area/light/town/hum",
     ["light"] = true,
     ["music"] = "area/light/town/day",
     ["node_size"] = 20,
