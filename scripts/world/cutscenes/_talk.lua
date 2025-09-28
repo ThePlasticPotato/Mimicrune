@@ -1,3 +1,4 @@
+---@param cutscene WorldCutscene
 return function(cutscene)
     if true then --(not Game.world:hasTalkCutscene()) then
         local randselect = Utils.random(0, 3, 1)

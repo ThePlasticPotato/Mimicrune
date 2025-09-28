@@ -5,7 +5,7 @@ return {
   name = "townsville_buildings",
   class = "",
   tilewidth = 606,
-  tileheight = 402,
+  tileheight = 438,
   spacing = 0,
   margin = 0,
   columns = 0,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 2,
+  tilecount = 3,
   tiles = {
     {
       id = 0,
@@ -36,6 +36,12 @@ return {
       image = "../../../assets/sprites/props/townsville_apartment_a.png",
       width = 400,
       height = 400
+    },
+    {
+      id = 2,
+      image = "../../../assets/sprites/props/italianfood.png",
+      width = 258,
+      height = 438
     }
   }
 }

@@ -27,6 +27,13 @@
             "width": 1440,
             "x": 1720,
             "y": -960
+        },
+        {
+            "fileName": "maps/aftonhouse/kitchen.tmx",
+            "height": 1040,
+            "width": 1440,
+            "x": 1240,
+            "y": -2000
         }
     ],
     "onlyShowAdjacentMaps": false,

@@ -79,7 +79,7 @@ return {
         local texts = {}
         local wdtexts = {}
         local function shortGlitch()
-            Game.world:addFX(ShaderFX("glitch", { ["iTime"] = function () return Kristal.getTime() end, ["glitchScale"] = 0.6}, true), "glitchy")
+            Game.world:addFX(ShaderFX("glitch", { ["iTime"] = function () return Kristal.getTime() end, ["glitchScale"] = 0.6}, false), "glitchy")
             cutscene:wait(0.25)
             Game.world:removeFX("glitchy")
         end
