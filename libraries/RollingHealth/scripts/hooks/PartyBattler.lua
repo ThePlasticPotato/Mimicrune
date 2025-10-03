@@ -14,7 +14,7 @@ end
 
 function PartyBattler:removeHealth(amount, immediate)
     if (immediate or ((self.chara:getHealth() - amount) > 0)) then
-        super.removeHealth(self, amount)
+        super.removeHealth(self, amount, immediate)
         self.health_rolling_to = self.chara:getHealth()
         return
     end
