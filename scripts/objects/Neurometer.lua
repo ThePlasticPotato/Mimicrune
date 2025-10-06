@@ -69,18 +69,18 @@ function Neurometer:update()
     end
     local targets = self:calcPercentileValues()
 
-    self.alpha = Utils.approach(self.alpha, self.target_opacity, DT * 4)
+    self.alpha = MathUtils.approach(self.alpha, self.target_opacity, DT * 4)
     self.steam_right.alpha = self.alpha
     self.steam_left.alpha = self.alpha
     self.heat_meter.alpha = self.alpha
     self.power_meter.alpha = self.alpha
-    self.display_power = Utils.approach(self.display_power, targets[1], DT)
-    self.display_heat = Utils.approach(self.display_heat, targets[2], DT)
+    self.display_power = MathUtils.approach(self.display_power, targets[1], DT)
+    self.display_heat = MathUtils.approach(self.display_heat, targets[2], DT)
     local speed = 10
     if (not self.raising) then
         speed = 20
     end
-    self.y = Utils.approach(self.y, self.target_y, DTMULT * speed)
+    self.y = MathUtils.approach(self.y, self.target_y, DTMULT * speed)
 
     local danger = self:inDangerThreshold()
     self.steam_left.visible = danger
@@ -89,7 +89,7 @@ function Neurometer:update()
     if (danger) then
         self.shake_offset = math.sin(self.shake_timer)
     else
-        self.shake_offset = Utils.approach(self.shake_offset, 0, DT)
+        self.shake_offset = MathUtils.approach(self.shake_offset, 0, DT)
     end
     self.steam_left.anim_speed = 0.7 * self.display_heat
     self.steam_right.anim_speed = 0.5 * self.display_heat

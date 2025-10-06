@@ -1,4 +1,4 @@
-local DarkConfigMenu, super = Utils.hookScript(DarkConfigMenu)
+local DarkConfigMenu, super = HookSystem.hookScript(DarkConfigMenu)
 
 function DarkConfigMenu:update()
     if self.state == "MAIN" then

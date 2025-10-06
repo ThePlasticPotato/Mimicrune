@@ -1,5 +1,5 @@
 ---@class World : Object
-local World, super = Utils.hookScript(World)
+local World, super = HookSystem.hookScript(World)
 
 function World:init(map)
     super.init(self, map)
@@ -13,7 +13,7 @@ end
 function World:getNearestNode(x, y)
     local node_size = self:getPathfinderNodeSize()
 
-    return { Utils.round(x/node_size), Utils.round(y/node_size) }
+    return { MathUtils.round(x/node_size), MathUtils.round(y/node_size) }
 end
 
 --- Returns the nearest valid pathfinding node, based on the map's `node_size`.

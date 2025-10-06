@@ -1,8 +1,8 @@
-local Tileset, super = Utils.hookScript(Tileset)
+local Tileset, super = HookSystem.hookScript(Tileset)
 
 function Tileset:init(data, path, base_dir)
     self.path = path
-    self.base_dir = base_dir or Utils.getDirname(self.path)
+    self.base_dir = base_dir or FileSystemUtils.getDirname(self.path)
 
     self.id = data.id
     self.name = data.name
@@ -29,7 +29,7 @@ function Tileset:init(data, path, base_dir)
             end
         end
         if tile.image then
-            local image_path = Utils.absoluteToLocalPath("assets/sprites/", tile.image, self.base_dir)
+            local image_path = FileSystemUtils.absoluteToLocalPath("assets/sprites/", tile.image, self.base_dir)
             info.path = image_path
             info.texture = Assets.getTexture(image_path)
             if not info.texture then
@@ -52,7 +52,7 @@ function Tileset:init(data, path, base_dir)
     end
 
     if data.image then
-        local image_path = Utils.absoluteToLocalPath("assets/sprites/", data.image, self.base_dir)
+        local image_path = FileSystemUtils.absoluteToLocalPath("assets/sprites/", data.image, self.base_dir)
         self.texture = Assets.getTexture(image_path)
         if not self.texture then
             error("Could not load tileset texture: " .. tostring(image_path) .. " [" .. tostring(path) .. "]")

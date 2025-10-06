@@ -1,4 +1,4 @@
-local Bullet, super = Utils.hookScript(Bullet)
+local Bullet, super = HookSystem.hookScript(Bullet)
 
 function Bullet:init(x, y, texture)
     super.init(self, x, y, texture)

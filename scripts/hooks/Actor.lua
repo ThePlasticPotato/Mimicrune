@@ -1,6 +1,6 @@
 ---@class Actor
 ---@field default_run string The actor's run animation. Falls back to walk by default.
-local Actor, super = Utils.hookScript(Actor)
+local Actor, super = HookSystem.hookScript(Actor)
 
 function Actor:init()
     super.init(self)

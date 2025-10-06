@@ -21,8 +21,8 @@ end
 
 function HitCircle:update()
     if self.scale_x > 0.31 then
-        self.scale_x = Utils.approach(self.scale_x, 0.3, self.speed * DTMULT)
-        self.scale_y = Utils.approach(self.scale_y, 0.3, self.speed * DTMULT)
+        self.scale_x = MathUtils.approach(self.scale_x, 0.3, self.speed * DTMULT)
+        self.scale_y = MathUtils.approach(self.scale_y, 0.3, self.speed * DTMULT)
     else
         self:remove()
     end

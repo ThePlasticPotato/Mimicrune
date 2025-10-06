@@ -194,9 +194,9 @@ function ModlandCompletionSelect:onKeyPressed(key, is_repeat)
         local last_x, last_y = self.selected_x, self.selected_y
         if Input.is("up", key) then self.selected_y = self.selected_y - 1 end
         if Input.is("down", key) then self.selected_y = self.selected_y + 1 end
-        self.selected_y = Utils.clamp(self.selected_y, 1, 4)
+        self.selected_y = MathUtils.clamp(self.selected_y, 1, 4)
         if not self.chapter_select and not self.previous_chapter then
-            self.selected_y = Utils.clamp(self.selected_y, 1, 4)
+            self.selected_y = MathUtils.clamp(self.selected_y, 1, 4)
         elseif self.selected_y ~= 5 then
         elseif self.chapter_select and self.previous_chapter then
             if Input.is("left", key) then self.selected_x = self.selected_x - 1 end
@@ -210,7 +210,7 @@ function ModlandCompletionSelect:onKeyPressed(key, is_repeat)
         if self.selected_y <= 3 then
             self.selected_x = 1
         else
-            self.selected_x = Utils.clamp(self.selected_x, 1, 3)
+            self.selected_x = MathUtils.clamp(self.selected_x, 1, 3)
         end
         if last_x ~= self.selected_x or last_y ~= self.selected_y then
             Assets.stopAndPlaySound("ui_move")
@@ -223,7 +223,7 @@ end
 
 function ModlandCompletionSelect:update()
     if self.result_timer > 0 then
-        self.result_timer = Utils.approach(self.result_timer, 0, DT)
+        self.result_timer = MathUtils.approach(self.result_timer, 0, DT)
         if self.result_timer == 0 then
             self.result_text = nil
         end

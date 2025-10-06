@@ -24,10 +24,10 @@ function Mod:onDrawText(text, node, state, x, y, scale, font, use_color)
     if state.temp_shake > 0 then
         if text.timer - state.last_temp_shake >= (1 * DTMULT) then
             state.last_temp_shake = text.timer
-            state.offset_x = Utils.round(Utils.random(-state.temp_shake, state.temp_shake))
-            state.offset_y = Utils.round(Utils.random(-state.temp_shake, state.temp_shake))
+            state.offset_x = MathUtils.round(MathUtils.random(-state.temp_shake, state.temp_shake))
+            state.offset_y = MathUtils.round(MathUtils.random(-state.temp_shake, state.temp_shake))
         end
-        state.temp_shake = Utils.approach(state.temp_shake, 0, 8 * DT)
+        state.temp_shake = MathUtils.approach(state.temp_shake, 0, 8 * DT)
     end
 end
 
@@ -56,7 +56,7 @@ function Mod:shakifyText(text)
             is_command = true
         end
         
-        if not is_command and not Utils.containsValue(no_sound, char) then
+        if not is_command and not TableUtils.contains(no_sound, char) then
             output_text = output_text .. "[tempshake:4]"
         end
         output_text = output_text .. char
@@ -78,7 +78,7 @@ function Mod:onMapMusic(map, music)
         Game.world.should_hum = false
     end
 
-    if (Utils.contains(map.id, "town") and Utils.contains(music, "day") and Game:getFlag("quiet_music", false)) then
+    if (StringUtils.contains(map.id, "town") and StringUtils.contains(music, "day") and Game:getFlag("quiet_music", false)) then
         return "area/light/town/rain"
     end
 end

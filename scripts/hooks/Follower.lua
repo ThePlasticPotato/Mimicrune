@@ -1,6 +1,6 @@
 ---@class Follower : Character
 ---@field was_running boolean
-local Follower, super = Utils.hookScript(Follower)
+local Follower, super = HookSystem.hookScript(Follower)
 
 function Follower:init(chara, x, y, target)
     super.init(self, chara, x, y, target)

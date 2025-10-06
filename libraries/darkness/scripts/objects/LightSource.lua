@@ -1,6 +1,6 @@
-local Light, super = Class(Object)
+local LightSource, super = Class(Object)
 
-function Light:init(x, y, radius, color)
+function LightSource:init(x, y, radius, color)
     super.init(self, x, y)
     self.radius = radius
     self.color = color or {1,1,1}
@@ -11,7 +11,7 @@ function Light:init(x, y, radius, color)
     self.debug_select = false
 end
 
-function Light:getRadius()
+function LightSource:getRadius()
     if type(self.radius) == "function" then
         return self:radius()
     else
@@ -19,4 +19,4 @@ function Light:getRadius()
     end
 end
 
-return Light
+return LightSource

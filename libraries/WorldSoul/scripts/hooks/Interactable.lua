@@ -1,5 +1,5 @@
 ---@class Interactable : Event
-local Interactable, super = Utils.hookScript(Interactable)
+local Interactable, super = HookSystem.hookScript(Interactable)
 
 function Interactable:onSoulInteract(soul)
     self.interact_count = self.interact_count + 1
@@ -13,7 +13,7 @@ function Interactable:onSoulInteract(soul)
     else
         cutscene = self.world:startCutscene(function(c)
             local text = self.text
-            local text_index = Utils.clamp(self.interact_count, 1, #text)
+            local text_index = MathUtils.clamp(self.interact_count, 1, #text)
             if type(text[text_index]) == "table" then
                 text = text[text_index]
             end

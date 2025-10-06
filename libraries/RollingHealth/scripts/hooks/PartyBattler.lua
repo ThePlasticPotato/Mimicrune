@@ -20,7 +20,7 @@ function PartyBattler:removeHealth(amount, immediate)
     end
     local health_roll_previous = self.health_rolling_to
     if (self.chara:getHealth() <= 0) then
-        amount = Utils.round(amount / 4)
+        amount = MathUtils.round(amount / 4)
         self.health_rolling_to = self.health_rolling_to - amount
     else
         self.health_rolling_to = self.health_rolling_to - amount
@@ -42,11 +42,11 @@ function PartyBattler:isHealthRolling()
     local current_action = Game.battle.current_processing_action
 
            -- Check if the health to roll to is different from the current health
-    return Utils.round(self.health_rolling_to) ~= Utils.round(self.chara:getHealth()) and
+    return MathUtils.round(self.health_rolling_to) ~= MathUtils.round(self.chara:getHealth()) and
            -- Check if the party member is not down
            not self.is_down and
            -- Check if the battle is not finished
-           not Utils.containsValue({"VICTORY", "TRANSITIONOUT"}, Game.battle.state) and
+           not TableUtils.contains({"VICTORY", "TRANSITIONOUT"}, Game.battle.state) and
            -- Check if the party member is not doing an action while their health is 1
            -- (So the party member's health will keep rolling but stops at 1 during an action)
            not
@@ -55,16 +55,16 @@ function PartyBattler:isHealthRolling()
                 (
                     (
                         -- ACT/ITEM/SPARE/SPELL
-                        Utils.containsValue({"ACT", "ITEM", "SPARE", "SPELL"}, Game.battle.substate) and current_action and
+                        TableUtils.contains({"ACT", "ITEM", "SPARE", "SPELL"}, Game.battle.substate) and current_action and
                         (
                             -- Is the party member doing an action (ACT/ITEM/SPARE/SPELL)?
                             current_action.character_id == Game.battle:getPartyIndex(self.chara.id) or
                             -- Multi-ACT?
-                            Utils.containsValue(current_action.party or {}, self.chara.id) or
+                            TableUtils.contains(current_action.party or {}, self.chara.id) or
                             -- Short ACT?
                             (
-                                Utils.containsValue(Game.battle.short_actions, current_action) and
-                                Utils.containsValue(map(Game.battle.short_actions, function (value)
+                                TableUtils.contains(Game.battle.short_actions, current_action) and
+                                TableUtils.contains(map(Game.battle.short_actions, function (value)
                                     return value.character_id
                                 end), self.chara.id)
                             )
@@ -72,13 +72,13 @@ function PartyBattler:isHealthRolling()
                     ) or
                     (
                         -- Attacking
-                        Utils.containsValue(Game.battle.attackers, self)
+                        TableUtils.contains(Game.battle.attackers, self)
                     )
                 )
             )
            and
            -- Check if halt_during_party_turn config is turned on and it is not the enemy's turn
-           not (getConfig("halt_during_party_turn") and not Utils.containsValue({"DEFENDING", "DEFENDINGBEGIN", "DEFENDINGEND"}, Game.battle.state))
+           not (getConfig("halt_during_party_turn") and not TableUtils.contains({"DEFENDING", "DEFENDINGBEGIN", "DEFENDINGEND"}, Game.battle.state))
 end
 
 function PartyBattler:canTarget()
@@ -113,16 +113,16 @@ function PartyBattler:update()
         local current_health = self.chara:getHealth()
         self.health_rolling_last = self.chara:getHealth()
         if self:isHealthRolling() then
-            self.chara:setHealth(current_health + Utils.sign(self.health_rolling_to - current_health))
+            self.chara:setHealth(current_health + MathUtils.sign(self.health_rolling_to - current_health))
             if self.chara:getHealth() <= 0 then
                 local party_index = Game.battle:getPartyIndex(self.chara.id)
                 local do_remove_table = Game.battle.current_selecting == party_index
                 Game.battle:pushForcedAction(self, "SKIP")
                 if do_remove_table then
-                    Utils.removeFromTable(Game.battle.selected_character_stack, party_index)
+                    TableUtils.removeValue(Game.battle.selected_character_stack, party_index)
                     table.remove(Game.battle.selected_action_stack, party_index)
                 end
-                self.chara:setHealth(Utils.round(((-self.chara:getStat("health")) / 2)))
+                self.chara:setHealth(MathUtils.round(((-self.chara:getStat("health")) / 2)))
                 self.health_rolling_to = self.chara:getHealth()
                 self:statusMessage("msg", "down", color, true)
                 Assets.playSound("hurt")

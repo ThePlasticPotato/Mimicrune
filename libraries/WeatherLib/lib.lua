@@ -6,7 +6,7 @@ function WeatherLib:init()
 
     WeatherRegistry.init()
 
-    Utils.hook(Stage, "setWeather", function(orig, self, typer, keep, sfx, addto)
+    HookSystem.hook(Stage, "setWeather", function(orig, self, typer, keep, sfx, addto)
         orig(self)
         --print(Game.world.player)
         local weather_type = {}
@@ -29,7 +29,7 @@ function WeatherLib:init()
         }
         local possible_types = possible_types_a
         if Kristal.getLibConfig("weatherlib", "extraWeathers") then
-            possible_types = Utils.merge(possible_types_a, Kristal.getLibConfig("weatherlib", "extraWeathers"))
+            possible_types = TableUtils.merge(possible_types_a, Kristal.getLibConfig("weatherlib", "extraWeathers"))
         end
 
         if type(typer) == "string" then
@@ -55,7 +55,7 @@ function WeatherLib:init()
         if sfx == nil then sfx = true end
 
         if type(typer) == "table" then
-            Utils.merge(weather_type, typer)
+            TableUtils.merge(weather_type, typer)
         end
 
         for i, symb in ipairs(weather_type) do
@@ -149,7 +149,7 @@ function WeatherLib:init()
                     "clear",
                     "cd",
                 }
-                if Utils.containsValue(possible_types_again, typ[1]) then
+                if TableUtils.contains(possible_types_again, typ[1]) then
                     w = Game.stage:addChild(WeatherHandler(typ[1], sfx, addto, typ[2], haveoverlay))
                     --print("A", typ[1])
                 else
@@ -186,19 +186,19 @@ function WeatherLib:init()
         end
     end)
 
-    Utils.hook(Stage, "getWeatherMask", function(orig, self)
+    HookSystem.hook(Stage, "getWeatherMask", function(orig, self)
         orig(self)
         local currentMap = Game.world.map.id
         return Assets.getTexture("masks/"..currentMap.."_mask")
     end)
 
-    Utils.hook(Stage, "getWeatherInverseMask", function(orig, self)
+    HookSystem.hook(Stage, "getWeatherInverseMask", function(orig, self)
         orig(self)
         local currentMap = Game.world.map.id
         return Assets.getTexture("masks/"..currentMap.."_inverse_mask")
     end)
 
-    Utils.hook(Stage, "hasWeather", function(orig, self, weather)
+    HookSystem.hook(Stage, "hasWeather", function(orig, self, weather)
         orig(self)
         if Game.stage.weather then
             if not weather then
@@ -214,7 +214,7 @@ function WeatherLib:init()
         end
     end)
 
-    Utils.hook(Stage, "getWeatherParent", function(orig, self)
+    HookSystem.hook(Stage, "getWeatherParent", function(orig, self)
         if Game.battle then
             return Game.battle
         elseif Game.world then
@@ -224,7 +224,7 @@ function WeatherLib:init()
         return false
     end)
 
-    Utils.hook(Stage, "setWeatherParent", function(orig, self, parent)
+    HookSystem.hook(Stage, "setWeatherParent", function(orig, self, parent)
 
         if not parent then parent = self:getWeatherParent() end
 
@@ -238,23 +238,23 @@ function WeatherLib:init()
         end
     end)
 
-    Utils.hook(Stage, "setWeatherLayer", function(orig, self, layer)
+    HookSystem.hook(Stage, "setWeatherLayer", function(orig, self, layer)
         self.weather_layer = layer and layer + 1 or nil
     end)
 
-    Utils.hook(Stage, "resetWeatherLayer", function(orig, self, layer)
+    HookSystem.hook(Stage, "resetWeatherLayer", function(orig, self, layer)
         self.weather_layer = nil
     end)
 
-    Utils.hook(Stage, "getWeatherLayer", function(orig, self, layer)
+    HookSystem.hook(Stage, "getWeatherLayer", function(orig, self, layer)
         return self.weather_layer
     end)
 
-    Utils.hook(Stage, "resetWeather", function(orig, self)
+    HookSystem.hook(Stage, "resetWeather", function(orig, self)
         self:setWeather()
     end)
 
-    Utils.hook(Stage, "pauseWeather", function(orig, self, reason)
+    HookSystem.hook(Stage, "pauseWeather", function(orig, self, reason)
         if not self.wpaused then
             if Game.stage.overlay then 
                 if Game.stage.weather then
@@ -276,7 +276,7 @@ function WeatherLib:init()
         end
     end)
 
-    Utils.hook(Stage, "playWeather", function(orig, self)
+    HookSystem.hook(Stage, "playWeather", function(orig, self)
         if not self.wpaused then
             error("WEATHERLIB: Attempt to play when not paused")
         else
@@ -300,13 +300,13 @@ function WeatherLib:init()
         Game.stage.pause_reason = nil
     end)
 
-    Utils.hook(Stage, "keepWeather", function(orig, self, keep)
+    HookSystem.hook(Stage, "keepWeather", function(orig, self, keep)
         if keep == nil then keep = true end
         
         if keep then self.keep_weather = true else self.keep_weather = false end
     end)
 
-    Utils.hook(Stage,  "addWeatherOverlays", function(orig, self)
+    HookSystem.hook(Stage,  "addWeatherOverlays", function(orig, self)
         orig(self)
 
         local possible_overlays = {
@@ -330,7 +330,7 @@ function WeatherLib:init()
         end end
     end)
 
-    Utils.hook(Stage,  "getWeathers", function(orig, self, item)
+    HookSystem.hook(Stage,  "getWeathers", function(orig, self, item)
         orig(self, item)
         if item == nil then item = "object" end
         
@@ -349,15 +349,15 @@ function WeatherLib:init()
         return tbl
     end)
 
-    Utils.hook(Sprite, "drawAlpha", function(orig, self, alpha)
+    HookSystem.hook(Sprite, "drawAlpha", function(orig, self, alpha)
         local r,g,b,a = self:getDrawColor()
         a = alpha
         local function drawSprite(...)
             if self.crossfade_alpha > 0 and self.crossfade_texture ~= nil then
-                Draw.setColor(r, g, b, self.crossfade_out and Utils.lerp(a, 0, self.crossfade_alpha) or alpha)
+                Draw.setColor(r, g, b, self.crossfade_out and MathUtils.lerp(a, 0, self.crossfade_alpha) or alpha)
                 Draw.draw(self.texture, ...)
     
-                Draw.setColor(r, g, b, Utils.lerp(0, a, self.crossfade_alpha))
+                Draw.setColor(r, g, b, MathUtils.lerp(0, a, self.crossfade_alpha))
                 Draw.draw(self.crossfade_texture, ...)
             else
                 Draw.setColor(r, g, b, alpha)
@@ -401,7 +401,7 @@ function WeatherLib:init()
         Object.draw(self)
     end)
 
-    Utils.hook(World, "setupMap", function(orig, self, map, ...)
+    HookSystem.hook(World, "setupMap", function(orig, self, map, ...)
         orig(self, map, ...)
         local weather = Game.stage.last_weather
         if (Game.stage.was_weather_inside == nil) then Game.stage.was_weather_inside = false end
@@ -437,7 +437,7 @@ function WeatherLib:init()
         end
     end)
 
-    Utils.hook(Object, "onAddToStage", function(orig, self, stage)
+    HookSystem.hook(Object, "onAddToStage", function(orig, self, stage)
         orig(self)
 
         if Game.stage then
@@ -496,7 +496,7 @@ function WeatherLib:init()
         end
     end)
     
-    Utils.hook(Battle, "postInit", function(orig, self, state, encounter)
+    HookSystem.hook(Battle, "postInit", function(orig, self, state, encounter)
         orig(self, state, encounter)
 
         if not self.encounter.background then if #Game.stage.weather > 0 then
@@ -507,7 +507,7 @@ function WeatherLib:init()
         end end
     end)
 
-    Utils.hook(Battle, "onStateChange", function(orig, self, old, new)
+    HookSystem.hook(Battle, "onStateChange", function(orig, self, old, new)
         orig(self, old, new)
 
         if new == "TRANSITIONOUT" then

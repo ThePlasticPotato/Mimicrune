@@ -1,5 +1,5 @@
 ---@class Follower : Character
-local Follower, super = Utils.hookScript(Follower)
+local Follower, super = HookSystem.hookScript(Follower)
 
 function Follower:returnToFollowing(speed)
     if (not Pathfinder:getConfig("replace_return_to_following")) then

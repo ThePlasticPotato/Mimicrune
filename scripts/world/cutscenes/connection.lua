@@ -118,8 +118,8 @@ return {
             table.insert(texts, text)
             if advance ~= false then
                 cutscene:wait(function () return not text:isTyping() end)
-                Utils.removeFromTable(texts, text)
-                Utils.removeFromTable(wdtexts, wdtext)
+                TableUtils.removeValue(texts, text)
+                TableUtils.removeValue(wdtexts, wdtext)
                 text:remove()
                 wdtext:remove()
             end
@@ -464,17 +464,17 @@ return {
         gonerText("'"..player_name.."'")
         cutscene:wait(2)
 
-        if (Utils.containsValue(delta_coincidences, player_name)) then
+        if (TableUtils.contains(delta_coincidences, player_name)) then
             gonerText("WHAT A CURIOUS[wait:20]\nCOINCIDENCE.")
             cutscene:wait(2)
             gonerText("ARE YOU PERHAPS[wait:10]\nMISPLACED?")
         end
-        if (Utils.containsValue(hero_coincidences, player_name)) then
+        if (TableUtils.contains(hero_coincidences, player_name)) then
             gonerText("WHAT A CURIOUS[wait:20]\nCOINCIDENCE.")
             cutscene:wait(2)
             gonerText("PERHAPS, YOU TRULY POSSESS[wait:10]\nA HERO'S SPIRIT.")
         end
-        if (Utils.containsValue(mr_coincidences, player_name)) then
+        if (TableUtils.contains(mr_coincidences, player_name)) then
             gonerText("HOW VERY CURIOUS[wait:20]\nOF A COINCIDENCE.")
             cutscene:wait(2)
             gonerText("YOU MAY FIT[wait:10]\nRIGHT IN, AFTER ALL.")

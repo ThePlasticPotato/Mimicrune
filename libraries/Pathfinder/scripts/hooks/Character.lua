@@ -4,7 +4,7 @@
 ---@field chasing_target Object|nil
 ---@field chasing_timer number
 ---@field chasing_options table
-local Character, super = Utils.hookScript(Character)
+local Character, super = HookSystem.hookScript(Character)
 
 function Character:init(actor, x, y)
     super.init(self, actor, x, y)

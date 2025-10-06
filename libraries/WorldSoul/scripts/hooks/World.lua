@@ -1,6 +1,6 @@
 ---@class World
 ---@field world_soul WorldSoul
-local World, super = Utils.hookScript(World)
+local World, super = HookSystem.hookScript(World)
 
 function World:init(map)
     super.init(self, map)

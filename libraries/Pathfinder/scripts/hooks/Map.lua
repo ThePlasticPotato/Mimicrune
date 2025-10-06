@@ -1,6 +1,6 @@
 ---@class Map : Class
 ---@field pathfinder_node_size number
-local Map, super = Utils.hookScript(Map)
+local Map, super = HookSystem.hookScript(Map)
 
 function Map:init(world, data)
     super.init(self, world, data)

@@ -1,6 +1,6 @@
-local Light, super = Class(Object)
+local RectangleLightSource, super = Class(Object)
 
-function Light:init(x, y, w, h, color)
+function RectangleLightSource:init(x, y, w, h, color)
     super.init(self, x, y, w, h)
     self.color = color or {1,1,1}
     self.alpha = 1
@@ -10,4 +10,4 @@ function Light:init(x, y, w, h, color)
     self.debug_select = false
 end
 
-return Light
+return RectangleLightSource

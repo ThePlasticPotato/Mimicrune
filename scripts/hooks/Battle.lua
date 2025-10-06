@@ -1,7 +1,7 @@
 ---@class Battle
 ---@field should_prioritize_fredbear boolean
 ---@field music_additional Music
-local Battle, super = Utils.hookScript(Battle)
+local Battle, super = HookSystem.hookScript(Battle)
 
 function Battle:init()
     super.init(self)
@@ -48,19 +48,19 @@ function Battle:commitAction(battler, action_type, target, data, extra)
     end
     local tp_diff = 0
     if data.tp then
-        tp_diff = Utils.clamp(-data.tp, -Game:getTension(), Game:getMaxTension() - Game:getTension())
+        tp_diff = MathUtils.clamp(-data.tp, -Game:getTension(), Game:getMaxTension() - Game:getTension())
     end
     local np_diff = 0
     local heat_diff = 0
     if data.np and battler.chara.is_psychic then
-        np_diff = Utils.clamp(-data.np, -battler.chara.neural_power, 100 - battler.chara.neural_power)
+        np_diff = MathUtils.clamp(-data.np, -battler.chara.neural_power, 100 - battler.chara.neural_power)
     end
     if data.heat and battler.chara.is_psychic then
         heat_diff = math.max(data.heat, -battler.chara.heat)
     end
     local note_diff = 0
     if data.notes and battler.chara.is_musical then
-        note_diff = Utils.clamp(data.notes, -battler.chara.notes, 3 - battler.chara.notes)
+        note_diff = MathUtils.clamp(data.notes, -battler.chara.notes, 3 - battler.chara.notes)
     end
 
     local party_id = self:getPartyIndex(battler.chara.id)
@@ -90,7 +90,7 @@ function Battle:commitAction(battler, action_type, target, data, extra)
         end
     end
 
-    self:commitSingleAction(Utils.merge({
+    self:commitSingleAction(TableUtils.merge({
         ["character_id"] = party_id,
         ["action"] = action_type:upper(),
         ["party"] = data.party,
@@ -119,7 +119,7 @@ function Battle:commitAction(battler, action_type, target, data, extra)
                     end
                 end
 
-                self:commitSingleAction(Utils.merge({
+                self:commitSingleAction(TableUtils.merge({
                     ["character_id"] = index,
                     ["action"] = "SKIP",
                     ["reason"] = action_type:upper(),
@@ -285,7 +285,7 @@ function Battle:processActionGroup(group)
     else
         if self.should_prioritize_fredbear and fredbear_index then
             local action = self.character_actions[fredbear_index]
-            if action and Utils.containsValue(group, action.action) then
+            if action and TableUtils.contains(group, action.action) then
                 self.character_actions[fredbear_index] = nil
                 self:beginAction(action)
                 self.should_prioritize_fredbear = false
@@ -296,7 +296,7 @@ function Battle:processActionGroup(group)
             -- If the table contains the action
             -- Ex. if {"SPELL", "ITEM", "SPARE"} contains "SPARE"
             local action = self.character_actions[i]
-            if action and Utils.containsValue(group, action.action) then
+            if action and TableUtils.contains(group, action.action) then
                 self.character_actions[i] = nil
                 self:beginAction(action)
                 return true

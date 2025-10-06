@@ -1,5 +1,5 @@
 ---@class Actor : Class
-local Actor, super = Utils.hookScript(Actor)
+local Actor, super = HookSystem.hookScript(Actor)
 
 function Actor:getPathfindingHitbox()
     if self.hitbox then

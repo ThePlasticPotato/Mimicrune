@@ -25,7 +25,7 @@ function ActionBoxDisplay:drawCurrentHealth(color, x, y)
     end
     local health_offset = (max_string_length - 1) * 8
     x = x - health_offset
-    local roll_progress = Utils.clamp((battler.health_rolling_timer / battler:getRollSpeed()) * getConfig("display_roll_speed"), 0, 1)
+    local roll_progress = MathUtils.clamp((battler.health_rolling_timer / battler:getRollSpeed()) * getConfig("display_roll_speed"), 0, 1)
     local rolling_down = battler.chara:getHealth() < battler.health_rolling_last
     if rolling_down then roll_progress = 1 - roll_progress end
     if getConfig("stencil") then

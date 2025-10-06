@@ -1,6 +1,6 @@
 ---@class Event : Object
 ---@field soul_only boolean
-local Event, super = Utils.hookScript(Event)
+local Event, super = HookSystem.hookScript(Event)
 
 function Event:init(x, y, width, height)
     super.init(self, x, y, width, height)

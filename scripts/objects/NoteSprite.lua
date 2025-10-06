@@ -1,4 +1,4 @@
----@class NoteSprite
+---@class NoteSprite : Sprite
 local NoteSprite, super = Class(Sprite)
 
 function NoteSprite:init(texture, x, y, width, height, path, index, battler)
@@ -40,11 +40,11 @@ function NoteSprite:update()
     self:setLayer(layer)
     self.offset_x = self.offset_x + (position_offset * 2)
     self.offset_y = self.offset_y + y_offset
-    self:setScale(Utils.clamp(1 + (position_offset / 4), 0.5, 1.5))
+    self:setScale(MathUtils.clamp(1 + (position_offset / 4), 0.5, 1.5))
 
     if (self.afterimg_timer <= 0) then
         local afterimage = AfterImage(self, 0.5)
-        --afterimage:setScale(Utils.clamp(1 + (position_offset / 4), 0.5, 1.5))
+        --afterimage:setScale(MathUtils.clamp(1 + (position_offset / 4), 0.5, 1.5))
         self:addChild(afterimage)
         self.afterimg_timer = 0.15
     end
@@ -54,10 +54,10 @@ function NoteSprite:draw()
     super.super.draw(self)
     local r,g,b,a = self:getDrawColor()
     if self.crossfade_alpha > 0 and self.crossfade_texture ~= nil then
-        Draw.setColor(r, g, b, self.crossfade_out and Utils.lerp(a, 0, self.crossfade_alpha) or a)
+        Draw.setColor(r, g, b, self.crossfade_out and MathUtils.lerp(a, 0, self.crossfade_alpha) or a)
         Draw.draw(self.texture, self.x + self.offset_x, self.y + self.offset_y)
 
-        Draw.setColor(r, g, b, Utils.lerp(0, a, self.crossfade_alpha))
+        Draw.setColor(r, g, b, MathUtils.lerp(0, a, self.crossfade_alpha))
         Draw.draw(self.crossfade_texture, self.x + self.offset_x, self.y + self.offset_y)
     else
         Draw.setColor(r, g, b, a)

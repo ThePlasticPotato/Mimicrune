@@ -1,7 +1,7 @@
 ---@class PartyBattler
 ---@field next_attack_bonus number
 ---@field overheat boolean
-local PartyBattler, super = Utils.hookScript(PartyBattler)
+local PartyBattler, super = HookSystem.hookScript(PartyBattler)
 
 function PartyBattler:init(chara, x, y)
     super.init(self, chara, x, y)

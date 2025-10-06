@@ -1,5 +1,5 @@
 ---@class World
-local World, super = Utils.hookScript(World)
+local World, super = HookSystem.hookScript(World)
 
 ---Returns the path of the correct step sound for the given conditions.
 ---@param x number x pos on map
@@ -11,8 +11,8 @@ function World:getStepSound(x, y, num, actor)
     local prefix = "step/"
     if (self.map) then
         if (self.map.has_tile_sounds or Game.world.map.data.properties["has_tile_sounds"]) then
-            local tile_x = Utils.round(x/40)
-            local tile_y = Utils.round(y/40)
+            local tile_x = MathUtils.round(x/40)
+            local tile_y = MathUtils.round(y/40)
             local tileset, tile_index = self.map:getTile(tile_x, tile_y, "stepsounds")
             if (tileset and tile_index) then
                 if (tileset.tile_info[tile_index] and (tileset.tile_info[tile_index].step_sound)) then

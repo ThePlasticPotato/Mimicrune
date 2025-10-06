@@ -1,6 +1,6 @@
 ---@class Actor
 ---@field step_sound string The actor step sound override. Will play instead of tile specific steps.
-local Actor, super = Utils.hookScript(Actor)
+local Actor, super = HookSystem.hookScript(Actor)
 
 function Actor:init()
     super.init(self)

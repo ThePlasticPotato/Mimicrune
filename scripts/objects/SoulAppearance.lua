@@ -64,7 +64,7 @@ function SoulAppearance:draw()
         if (self.should_bob) then
             self.pos_offset = self.pos_offset + (math.sin(self.runtime)/10)
         else
-            self.pos_offset = Utils.approach(self.pos_offset, 0, DT)
+            self.pos_offset = MathUtils.approach(self.pos_offset, 0, DT)
         end
         
         Draw.draw(self.sprite, 0, self.pos_offset)

@@ -1,4 +1,4 @@
-local DialogueText, super = Utils.hookScript(DialogueText)
+local DialogueText, super = HookSystem.hookScript(DialogueText)
 
 function DialogueText:resetState()
     super.resetState(self)

@@ -1,5 +1,5 @@
 ---@class Follower
-local Follower, super = Utils.hookScript(Follower)
+local Follower, super = HookSystem.hookScript(Follower)
 
 function Follower:getStepVolume()
     local walk_speed = self.target and self.target.getCurrentSpeed and self.target:getCurrentSpeed(self.target.state == "RUN") or 4

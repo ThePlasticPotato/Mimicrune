@@ -45,7 +45,7 @@ function WorldSoul:shatter(count)
         local y_pos = self.shard_y_table[((i - 1) % #self.shard_y_table) + 1]
         local shard = Sprite("player/heart_shard", self.x + x_pos, self.y + y_pos)
         shard:setColor(self:getColor())
-        shard.physics.direction = math.rad(Utils.random(360))
+        shard.physics.direction = math.rad(MathUtils.random(360))
         shard.physics.speed = 7
         shard.physics.gravity = 0.2
         shard.layer = self.layer
@@ -74,10 +74,10 @@ function WorldSoul:update()
             end
         else
             self:setExactPosition(
-                Utils.lerp(self.original_x, self.target_x, self.timer / 7),
-                Utils.lerp(self.original_y, self.target_y, self.timer / 7)
+                MathUtils.lerp(self.original_x, self.target_x, self.timer / 7),
+                MathUtils.lerp(self.original_y, self.target_y, self.timer / 7)
             )
-            self.alpha = Utils.lerp(0, self.target_alpha or 1, self.timer / 3)
+            self.alpha = MathUtils.lerp(0, self.target_alpha or 1, self.timer / 3)
             self.sprite:setColor(self.color[1], self.color[2], self.color[3], self.alpha)
             self.timer = self.timer + (1 * DTMULT)
         end
@@ -91,7 +91,7 @@ function WorldSoul:update()
 
     -- Bullet collision !!! Yay
     if self.inv_timer > 0 then
-        self.inv_timer = Utils.approach(self.inv_timer, 0, DT)
+        self.inv_timer = MathUtils.approach(self.inv_timer, 0, DT)
     end
 
     local collided_bullets = {}
@@ -149,7 +149,7 @@ end
 ---@return boolean
 ---@return Object|nil
 function WorldSoul:moveXExact(amount, move_y)
-    local sign = Utils.sign(amount)
+    local sign = MathUtils.sign(amount)
     for i = sign, amount, sign do
         local last_x = self.x
         local last_y = self.y
@@ -204,7 +204,7 @@ end
 ---@return boolean
 ---@return Object|nil
 function WorldSoul:moveYExact(amount, move_x)
-    local sign = Utils.sign(amount)
+    local sign = MathUtils.sign(amount)
     for i = sign, amount, sign do
         local last_x = self.x
         local last_y = self.y
@@ -268,7 +268,7 @@ function WorldSoul:interact()
     for _, obj in ipairs(Game.world.children) do
         if obj.onSoulInteract and obj:collidesWith(col) then
             local rx, ry = obj:getRelativePos(obj.width / 2, obj.height / 2, self.parent)
-            table.insert(interactables, { obj = obj, dist = Utils.dist(self.x, self.y, rx, ry) })
+            table.insert(interactables, { obj = obj, dist = MathUtils.dist(self.x, self.y, rx, ry) })
         end
     end
     table.sort(interactables, function (a, b) return a.dist < b.dist end)
