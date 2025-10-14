@@ -49,4 +49,42 @@ function World:onKeyPressed(key)
     end
 end
 
+function World:update()
+    super.update(self)
+    if self.state == "GAMEPLAY" and self.world_soul then
+        local collided = {}
+        local exited = {}
+        Object.startCache()
+        for _,obj in ipairs(self.children) do
+            if not obj.solid and (obj.onSoulCollide or obj.onSoulEnter or obj.onSoulExit) then
+                if (obj:collidesWith(self.world_soul)) then
+                    if not obj:includes(WorldSoul) then
+                        table.insert(collided, {obj, self.world_soul})
+                    end
+                elseif obj.current_colliding and obj.current_colliding[self.world_soul] then
+                    table.insert(exited, {obj, self.world_soul})
+                end
+            end
+        end
+        Object.endCache()
+        for _,v in ipairs(collided) do
+            if not v[1].current_colliding then
+                v[1].current_colliding = {}
+            end
+            if not v[1].current_colliding[v[2]] then
+                if v[1].onSoulEnter then
+                    v[1]:onSoulEnter(v[2])
+                end
+                v[1].current_colliding[v[2]] = true
+            end
+        end
+        for _,v in ipairs(exited) do
+            if v[1].onSoulExit then
+                v[1]:onSoulExit(v[2])
+            end
+            v[1].current_colliding[v[2]] = nil
+        end
+    end
+end
+
 return World
