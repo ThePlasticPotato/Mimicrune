@@ -67,7 +67,11 @@ return {
             interloperTextFade()
             cutscene:wait(2)
             cutscene:endCutscene()
-            Game.world:startCutscene("connection", "startup")
+            if (Kristal.checkPersistentVariable("plot/connection_log")) then
+                Game.world:startCutscene("connection", "intro_transition")
+            else
+                Game.world:startCutscene("connection", "startup")
+            end
         end
     end,
 
@@ -639,6 +643,7 @@ return {
         healparticles:remove()
         Game.world.camera:shake(2, 2)
         cutscene:text("[voice:elizabeth]* EVAN![wait:20]\n* WAKE UP! Dad made breakfast, and you're gonna be late again!")
+        Kristal.emplacePersistentVariable("plot/connection_log")
         cutscene:endCutscene()
         Game.world:startCutscene("connection", "intro_transition")
     end,

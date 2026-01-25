@@ -6,7 +6,7 @@ function Event:init(x, y, width, height)
     super.init(self, x, y, width, height)
     if type(x) == "table" then
         local data = x
-        self.soul_only = data.properties["soul_only"] or false
+        self.soul_only = data and data.properties and data.properties["soul_only"] or false
     end
 end
 
