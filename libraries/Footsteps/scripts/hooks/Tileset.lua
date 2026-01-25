@@ -19,22 +19,22 @@ function Tileset:init(data, path, base_dir)
     self.id_count = self.tile_count
 
     self.tile_info = {}
-    for _,tile in ipairs(data.tiles or {}) do
+    for _, tile in ipairs(data.tiles or {}) do
         local info = {}
         if tile.animation then
-            info.animation = {duration = 0, frames={}}
-            for _,anim in ipairs(tile.animation) do
-                table.insert(info.animation.frames, {id = anim.tileid, duration = anim.duration / 1000})
+            info.animation = { duration = 0, frames = {} }
+            for _, anim in ipairs(tile.animation) do
+                table.insert(info.animation.frames, { id = anim.tileid, duration = anim.duration / 1000 })
                 info.animation.duration = info.animation.duration + (anim.duration / 1000)
             end
         end
         if tile.image then
-            local image_path = FileSystemUtils.absoluteToLocalPath("assets/sprites/", tile.image, self.base_dir)
-            info.path = image_path
-            info.texture = Assets.getTexture(image_path)
-            if not info.texture then
-                error("Could not load tileset tile texture: " .. tostring(image_path) .. " [" .. tostring(path) .. "]")
+            local success, image_path_result = self:loadTextureFromImagePath(tile.image)
+            if not success then
+                error("Tileset \"" .. self.id .. "\" failed to load texture for tile " .. tostring(tile.id) .. "\"\n" .. image_path_result)
             end
+            info.path = image_path_result
+            info.texture = Assets.getTexture(image_path_result)
             info.x = tile.x or 0
             info.y = tile.y or 0
             info.width = tile.width or info.texture:getWidth()
@@ -52,17 +52,17 @@ function Tileset:init(data, path, base_dir)
     end
 
     if data.image then
-        local image_path = FileSystemUtils.absoluteToLocalPath("assets/sprites/", data.image, self.base_dir)
-        self.texture = Assets.getTexture(image_path)
-        if not self.texture then
-            error("Could not load tileset texture: " .. tostring(image_path) .. " [" .. tostring(path) .. "]")
+        local success, image_path_result = self:loadTextureFromImagePath(data.image)
+        if not success then
+            error("Tileset \"" .. self.id .. "\" failed to load texture\n" .. image_path_result)
         end
+        self.texture = Assets.getTexture(image_path_result)
     end
 
     self.quads = {}
     if self.texture then
         local tw, th = self.texture:getWidth(), self.texture:getHeight()
-        for i = 0, self.tile_count-1 do
+        for i = 0, self.tile_count - 1 do
             local tx = self.margin + (i % self.columns) * (self.tile_width + self.spacing)
             local ty = self.margin + math.floor(i / self.columns) * (self.tile_height + self.spacing)
             self.quads[i] = love.graphics.newQuad(tx, ty, self.tile_width, self.tile_height, tw, th)

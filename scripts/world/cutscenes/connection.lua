@@ -1,3 +1,4 @@
+local platformName = ""
 return {
     ---@param cutscene WorldCutscene
     ---@param event Event
@@ -67,7 +68,7 @@ return {
             interloperTextFade()
             cutscene:wait(2)
             cutscene:endCutscene()
-            if (Kristal.checkPersistentVariable("plot/connection_log")) then
+            if (Kristal.checkPersistentVariable("plot/connection_log.txt")) then
                 Game.world:startCutscene("connection", "intro_transition")
             else
                 Game.world:startCutscene("connection", "startup")
@@ -206,6 +207,7 @@ return {
         -- if (connection_target == "temerity" or Game:getFlag("streamer_mode", false)) then
         --     connection_target = "sys_admin"
         -- end
+        platformName = connection_target
         terminalText("[speed:2][vdrl] : CONNECTING TO EXTERNAL\nDEVICE RUNNING : ' " .. connection_target .. " '", false, false, 28)
         cutscene:musicWait(15.229) -- Beep end
         cutscene:musicWait(16.105) -- Static
@@ -643,12 +645,147 @@ return {
         healparticles:remove()
         Game.world.camera:shake(2, 2)
         cutscene:text("[voice:elizabeth]* EVAN![wait:20]\n* WAKE UP! Dad made breakfast, and you're gonna be late again!")
-        Kristal.emplacePersistentVariable("plot/connection_log")
         cutscene:endCutscene()
         Game.world:startCutscene("connection", "intro_transition")
     end,
 
     intro_transition = function(cutscene, event)
+        if (not Kristal.checkPersistentVariable("device/prognosticus.core")) then
+            Kristal.emplacePersistentVariable("device/prognosticus.core", [[
+            LIGHT and DARKNESS
+            SHINE and SHADOW
+            BALANCE held since
+            So long ago
+
+            Two WORLDS kept in HARMONY
+            But nothing is eternal
+
+            One day far or now at hand
+            Shall come a threat to all that stands
+
+            WRATH and ANGER
+            HATE and LOSS that
+            A GO NY that's festered, and
+
+            then the WORLDs shall both crack with hate
+            CALAMITY from a poisoned fate
+
+            and
+            then the EARTH shall near EXPIRE
+            through the BLACKEND CLAWS of the SMILING LIAR
+
+            BUT, BEFORE ALL MEETS ITS END
+            OH, LO ON HOPE ARE THREE THEY SEND
+
+            ARRIVING AT WORLD'S DARKEST HOUR
+            TO WIELD THEIR BLADES AND HEARTS AND POWER
+
+            [THE BOY, WIELDING HOPE BRIGHT IN HIS HAND]
+
+            [THE GIRL, AS HER HOURGLASS RUNS OUT OF SAND]
+
+            [THE FRIEND, HELD WITHIN THEIR SHINING HEARTS]
+
+            [AND THE LIGHT THAT SHALL LEAD THEM THROUGH THE DARK]
+
+            And when the night turns to day at the edge of
+            Dawn where the memories fade
+
+            The promise made by the one with the blade shall
+            Weather whatever they’ll face…
+
+            ∴⍑ᒷリ  ℸ ̣ ⍑ᒷ  ↸ᔑ∷ꖌリᒷᓭᓭ  ᓭℸ ̣ ᔑ∷ℸ ̣ ᓭ  ℸ ̣ 𝙹  ᓵ⚍ℸ ̣   ℸ ̣ 𝙹𝙹  ↸ᒷᒷ!¡,  ∴ᒷ’ꖎꖎ  ⎓╎リ↸  ℸ ̣ ⍑ᒷ  ↸ᔑ||
+            ℸ ̣ ⍑ᒷ∷ᒷ’ᓭ  リ𝙹ℸ ̣ ⍑╎リ⊣  ℸ ̣ ⍑ᔑℸ ̣   ᓵ𝙹⚍ꖎ↸  ᒷ⍊ᒷ∷  ᓭℸ ̣ ᔑリ↸  ╎リ  𝙹⚍∷  ∴ᔑ||
+
+            ᔑリ↸  ╎  ꖌリ𝙹∴  ℸ ̣ ⍑ᔑℸ ̣   ∴ᒷ’ꖎꖎ  ᒲᔑꖌᒷ  ╎ℸ ̣   ℸ ̣ ⍑∷𝙹⚍⊣⍑…
+            ᓵᔑ⚍ᓭᒷ  ╎’ᒲ  ∴╎ℸ ̣ ⍑  ||𝙹⚍  ╎リ  ℸ ̣ ⍑ᒷ  ↸ᔑ∷ꖌ.
+        ]])
+        end
+        if (not Kristal.checkPersistentVariable("plot/connection_log.txt")) then
+            Kristal.emplacePersistentVariable("plot/connection_log.txt", [[
+            WD-OS_V1.2.1a
+            Copyright (C) 19XX-20XX, ASTER SCIENCES LLC.
+            CORE g10 CPU @ 8200 MHz 8 Processor(s)
+            ===================
+            Memory Test : 63518192K OK
+            Detecting Flash ROM : ...AMALGAE 15 OK
+            Detecting Flash Extension : ...Generic m.2 OK
+            Detecting SOUL Presence : ...NARRA.kd.13018 OK
+            ===================
+            !!!WARNING!!! Debug Mode is ENABLED. System instability may be present.
+            PROCEEDing is inadvisable. Strike any key to PROCEED regardless.
+            >
+            Please hold... Do not turn off the DEVICE.
+            Initialized VOID_RELAY module.
+            : CONNECTING TO EXTERNAL DEVICE RUNNING : ' ]].. platformName ..[[ '
+            : ESTABLISHING CONNECTION
+            : . . .
+            : TARGETLOCK
+            : . . .
+            : PING SUCCESS, TOOK 1899ms
+            : . . .
+            : BEGIN LINK PHASE
+            : . . .
+            : LINK SUCCESS
+            : RELAY CONNECTED.
+            : SOUL UPLOAD IN PROGRESS...
+            
+            Please hold... Do not turn off the DEVICE.
+            ===================
+            CONNECTION_ESTABLISHED_SUCCESS
+            VoIP Connected.
+            ===================
+            VARIABLE RECIEVED ;; SUBJECT_NAME=]].. Game.save_name ..[[
+            ===================
+            !!!WARNING!!! CONNECTION STABILITY COMPROMISED. EXTERNAL INTERFERENCE;; PLEASE REFERENCE DEBUG LOG.
+            !!!WARNING!!! CONNECTION LOST. ATTEMPTING TO RE-ESTABLISH. . .
+            : RE-ESTABLISHING CONNECTION
+            : . . .
+            : . . .
+            : . . .
+            : . . .
+            : CONNECTION FAILURE [ REASON : INTERLOPER ]
+            : ATTEMPTING BRUTE FORCE
+            : . . .
+            : . . .
+            : . . .
+            : VULNERABILITY DETECTED. EXPLOITING...
+            : . . .
+            : . . .
+            : . . .
+            : . . .
+            : .  .  .
+            : LINK SUCCESS
+            : RELAY CONNECTED.
+            : ATTACHING COREFILE [pv/device/prognosticus.core]
+            : . . .
+            : . . .
+            !!!WARNING!!! Anomalies detected in [pv/device/prognosticus.core] corefile! PROCEEDing is inadvisable.
+            Strike any key to PROCEED regardless.
+            >
+            : INITIALIZING...
+            : . . .
+            Initialization success.
+            Enter target coordinates to begin the experiment.
+            > #### #### ####
+            Coordinates parsed.
+            : DEPLOYING SUBJECT TO TARGET LOCATION
+            : . . .
+            : DEPLOYED.
+            : ESTABILISHING VISUAL UPLINK
+            : . . .
+            : VISUAL UPLINK ESTABLISHED.
+            > sudo sendcomm 'admin' --message FIND A SUITABLE VESSEL --priority 0 --mask false --channel DIRECT
+            : SENDING
+            : . . .
+            : RECIEVED CALLBACK PING
+            > close
+            : CLOSING IMMEDIATE TERMINAL CONNECTION
+            : . . .
+            : CLOSED.
+            Process finished successfully. Log file output to '../pv/plot/connection_log.txt'. Run with --DEBUG for debug log.
+        ]])
+        end
         Game.world.player.visible = false
         Game.world:removeFX("veehaitchess")
         Game.world:mapTransition("aftonhouse/evanroom")
