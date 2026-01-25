@@ -735,7 +735,7 @@ return {
             CONNECTION_ESTABLISHED_SUCCESS
             VoIP Connected.
             ===================
-            VARIABLE RECIEVED ;; SUBJECT_NAME=]].. Game.save_name ..[[
+            VARIABLE RECIEVED ;; SUBJECT_NAME=]].. Game.save_name ..[[ 
             ===================
             !!!WARNING!!! CONNECTION STABILITY COMPROMISED. EXTERNAL INTERFERENCE;; PLEASE REFERENCE DEBUG LOG.
             !!!WARNING!!! CONNECTION LOST. ATTEMPTING TO RE-ESTABLISH. . .
