@@ -12,9 +12,9 @@ function PartyBattler:init(...)
     self.health_rolling_timer = 0
 end
 
-function PartyBattler:removeHealth(amount, immediate)
+function PartyBattler:removeHealth(amount, swoon, immediate)
     if (immediate or ((self.chara:getHealth() - amount) > 0)) then
-        super.removeHealth(self, amount, immediate)
+        super.removeHealth(self, amount, swoon, immediate)
         self.health_rolling_to = self.chara:getHealth()
         return
     end
@@ -32,8 +32,8 @@ function PartyBattler:removeHealth(amount, immediate)
     -- end
 end
 
-function PartyBattler:removeHealthBroken(amount)
-    self:removeHealth(amount)
+function PartyBattler:removeHealthBroken(amount, swoon)
+    self:removeHealth(amount, swoon)
 end
 
 -- There are so many checks to do aeughghhghghghhgg
