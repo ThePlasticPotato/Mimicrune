@@ -69,6 +69,12 @@ function Mod:shakifyText(text)
     return output_text.."[tempshake:0]"
 end
 
+function Mod:getActionButtons(battler, btn_types)
+    if (Game.battle and Game.battle.tense) then
+        TableUtils.removeValue(btn_types, "spare")
+    end
+end
+
 ---@param map Map
 ---@param music string
 function Mod:onMapMusic(map, music)

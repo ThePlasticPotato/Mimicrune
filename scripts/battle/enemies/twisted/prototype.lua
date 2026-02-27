@@ -30,8 +30,9 @@ function Prototype:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
+        "twistednotes"
     }
-
+    
     -- Dialogue randomly displayed in the enemy's speech bubble
     self.dialogue = {
         "[wave:1][color:white]once upon a\n[color:yellow]star[color:white] so bright",
