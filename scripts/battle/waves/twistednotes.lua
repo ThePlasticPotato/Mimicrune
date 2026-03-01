@@ -15,11 +15,14 @@ function TwistedNotes:init()
     self.alive = false
     self.should_start = false
     self.just_fired = false
+    self.perfect_notes = 0
+    self.notes_fired = 0
 end
 
 function TwistedNotes:onStart()
-  self.timer:after(1, function () self.should_start = true end)
-  self.timer:after(9, function () self.alive = false end)
+  self.timer:after(0.5, function () self.should_start = true end)
+  self.timer:after(8.5, function () self.alive = false end)
+  self.timer:after(9.5, function () if (self.perfect_notes == self.notes_fired) then Assets.playSound("mercyadd") end end)
   --swaps the soul to be purple(if you wanna change the whole encounter to use the purple soul then you can move the next few lines to init)
   Game.battle:swapSoul(PurpleSoul())
   --Game.battle.soul.speed = 8
@@ -48,6 +51,8 @@ function TwistedNotes:onStart()
 end
 
 function TwistedNotes:update()
+  local attackers = self:getAttackers()
+  local prototype = attackers[1]
     if (not self.alive) then
       if (self.should_start) then
         local function lowerBoundByTime(notes, t)
@@ -92,9 +97,14 @@ function TwistedNotes:update()
         if (n) then
           local duration = Game.battle.music.source:getDuration("seconds")
           local remainder = math.max(duration - Game.battle.music:tell(), 0)
+          local numericPitch = self:normalizePitch(n.pitch)[1]
+          local new_bar = (numericPitch > self.last_pitch) and MathUtils.clamp(self.bar + 1, 0, 2) or (self.last_pitch > numericPitch) and MathUtils.clamp(self.bar - 1, 0, 2) or self.bar
+          local anim = (new_bar == 2) and "note_up" or (new_bar == 0) and "note_down" or "note_center"
+          prototype:setAnimation(anim)
           if not self.just_fired then
             self:spawnNoteAttack(n.pitch, n.vel, n.dur)
             self.just_fired = (remainder > (67))
+            self.notes_fired = self.notes_fired + 1
           else
             self.just_fired = false
           end
@@ -160,12 +170,46 @@ end
 function TwistedNotes:beforeEnd()
   local attackers = self:getAttackers()
   local prototype = attackers[1]
+  if (self.perfect_notes == self.notes_fired) then
+    local battler = Game.battle.party[1]
+    for i, battl in ipairs(Game.battle.party) do
+      if (battl:isTargeted()) then
+        battler = battl
+        break
+      end
+    end
+    battler:setAnimation("battle/attack", function()
+      prototype:flash()
+      local damage = MathUtils.round(prototype:getAttackDamage(0, battler, 150))
+
+      local attacksprite = battler.chara:getAttackSprite()
+      local dmg_sprite = Sprite(attacksprite or "effects/attack/cut")
+      dmg_sprite:setOrigin(0.5, 0.5)
+      dmg_sprite:setScale(2.5, 2.5)
+      local relative_pos_x, relative_pos_y = prototype:getRelativePos(prototype.width / 2, prototype.height / 2)
+      dmg_sprite:setPosition(relative_pos_x + prototype.dmg_sprite_offset[1], relative_pos_y + prototype.dmg_sprite_offset[2])
+      dmg_sprite.layer = prototype.layer + 0.01
+      table.insert(prototype.dmg_sprites, dmg_sprite)
+      local dmg_anim_speed = 1 / 15
+      dmg_sprite:play(dmg_anim_speed, false, function(s) s:remove(); TableUtils.removeValue(prototype.dmg_sprites, dmg_sprite) end) -- Remove itself and Remove the dmg_sprite from the enemy's dmg_sprite table when its removed
+      prototype.parent:addChild(dmg_sprite)
+
+      battler.chara:onAttackHit(prototype, damage)
+
+      prototype:hurt(damage, Game.battle.party[1])
+      Game:giveTension(20)
+      Assets.playSound("bigcut")
+    end)
+  end
+
+  
   prototype:slideTo(self.original_x, self.original_y, 0.5, "out-expo")
   for i, at in ipairs(attackers) do
     if (i ~= 1) then
       at:setColor(1,1,1,1)
     end
   end
+  prototype:resetSprite()
 end
 
 return TwistedNotes

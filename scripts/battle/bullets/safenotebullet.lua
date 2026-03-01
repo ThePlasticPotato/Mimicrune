@@ -36,6 +36,9 @@ function SafeNoteBullet:onCollide(soul)
     for _, party in ipairs(Game.battle.party) do
         --party:heal(5)
     end
+    for i, wave in ipairs(Game.battle.waves) do
+        if (wave.perfect_notes) then wave.perfect_notes = wave.perfect_notes + 1 end
+    end
     self:remove()
 end
 
