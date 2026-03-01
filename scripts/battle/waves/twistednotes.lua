@@ -12,56 +12,64 @@ function TwistedNotes:init()
 
     self.original_x = 0
     self.original_y = 0
-    self.alive = true
+    self.alive = false
+    self.should_start = false
+    self.just_fired = false
 end
 
 function TwistedNotes:onStart()
+  self.timer:after(1, function () self.should_start = true end)
   self.timer:after(9, function () self.alive = false end)
-    --swaps the soul to be purple(if you wanna change the whole encounter to use the purple soul then you can move the next few lines to init)
-    Game.battle:swapSoul(PurpleSoul())
-    --Game.battle.soul.speed = 8
-    self:setArenaOffset(-50, 0)
-    --create the strings
-    self.strings = {
-        self:spawnObject(PurpleString(320-50, Game.battle.arena:getTop()+30, BATTLE_LAYERS["below_soul"], Game.battle.arena.width-16, 0)),
-        self:spawnObject(PurpleString(320-50, Game.battle.arena.y, BATTLE_LAYERS["below_soul"], Game.battle.arena.width-16, 0)),
-        self:spawnObject(PurpleString(320-50, Game.battle.arena:getBottom()-30, BATTLE_LAYERS["below_soul"], Game.battle.arena.width-16, 0)),
-    }
+  --swaps the soul to be purple(if you wanna change the whole encounter to use the purple soul then you can move the next few lines to init)
+  Game.battle:swapSoul(PurpleSoul())
+  --Game.battle.soul.speed = 8
+  self:setArenaOffset(-50, 0)
+  --create the strings
+  self.strings = {
+      self:spawnObject(PurpleString(320-50, Game.battle.arena:getTop()+30, BATTLE_LAYERS["below_soul"], Game.battle.arena.width-16, 0)),
+      self:spawnObject(PurpleString(320-50, Game.battle.arena.y, BATTLE_LAYERS["below_soul"], Game.battle.arena.width-16, 0)),
+      self:spawnObject(PurpleString(320-50, Game.battle.arena:getBottom()-30, BATTLE_LAYERS["below_soul"], Game.battle.arena.width-16, 0)),
+  }
 
-    -- --assign the fourth string(the bottom one) as the soul's current string
-    Game.battle.soul.currentString = self.strings[2]
-    -- code here gets called at the start of the wave
-    local function lowerBoundByTime(notes, t)
-      local lo, hi = 1, #notes + 1
-      while lo < hi do
-          local mid = math.floor((lo + hi) / 2)
-          if notes[mid].t < t then
-              lo = mid + 1
-          else
-              hi = mid
-          end
-      end
-      return lo
-    end
-    local now = Game.battle.music:tell()
-    self.next_note_idx = lowerBoundByTime(self.notes, now)
+  -- --assign the fourth string(the bottom one) as the soul's current string
+  Game.battle.soul.currentString = self.strings[2]
+  -- code here gets called at the start of the wave
 
-    local attackers = self:getAttackers()
-    local prototype = attackers[1]
-    for i, at in ipairs(attackers) do
-      if (i ~= 1) then
-        at:setColor(1,1,1,0.5)
-      end
+  local attackers = self:getAttackers()
+  local prototype = attackers[1]
+  for i, at in ipairs(attackers) do
+    if (i ~= 1) then
+      at:setColor(1,1,1,0.5)
     end
-    self.original_x = prototype.x
-    self.original_y = prototype.y
-    prototype:slideTo(prototype.x - 40, SCREEN_HEIGHT/2, 0.5, "out-expo")
+  end
+  self.original_x = prototype.x
+  self.original_y = prototype.y
+  prototype:slideTo(prototype.x - 40, SCREEN_HEIGHT/2, 0.5, "out-expo")
 end
 
 function TwistedNotes:update()
     if (not self.alive) then
-      super.update(self)
-      return
+      if (self.should_start) then
+        local function lowerBoundByTime(notes, t)
+          local lo, hi = 1, #notes + 1
+          while lo < hi do
+              local mid = math.floor((lo + hi) / 2)
+              if notes[mid].t < t then
+                  lo = mid + 1
+              else
+                  hi = mid
+              end
+          end
+          return lo
+        end
+        local now = Game.battle.music:tell()
+        self.next_note_idx = lowerBoundByTime(self.notes, now)
+        self.alive = true
+        self.should_start = false
+      else
+        super.update(self)
+        return
+      end
     end
     local function midiToPitchMultiplier(midiNote, baseMidiNote)
         baseMidiNote = baseMidiNote or 72 -- C4
@@ -75,18 +83,28 @@ function TwistedNotes:update()
     while self.next_note_idx <= #self.notes and self.notes[self.next_note_idx].t <= target do
         local n = self.notes[self.next_note_idx]
         -- Trigger an attack timed to the note:
-        Kristal.Console:log("Testing note")
+        --Kristal.Console:log("Testing note")
         -- if (n.type == "noteOn") then
         --   self.spawnNoteAttack(n.key, n.vel)
         --   self.next_note_idx = self.next_note_idx + 1
         --   Assets.stopAndPlaySound("voice/twstproto", 0.5, midiToPitchMultiplier(self.normalizePitch(n.pitch)[1]))
         -- end
         if (n) then
-          self:spawnNoteAttack(n.pitch, n.vel, n.dur)
+          local duration = Game.battle.music.source:getDuration("seconds")
+          local remainder = math.max(duration - Game.battle.music:tell(), 0)
+          if not self.just_fired then
+            self:spawnNoteAttack(n.pitch, n.vel, n.dur)
+            self.just_fired = (remainder > (67))
+          else
+            self.just_fired = false
+          end
           self.next_note_idx = self.next_note_idx + 1
           local midiNote = self:normalizePitch(n.pitch)[1]
           if midiNote then
-            Assets.stopAndPlaySound("voice/twstproto", 0.75, midiToPitchMultiplier(midiNote))
+            
+            local shakeAmount = (remainder <= 10) and 3 or (remainder <= 35) and 2 or (remainder <= (66)) and 1 or 0
+            --local pitchBoost = (remainder <= (67)) and 0.0833 or 0 
+            Assets.stopAndPlaySound("voice/twstproto", 0.75, midiToPitchMultiplier(midiNote)) --+ pitchBoost)
           end
       end
     end
@@ -103,9 +121,9 @@ function TwistedNotes:spawnNoteAttack(pitch, velocity, duration)
     local unsafe_y1 = MathUtils.lerp(Game.battle.arena.bottom-30, Game.battle.arena.top+30, MathUtils.wrap(new_bar + 1, 0, 3) * 0.5)
     local unsafe_y2 = MathUtils.lerp(Game.battle.arena.bottom-30, Game.battle.arena.top+30, MathUtils.wrap(new_bar - 1, 0, 3) * 0.5)
     -- Spawn smallbullet going left with speed 8 (see scripts/battle/bullets/smallbullet.lua)
-    local bullet = self:spawnBullet("safenotebullet", x, y, math.rad(180), 16)
-    local bullet2 = self:spawnBullet("notebullet", x, unsafe_y1, math.rad(180), 16)
-    local bullet3 = self:spawnBullet("notebullet", x, unsafe_y2, math.rad(180), 16)
+    local bullet = self:spawnBullet("safenotebullet", x, y, math.rad(180), 12)
+    local bullet2 = self:spawnBullet("notebullet", x, unsafe_y1, math.rad(180), 12)
+    local bullet3 = self:spawnBullet("notebullet", x, unsafe_y2, math.rad(180), 12)
 
     -- Dont remove the bullet offscreen, because we spawn it offscreen
     --bullet.remove_offscreen = false

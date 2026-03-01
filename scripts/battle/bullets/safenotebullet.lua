@@ -34,7 +34,7 @@ end
 
 function SafeNoteBullet:onCollide(soul)
     for _, party in ipairs(Game.battle.party) do
-        party:heal(5)
+        --party:heal(5)
     end
     self:remove()
 end
