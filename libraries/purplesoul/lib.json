@@ -12,9 +12,9 @@
       "directionalJumps": true,
       "stringWidth": 2,
       "stringColor": {
-        "r": 1,
-        "g": 0,
-        "b": 1,
+        "r": 0.7725,
+        "g": 0.2941,
+        "b": 0.5490,
         "a": 0.4
       }
     }

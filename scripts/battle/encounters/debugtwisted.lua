@@ -16,9 +16,6 @@ function DebugTwisted:init()
     self:addEnemy("twisted/prototype")
     self:addEnemy("twisted/celebracean")
 
-    --- Uncomment this line to add another!
-    --self:addEnemy("dummy")
-
     self.tense = true
 end
 

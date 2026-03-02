@@ -5,7 +5,7 @@ function TwistedNotes:init()
 
     -- The duration of our wave, in seconds. (Defaults to `5`)
     self.time = 10
-    self.notes, self.bpm = MidiTimeline:loadMidiTimeline(Assets.getMidiPath("battle_tense"), 2) --MidiSong:loadMidiEvents(Assets.getMidiPath("battle_tense"), { track = 2 })
+    self.notes, self.bpm = MidiTimeline:loadMidiTimeline(Assets.getMidiPath("battle_tense_bg"), 2) --MidiSong:loadMidiEvents(Assets.getMidiPath("battle_tense"), { track = 2 })
     self.next_note_idx = 1
     self.last_pitch = 0
     self.bar = 0
@@ -16,6 +16,9 @@ function TwistedNotes:init()
     self.should_start = false
     self.just_fired = false
     self.perfect_notes = 0
+    self:setArenaOffset(-82, 0)
+    self:setSoulOffset(0, 0)
+    self:setArenaSize(30, 142)
     self.notes_fired = 0
 end
 
@@ -24,18 +27,18 @@ function TwistedNotes:onStart()
   self.timer:after(8.5, function () self.alive = false end)
   self.timer:after(9.5, function () if (self.perfect_notes == self.notes_fired) then Assets.playSound("mercyadd") end end)
   --swaps the soul to be purple(if you wanna change the whole encounter to use the purple soul then you can move the next few lines to init)
-  Game.battle:swapSoul(PurpleSoul())
+  Game.battle:swapSoul(MusicSoul(nil, nil, 40, 1, 1))
   --Game.battle.soul.speed = 8
-  self:setArenaOffset(-50, 0)
+  
   --create the strings
   self.strings = {
-      self:spawnObject(PurpleString(320-50, Game.battle.arena:getTop()+30, BATTLE_LAYERS["below_soul"], Game.battle.arena.width-16, 0)),
-      self:spawnObject(PurpleString(320-50, Game.battle.arena.y, BATTLE_LAYERS["below_soul"], Game.battle.arena.width-16, 0)),
-      self:spawnObject(PurpleString(320-50, Game.battle.arena:getBottom()-30, BATTLE_LAYERS["below_soul"], Game.battle.arena.width-16, 0)),
+      self:spawnObject(PurpleString(320-82, Game.battle.arena:getTop()+30, BATTLE_LAYERS["below_soul"], Game.battle.arena.width-16, 0)),
+      self:spawnObject(PurpleString(320-82, Game.battle.arena.y, BATTLE_LAYERS["below_soul"], Game.battle.arena.width-16, 0)),
+      self:spawnObject(PurpleString(320-82, Game.battle.arena:getBottom()-30, BATTLE_LAYERS["below_soul"], Game.battle.arena.width-16, 0)),
   }
 
   -- --assign the fourth string(the bottom one) as the soul's current string
-  Game.battle.soul.currentString = self.strings[2]
+  --Game.battle.soul.currentString = self.strings[2]
   -- code here gets called at the start of the wave
 
   local attackers = self:getAttackers()
@@ -95,6 +98,7 @@ function TwistedNotes:update()
         --   Assets.stopAndPlaySound("voice/twstproto", 0.5, midiToPitchMultiplier(self.normalizePitch(n.pitch)[1]))
         -- end
         if (n) then
+          --Game.battle.soul:shake(0, 1, 0.25, 1/15)
           local duration = Game.battle.music.source:getDuration("seconds")
           local remainder = math.max(duration - Game.battle.music:tell(), 0)
           local numericPitch = self:normalizePitch(n.pitch)[1]
@@ -114,7 +118,7 @@ function TwistedNotes:update()
             
             local shakeAmount = (remainder <= 10) and 3 or (remainder <= 35) and 2 or (remainder <= (66)) and 1 or 0
             --local pitchBoost = (remainder <= (67)) and 0.0833 or 0 
-            Assets.stopAndPlaySound("voice/twstproto", 0.75, midiToPitchMultiplier(midiNote)) --+ pitchBoost)
+            Assets.stopAndPlaySound((remainder > (67)) and "voice/twstproto" or "voice/twstproto_keyshift", 0.75, midiToPitchMultiplier(midiNote)) --+ pitchBoost)
           end
       end
     end
@@ -123,7 +127,7 @@ end
 
 function TwistedNotes:spawnNoteAttack(pitch, velocity, duration)
     -- Our X position is offscreen, to the right
-    local x = self:getAttackers()[1].x - 10
+    local x = self:getAttackers()[1].x - 16
     local numericPitch = self:normalizePitch(pitch)[1]
     local new_bar = (numericPitch > self.last_pitch) and MathUtils.clamp(self.bar + 1, 0, 2) or (self.last_pitch > numericPitch) and MathUtils.clamp(self.bar - 1, 0, 2) or self.bar
 
@@ -199,6 +203,7 @@ function TwistedNotes:beforeEnd()
       prototype:hurt(damage, Game.battle.party[1])
       Game:giveTension(20)
       Assets.playSound("bigcut")
+      Game.battle.timer:after(0.5, function () battler:setAnimation("battle/attack_end", function() battler:resetSprite() end) end)
     end)
   end
 
