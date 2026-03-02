@@ -1,5 +1,6 @@
 function Mod:init()
     print("Loaded "..self.info.name.."!")
+    self.playtest = true
 end
 
 function Mod:postInit(new_file)
@@ -10,7 +11,8 @@ function Mod:postInit(new_file)
     elseif new_file then
         Game.world.player.visible = false
         Game:setFlag("has_cell_phone", true)
-        Game.world:startCutscene("connection", "streamer_mode")
+        if (self.playtest) then Game.world:startCutscene("connection", "battle_test") else Game.world:startCutscene("connection", "streamer_mode") end
+        Game:setFlag("playtest_mode", self.playtest)
         Game:setFlag("audible_footsteps", true)
     end
 
@@ -86,5 +88,15 @@ function Mod:onMapMusic(map, music)
 
     if (StringUtils.contains(map.id, "town") and StringUtils.contains(music, "day") and Game:getFlag("quiet_music", false)) then
         return "area/light/town/rain"
+    end
+end
+
+
+function Mod:onKeyPressed(key)
+    if key == "l" then
+        if (not Game.battle) and (not Game.world.cutscene) then
+            Game:addPartyMember("cassidy")
+            Game:encounter("debugtwisted")
+        end
     end
 end

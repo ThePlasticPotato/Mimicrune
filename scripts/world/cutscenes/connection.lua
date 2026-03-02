@@ -2,6 +2,63 @@ local platformName = ""
 return {
     ---@param cutscene WorldCutscene
     ---@param event Event
+    battle_test = function (cutscene, event)
+                local text
+        local function interloperTextFade(wait)
+            local this_text = text
+            if wait ~= false then
+                cutscene:wait(2)
+            end
+            Game.world.timer:tween(1, this_text, { alpha = 0 }, "linear", function ()
+                this_text:remove()
+            end)
+        end
+
+        local function interloperText(str, advance, instaclear)
+            text = DialogueText("[speed:2][spacing:6][voice:interloper]" .. str, 240, 50, 640, 480,
+                                { auto_size = true, align = "center", font_size = 16 })
+            text.layer = WORLD_LAYERS["top"] + 100
+            text.skip_speed = true
+            text.parallax_x = 0
+            text.parallax_y = 0
+            local text_width = text:getTextWidth()
+            text.x = 320 - (text_width/2)
+            Game.world:addChild(text)
+
+            if advance ~= false then
+                cutscene:wait(function () return not text:isTyping() end)
+                interloperTextFade(true)
+            end
+            if instaclear == true then
+                cutscene:wait(function () return not text:isTyping() end)
+                text:remove()
+            end
+        end
+
+        interloperText("This is an early alpha version of the game, setup to immediately boot you into a Tense Battle for playtesting purposes. It does not reflect the finalized state of the game, nor is it necessarily stable. Do you wish to PROCEED?", false)
+        cutscene:wait(4)
+        local choice2 = ""
+        local choicer2 = GonerChoice(SCREEN_WIDTH / 2, (SCREEN_HEIGHT * 3) / 4, nil, function (choiced, x, y) choice2 = choiced end, function() end)
+        choicer2.x = choicer2.x - (choicer2.width / 2)
+        Game.world:addChild(choicer2)
+        cutscene:wait(function () return choice2 ~= "" end)
+
+        cutscene:wait(1)
+
+        if (choice2 == "NO") then
+            love.event.quit()
+        else
+            interloperTextFade()
+            cutscene:wait(2)
+            cutscene:endCutscene()
+            Game:addPartyMember("cassidy")
+            Game:encounter("debugtwisted")
+        end
+    end,
+
+
+    ---@param cutscene WorldCutscene
+    ---@param event Event
     streamer_mode = function (cutscene, event)
         local text
         local function interloperTextFade(wait)
