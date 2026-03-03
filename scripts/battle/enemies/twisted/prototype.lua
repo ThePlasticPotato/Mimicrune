@@ -33,7 +33,7 @@ function Prototype:init()
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
         "twisted/twistednotes",
-        "twisted/empty"
+        "twisted/twistedmictoss"
     }
     
     -- Dialogue randomly displayed in the enemy's speech bubble

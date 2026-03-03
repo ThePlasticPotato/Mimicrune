@@ -72,6 +72,13 @@ function PartyMissile:update()
     super.update(self)
 end
 
+function PartyMissile:onCollide(soul)
+    super.onCollide(self, soul)
+    self.target_x = soul.x
+    self.target_y = soul.y
+    self.wave:explodeMissile(self)
+end
+
 function PartyMissile:draw()
     -- for i, smoke in ipairs(self.smoketrail) do
     --     local alpha = math.max(smoke.time, 0)

@@ -48,7 +48,6 @@ function TwistedMissiles:fireMissile()
   missile.remove_offscreen = false
   table.insert(self.missiles, #self.missiles + 1, missile)
   self.missiles_fired = self.missiles_fired + 1
-  self.cooldown = 0.25
 end
 
 function TwistedMissiles:explodeMissile(missile)
@@ -90,6 +89,7 @@ function TwistedMissiles:update()
     self.target_sprite:addChild(afterimage)
     Assets.playSound("icky")
     self.celebracean:setAnimation("volley", function() self:fireMissile(); self.timer:after(0.5, function () self.celebracean:resetSprite() end) end)
+    self.cooldown = 0.25
   end
 
   if (not self.targeting) and (not self.targeting_done) and (self.missiles_fired < self.missiles_to_fire) then
@@ -103,7 +103,7 @@ function TwistedMissiles:update()
     self.target_sprite.visible = false
   end
 
-  if (self.missiles_fired == self.missiles_exploded) and (self.missiles_exploded == self.missiles_to_fire) then
+  if (self.missiles_fired == self.missiles_exploded) and (self.missiles_exploded == self.missiles_to_fire+1) then
     self.timer:after(2, function () self:setFinished() end)
   end
   super.update(self)
