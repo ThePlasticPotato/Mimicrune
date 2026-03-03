@@ -4,7 +4,7 @@ function TwistedMicToss:init()
     super.init(self)
 
     -- The duration of our wave, in seconds. (Defaults to `5`)
-    self.time = 9
+    self.time = 12
 
     --reminder:
     -- mic falls, hits ground with mic hit sound, bursts into notes and a beam upwards

@@ -94,7 +94,8 @@ end
 
 function Mod:onKeyPressed(key)
     if key == "l" then
-        if (not Game.battle) and (not Game.world.cutscene) then
+        if (not Game.battle) then
+            Game.world:stopCutscene()
             Game:addPartyMember("cassidy")
             Game:encounter("debugtwisted")
         end

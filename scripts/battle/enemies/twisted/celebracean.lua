@@ -33,6 +33,7 @@ function Celebracean:init()
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
         "twisted/twistedmissiles",
+        "twisted/twistedpopper"
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble

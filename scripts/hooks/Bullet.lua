@@ -13,6 +13,7 @@ function Bullet:onCollide(soul)
         soul.parry_cd = math.min(soul.parry_cd, 0.75)
         soul.parry_draw_timer = 1.0
         soul.inv_timer = self.inv_timer/2.0
+        self:onParry(soul)
     else
         if soul.inv_timer == 0 then
             self:onDamage(soul)
@@ -22,6 +23,9 @@ function Bullet:onCollide(soul)
     if self.destroy_on_hit then
         self:remove()
     end
+end
+
+function Bullet:onParry(soul)
 end
 
 function Bullet:canParry()

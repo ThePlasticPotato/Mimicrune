@@ -79,12 +79,12 @@ function TwistedMissiles:update()
   end
 
   if (self.targeting_done) then
+    self.targeting_done = false
     self.target_x = self.target_sprite.x
     self.rampup = 1
     self.target_y = self.target_sprite.y
     self.target_sprite.visible = true
     self.target_sprite:flash()
-    self.targeting_done = false
     local afterimage = AfterImage(self.target_sprite, 0.5, 0.01)
     self.target_sprite:addChild(afterimage)
     Assets.playSound("icky")
@@ -100,7 +100,7 @@ function TwistedMissiles:update()
   end
 
   if (self.missiles_fired >= self.missiles_to_fire) and (not self.targeting) and (not self.targeting_done) then
-    self.target_sprite.visible = false
+    self.target_sprite:fadeOutAndRemove(1)
   end
 
   if (self.missiles_fired == self.missiles_exploded) and (self.missiles_exploded == self.missiles_to_fire+1) then
