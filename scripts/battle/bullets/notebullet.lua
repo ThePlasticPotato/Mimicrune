@@ -2,7 +2,7 @@ local NoteBullet, super = Class(Bullet)
 
 function NoteBullet:init(x, y, dir, speed, twisted)
     -- Last argument = sprite path
-    super.init(self, x, y, (not twisted) and ("bullets/notebullet_twisted") or "bullets/notebullet")
+    super.init(self, x, y, (Game.battle.tense) and ("bullets/notebullet_twisted") or "bullets/notebullet")
 
     -- Move the bullet in dir radians (0 = right, pi = left, clockwise rotation)
     self.physics.direction = dir

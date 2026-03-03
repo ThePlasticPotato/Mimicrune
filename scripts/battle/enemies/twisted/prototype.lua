@@ -12,7 +12,7 @@ function Prototype:init()
     self.max_health = 450
     self.health = 450
     -- Enemy attack (determines bullet damage)
-    self.attack = 4
+    self.attack = 12
     -- Enemy defense (usually 0)
     self.defense = 4
     -- Enemy reward
@@ -33,7 +33,7 @@ function Prototype:init()
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
         "twisted/twistednotes",
-        "basic"
+        "twisted/empty"
     }
     
     -- Dialogue randomly displayed in the enemy's speech bubble

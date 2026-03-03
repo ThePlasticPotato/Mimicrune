@@ -12,7 +12,7 @@ function Celebracean:init()
     self.max_health = 450
     self.health = 450
     -- Enemy attack (determines bullet damage)
-    self.attack = 2
+    self.attack = 10
     -- Enemy defense (usually 0)
     self.defense = 6
     -- Enemy reward
@@ -32,7 +32,7 @@ function Celebracean:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "basic"
+        "twisted/twistedmissiles",
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble

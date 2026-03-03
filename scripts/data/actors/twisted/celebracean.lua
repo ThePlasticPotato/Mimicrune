@@ -43,6 +43,7 @@ function actor:init()
         -- (even though there's only 1 idle frame)
         ["idle"] = {"idle", 0.09, true},
         ["defeat"] = {"defeat", 0.25, true},
+        ["volley"] = {"volley", 0.09, false}
     }
 
     -- Table of sprite offsets (indexed by sprite name)
