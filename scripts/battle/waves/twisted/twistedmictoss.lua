@@ -24,7 +24,7 @@ end
 
 function TwistedMicToss:onStart()
     self.timer:every(1, function()
-        if (self.wave_timer > 8.5) then
+        if (self.wave_timer > 11.5) then
             return false
         end
         local randx = MathUtils.random(Game.battle.arena:getLeft(), Game.battle.arena:getRight())

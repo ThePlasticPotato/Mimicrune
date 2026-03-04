@@ -33,7 +33,8 @@ function Celebracean:init()
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
         "twisted/twistedmissiles",
-        "twisted/twistedpopper"
+        "twisted/twistedpopper",
+        "twisted/twistedpizzawheel"
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
@@ -216,9 +217,11 @@ end
 
 function Celebracean:getNextWaves()
     local any_enemy_notes = false
+    local any_enemy_wheel = false
     for _, enemy in ipairs(Game.battle:getActiveEnemies()) do
         if enemy ~= self then
             if not any_enemy_notes and enemy.selected_wave == "twisted/twistednotes" then any_enemy_notes = true; break end
+            if not any_enemy_wheel and enemy.selected_wave == "twisted/twistedpizzawheel" then any_enemy_wheel = true; end
         end
     end
 
@@ -229,6 +232,8 @@ function Celebracean:getNextWaves()
     end
     if any_enemy_notes then
         return {}
+    elseif any_enemy_wheel then
+        return TableUtils.filter(self.waves, function(wave) return wave ~= "twisted/twistedpizzawheel" end)
     else
         return self.waves
     end
