@@ -9,10 +9,10 @@ function Prototype:init()
     self:setActor("prototype")
 
     -- Enemy health
-    self.max_health = 450
-    self.health = 450
+    self.max_health = 390
+    self.health = 390
     -- Enemy attack (determines bullet damage)
-    self.attack = 40
+    self.attack = 4
     -- Enemy defense (usually 0)
     self.defense = 0
     -- Enemy reward

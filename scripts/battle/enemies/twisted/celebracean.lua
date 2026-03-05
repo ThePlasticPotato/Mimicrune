@@ -9,10 +9,10 @@ function Celebracean:init()
     self:setActor("celebracean_twisted")
 
     -- Enemy health
-    self.max_health = 450
-    self.health = 450
+    self.max_health = 920
+    self.health = 920
     -- Enemy attack (determines bullet damage)
-    self.attack = 10
+    self.attack = 6
     -- Enemy defense (usually 0)
     self.defense = 6
     -- Enemy reward
@@ -49,7 +49,7 @@ function Celebracean:init()
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
-    self.check = "AT 2 DF 6\n* A celebratory crustacean\n* Seems the party is over..."
+    self.check = "AT 6 DF 6\n* A celebratory crustacean\n* Seems the party is over..."
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
@@ -63,8 +63,8 @@ function Celebracean:init()
 
     self.twisted = true
     -- Register act called "Smile"
-    self:registerActFor("evan", "Reason", "Try\nReason")
-    self:registerActFor("cassidy", "Threaten", "Scare\noff?")
+    self:registerActFor("evan", "Reason", "Try to Reason")
+    self:registerActFor("cassidy", "Threaten", "Scare off?")
 end
 
 function Celebracean:onAct(battler, name)

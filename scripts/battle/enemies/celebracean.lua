@@ -9,12 +9,12 @@ function Celebracean:init()
     self:setActor("celebracean")
 
     -- Enemy health
-    self.max_health = 450
-    self.health = 450
+    self.max_health = 460
+    self.health = 460
     -- Enemy attack (determines bullet damage)
-    self.attack = 40
+    self.attack = 2
     -- Enemy defense (usually 0)
-    self.defense = 0
+    self.defense = 3
     -- Enemy reward
     self.money = 100
 

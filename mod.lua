@@ -97,12 +97,12 @@ function Mod:onKeyPressed(key)
         if (not Game.battle) then
             if (Game.world.cutscene) then Game.world:stopCutscene() end
             if (not Game.party[2]) then Game:addPartyMember("cassidy") end
-            Game.dark_inventory:addItem("pepperoni_slice")
-            Game.dark_inventory:addItem("plain_slice")
-            Game.dark_inventory:addItem("plain_slice")
-            Game.dark_inventory:addItem("fizzyfaz")
-            Game.dark_inventory:addItem("fizzyfaz")
-            Game.dark_inventory:addItem("fizzyfaz")
+            Game.inventory:tryGiveItem("pepperoni_slice", true)
+            Game.inventory:tryGiveItem("plain_slice", true)
+            Game.inventory:tryGiveItem("plain_slice", true)
+            Game.inventory:tryGiveItem("fizzyfaz", true)
+            Game.inventory:tryGiveItem("fizzyfaz", true)
+            Game.inventory:tryGiveItem("fizzyfaz", true)
             Game:setFlag("tonics", 4)
             Game:setFlag("bandaids", 6)
             Game:setFlag("purifiers", 3)

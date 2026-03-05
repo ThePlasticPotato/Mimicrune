@@ -9,10 +9,10 @@ function Prototype:init()
     self:setActor("prototype_twisted")
 
     -- Enemy health
-    self.max_health = 450
-    self.health = 450
+    self.max_health = 780
+    self.health = 780
     -- Enemy attack (determines bullet damage)
-    self.attack = 12
+    self.attack = 8
     -- Enemy defense (usually 0)
     self.defense = 4
     -- Enemy reward
@@ -49,7 +49,7 @@ function Prototype:init()
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
-    self.check = "AT 4 DF 4\n* An unfinished prototype\n* No longer salvagable."
+    self.check = "AT 8 DF 4\n* An unfinished prototype\n* No longer salvagable."
 
     -- Text randomly displayed at the bottom of the screen each turn
     self.text = {
@@ -64,8 +64,6 @@ function Prototype:init()
     self.twisted = true
     -- Register act called "Smile"
     self:registerActFor("evan", "Reason", "Try to Reason")
-    --debug
-    self:registerActFor("evan", "TRYCURE", "test")
     self:registerActFor("cassidy", "Threaten", "Scare off?")
 end
 
