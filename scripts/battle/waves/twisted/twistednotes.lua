@@ -20,6 +20,8 @@ function TwistedNotes:init()
     self:setSoulOffset(0, 0)
     self:setArenaSize(30, 142)
     self.notes_fired = 0
+
+    self.solo = true
 end
 
 function TwistedNotes:onStart()

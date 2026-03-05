@@ -6,8 +6,9 @@ function Circlesplosion:init(x, y, radius, rate)
 
     self.radius = radius or 1
     self.expansion_rate = rate or 2
-    self.collider = CircleCollider(self, self.x, self.y, self.radius)
+    self.collider = CircleCollider(self, 0, 0, self.radius)
     self:fadeOutAndRemove(1)
+    self.destroy_on_hit = false
 end
 
 function Circlesplosion:update()

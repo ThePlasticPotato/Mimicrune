@@ -22,11 +22,10 @@
     // The party. The first character is the player.
     "party": ["evan"],
 
-    // The inventory. Contains three darkburgers, a cell phone and a shadow crystal by default.
     "inventory": {
-        "items": ["glowshard", "darkburger", "darkburger", "darkburger"],
-        "armors": ["faz_bowtie", "overmosts"],
-        "weapons": [ "notsogreatsword", "promisering", "popring", "classicmic" ],
+        "items": [],
+        "armors": [],
+        "weapons": [],
         "key_items": ["cell_phone"]
     },
     
@@ -43,7 +42,7 @@
     "equipment": {
         "evan": {
             "weapon": "notsogreatsword",
-            "armor": ["faz_bowtie", "amber_card"]
+            "armor": ["faz_bowtie"]
         }
     },
 

@@ -52,6 +52,15 @@ return {
             cutscene:wait(2)
             cutscene:endCutscene()
             Game:addPartyMember("cassidy")
+            Game.dark_inventory:addItem("pepperoni_slice")
+            Game.dark_inventory:addItem("plain_slice")
+            Game.dark_inventory:addItem("plain_slice")
+            Game.dark_inventory:addItem("fizzyfaz")
+            Game.dark_inventory:addItem("fizzyfaz")
+            Game.dark_inventory:addItem("fizzyfaz")
+            Game:setFlag("tonics", 4)
+            Game:setFlag("bandaids", 6)
+            Game:setFlag("purifiers", 3)
             Game:encounter("debugtwisted")
         end
     end,

@@ -34,7 +34,8 @@ function Celebracean:init()
     self.waves = {
         "twisted/twistedmissiles",
         "twisted/twistedpopper",
-        "twisted/twistedpizzawheel"
+        "twisted/twistedpizzawheel",
+        "twisted/twistedclawgnet"
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
@@ -63,8 +64,6 @@ function Celebracean:init()
     self.twisted = true
     -- Register act called "Smile"
     self:registerActFor("evan", "Reason", "Try\nReason")
-    --debug
-    self:registerActFor("evan", "TRYCURE", "test")
     self:registerActFor("cassidy", "Threaten", "Scare\noff?")
 end
 

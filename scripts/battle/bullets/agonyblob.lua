@@ -11,7 +11,7 @@ function AgonyBlob:init(x, y, dir, speed)
     self.rot = 0
     self.width = 4
     self.height = 4
-    self.collider = Hitbox(self, self.width/4, self.height/4, self.width/2, self.height/2)
+    self.collider = Hitbox(self, -self.width/4, -self.height/4, self.width/2, self.height/2)
 
     --self.damage = self.damage * 2
 end

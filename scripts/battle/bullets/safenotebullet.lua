@@ -8,7 +8,7 @@ function SafeNoteBullet:init(x, y, dir, speed, twisted)
     self.physics.direction = dir
     -- Speed the bullet moves (pixels per frame at 30FPS)
     self.physics.speed = speed
-    self.parry = true
+    self.parry = false
     self.visual_siner = 0
     self.afterimg_timer = 0
     self.damage = 0

@@ -7,16 +7,17 @@ function MicBeam:init(x, y, radius, rate)
     self.radius = radius or 1
     self.expansion_rate = rate or 1
     self.height = 142
-    self.collider = Hitbox(self, self.radius/4, 0, self.radius/2, self.height)
+    self.collider = Hitbox(self, -self.radius/4, 0, self.radius/2, self.height)
     self:fadeOutAndRemove(1)
+    self.destroy_on_hit = false
 end
 
 function MicBeam:update()
     self.expansion_rate = self.expansion_rate - DT
     self.radius = self.radius + self.expansion_rate * DTMULT
     -- For more complicated bullet behaviours, code here gets called every update
-    self.collider.x = self.x - self.radius
-    self.collider.width = self.radius * 2
+    self.collider.x = -self.radius/4
+    self.collider.width = self.radius/2
 
     super.update(self)
 end

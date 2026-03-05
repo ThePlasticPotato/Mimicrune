@@ -95,8 +95,18 @@ end
 function Mod:onKeyPressed(key)
     if key == "l" then
         if (not Game.battle) then
-            Game.world:stopCutscene()
-            Game:addPartyMember("cassidy")
+            if (Game.world.cutscene) then Game.world:stopCutscene() end
+            if (not Game.party[2]) then Game:addPartyMember("cassidy") end
+            Game.dark_inventory:addItem("pepperoni_slice")
+            Game.dark_inventory:addItem("plain_slice")
+            Game.dark_inventory:addItem("plain_slice")
+            Game.dark_inventory:addItem("fizzyfaz")
+            Game.dark_inventory:addItem("fizzyfaz")
+            Game.dark_inventory:addItem("fizzyfaz")
+            Game:setFlag("tonics", 4)
+            Game:setFlag("bandaids", 6)
+            Game:setFlag("purifiers", 3)
+
             Game:encounter("debugtwisted")
         end
     end
