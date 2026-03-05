@@ -19,6 +19,8 @@ function MicBeam:update()
     self.collider.x = -self.radius/4
     self.collider.width = self.radius/2
 
+    self.collidable = self.alpha > 0.5
+
     super.update(self)
 end
 

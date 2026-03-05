@@ -17,6 +17,8 @@ function Circlesplosion:update()
     -- For more complicated bullet behaviours, code here gets called every update
     self.collider.radius = self.radius
 
+    self.collidable = self.alpha > 0.5
+
     super.update(self)
 end
 
