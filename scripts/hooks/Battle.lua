@@ -21,18 +21,6 @@ function Battle:returnToWorld()
     super.returnToWorld(self)
 end
 
---- Checks to see whether the whole party is downed and starts a [`GameOver`](lua://GameOver.init) if they are
-function Battle:checkGameOver()
-    
-    for _,battler in ipairs(self.party) do
-        if not battler.is_down then
-            return
-        end
-    end
-    self.music_additional:stop()
-    super.checkGameOver(self)
-end
-
 function Battle:commitAction(battler, action_type, target, data, extra)
     data = data or {}
     extra = extra or {}
