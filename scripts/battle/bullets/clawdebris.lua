@@ -24,7 +24,7 @@ function ClawDebris:init(x, y, dir, speed, width, height, target, safe)
     if (self.safe) then
         self.damage = 0
         self.can_graze = false
-        self:addFX(ShaderFX("kinoglitch", { ["iTime"] = function () return Kristal.getTime() end, ["scan_line_jitter"] = function () return 0.015 * (5 / 10) end, ["horizontal_shake"] = function () return 0.01 * (5 / 10) end }, false), "glitchy")
+        self:glitch()
     end
 
     --self.damage = self.damage * 2

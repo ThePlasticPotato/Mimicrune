@@ -15,7 +15,7 @@ function SafeNoteBullet:init(x, y, dir, speed, twisted)
     self.can_graze = false
 
     self:setColor(1,1,1,0.75)
-    self:addFX(ShaderFX("kinoglitch", { ["iTime"] = function () return Kristal.getTime() end, ["scan_line_jitter"] = function () return 0.015 * (5 / 10) end, ["horizontal_shake"] = function () return 0.01 * (5 / 10) end }, false), "glitchy")
+    self:glitch()
 end
 
 function SafeNoteBullet:update()

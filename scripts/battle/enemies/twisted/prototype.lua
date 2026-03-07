@@ -168,7 +168,7 @@ function Prototype:onAct(battler, name)
                     Game.battle.twisted_darkness:remove()
                     Game.battle.fountain:remove()
                 else
-                    Game.battle.fountain:addFX(ShaderFX("kinoglitch", { ["iTime"] = function () return Kristal.getTime() end, ["scan_line_jitter"] = function () return 0.015 * (5 / 10) end, ["horizontal_shake"] = function () return 0.01 * (5 / 10) end }, false), "glitchy")
+                    Game.battle.fountain:glitch()--Game.battle.fountain:addFX(ShaderFX("kinoglitch", { ["iTime"] = function () return Kristal.getTime() end, ["scan_line_jitter"] = function () return 0.015 * (5 / 10) end, ["horizontal_shake"] = function () return 0.01 * (5 / 10) end }, false), "glitchy")
                 end
             end
 
@@ -212,7 +212,7 @@ function Prototype:onAct(battler, name)
         Assets.playSound("psyburst")
         self:flash()
         battler:flash()
-        self:addFX(ShaderFX("kinoglitch", { ["iTime"] = function () return Kristal.getTime() end, ["scan_line_jitter"] = function () return 0.015 * (5 / 10) end, ["horizontal_shake"] = function () return 0.01 * (5 / 10) end }, false), "glitchy")
+        self:glitch()--self:addFX(ShaderFX("kinoglitch", { ["iTime"] = function () return Kristal.getTime() end, ["scan_line_jitter"] = function () return 0.015 * (5 / 10) end, ["horizontal_shake"] = function () return 0.01 * (5 / 10) end }, false), "glitchy")
 
         return {
             "* Cassidy unleashes her power...",
@@ -228,7 +228,7 @@ end
 function Prototype:getNextWaves()
     if (self.scrambled) then
         self.scrambled = false
-        self:removeFX("glitchy")
+        self:stopGlitch()
         return {}
     end
     return super.getNextWaves(self)

@@ -150,9 +150,9 @@ return {
         local texts = {}
         local wdtexts = {}
         local function shortGlitch()
-            Game.world:addFX(ShaderFX("glitch", { ["iTime"] = function () return Kristal.getTime() end, ["glitchScale"] = 0.6}, false), "glitchy")
+            Game.world:blockGlitch(0.6)--Game.world:addFX(ShaderFX("glitch", { ["iTime"] = function () return Kristal.getTime() end, ["glitchScale"] = 0.6}, false), "glitchy")
             cutscene:wait(0.25)
-            Game.world:removeFX("glitchy")
+            Game.world:stopGlitch()
         end
         local function wipeText() 
             for index, value in ipairs(texts) do
@@ -211,7 +211,7 @@ return {
         local flash_sprite = Sprite("misc/DEVICE_bootup", 0, 0)
         flash_sprite:setScale(2,2)
         flash_sprite:play(1/10, false, function()
-            Game.world:addFX(ShaderFX("crt_convert", { ["texsize"] = {SCREEN_WIDTH, SCREEN_HEIGHT} }, false), "ceeartee")
+            Game.world:addFX(ShaderFX("crt_convert", { ["texsize"] = {SCREEN_WIDTH, SCREEN_HEIGHT}, ["warp"] = 0.75, ["scan"] = 0.75 }, false), "ceeartee")
             flash_sprite:setSprite("misc/DEVICE_bootup_end")
             flash_sprite:play(1/10, false, function ()
                 
@@ -576,15 +576,15 @@ return {
         
         Game.world.music:stop()
         cutscene:playSound("AUDIO_interception")
-        Game.world:addFX(ShaderFX("glitch", { ["iTime"] = function () return Kristal.getTime() end, ["glitchScale"] = 0.4}, false), "glitchy")
+        Game.world:blockGlitch(0.4)--Game.world:addFX(ShaderFX("glitch", { ["iTime"] = function () return Kristal.getTime() end, ["glitchScale"] = 0.4}, false), "glitchy")
         Game:setBorder("DEVICE_ERROR", 0)
 
         cutscene:wait(2)
-        Game.world:removeFX("glitchy")
+        Game.world:stopGlitch()
         cutscene:wait(4)
 
         gonerText("...CURIOUS.[wait:20]\n THERE APPEARS TO BE AN", true, true)
-        Game.world:addFX(ShaderFX("glitch", { ["iTime"] = function () return Kristal.getTime() end, ["glitchScale"] = 0.6}, false), "glitchy")
+        Game.world:glitch()--Game.world:addFX(ShaderFX("glitch", { ["iTime"] = function () return Kristal.getTime() end, ["glitchScale"] = 0.6}, false), "glitchy")
         cutscene:playSound("AUDIO_interception", 1.0, 1.2)
         Game:setBorder("DEVICE_BROKEN", 0)
         cutscene:wait(2)
@@ -596,7 +596,7 @@ return {
         background:remove()
         Assets.stopSound("AUDIO_interception")
         cutscene:endCutscene()
-        Game.world:removeFX("glitchy")
+        Game.world:stopGlitch()
         Game.world:startCutscene("connection", "terminated")
         cutscene:fadeIn(0.5)
     end,
@@ -604,7 +604,7 @@ return {
     ---@param cutscene WorldCutscene
     ---@param event any
     terminated = function(cutscene, event)
-        Game.world:addFX(ShaderFX("vhs", {["iTime"] = function () return Kristal.getTime() end, ["texsize"] = {SCREEN_WIDTH, SCREEN_HEIGHT}, ["noiseTex"] = Assets.getTexture("static_gray")}), "veehaitchess")
+        Game.world:vhs({SCREEN_WIDTH, SCREEN_HEIGHT}, Assets.getTexture("static_gray"))--Game.world:addFX(ShaderFX("vhs", {["iTime"] = function () return Kristal.getTime() end, ["texsize"] = {SCREEN_WIDTH, SCREEN_HEIGHT}, ["noiseTex"] = Assets.getTexture("static_gray")}), "veehaitchess")
         local text
         local function interloperTextFade(wait)
             local this_text = text
@@ -702,7 +702,7 @@ return {
         local fade = cutscene:fadeOut(10, {["color"] = COLORS.white})
         interloperText("Your[wait:20]\nname[wait:20]\nis\n[wait:10].[wait:10].[wait:10].")
         cutscene:wait(fade)
-        Game.world:removeFX("veehaitchess")
+        Game.world:stopVhs()
         if (text and not text.isRemoved) then
             text:remove()
         end
@@ -710,7 +710,12 @@ return {
         soulglow:remove()
         healparticles:remove()
         Game.world.camera:shake(2, 2)
-        cutscene:text("[voice:elizabeth]* EVAN![wait:20]\n* WAKE UP! Dad made breakfast, and you're gonna be late again!")
+        local finished, box = cutscene:text("[voice:elizabeth]* EVAN![wait:20]\n* WAKE UP! Dad made breakfast, and you're gonna be late again!")
+        if box then
+            local glitch_timer = 10
+            Game.stage.timer:approach(0.5, 10, 0, function(val) glitch_timer = val end)
+            box:glitch({["scan_line_jitter"] = function () return 0.015 * (glitch_timer / 10) end, ["horizontal_shake"] = function () return 0.01 * (glitch_timer / 10) end }, 0.5)
+        end
         cutscene:endCutscene()
         Game.world:startCutscene("connection", "intro_transition")
     end,
@@ -802,7 +807,7 @@ Process finished successfully. Log file output to '../pv/plot/connection_log.txt
         ]])
         end
         Game.world.player.visible = false
-        Game.world:removeFX("veehaitchess")
+        Game.world:stopVhs()
         Game.world:mapTransition("aftonhouse/evanroom")
         Game.world.player.visible = false
         cutscene:wait(cutscene:fadeIn(1))

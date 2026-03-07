@@ -16,7 +16,7 @@ function SoundWave:init(x, y, dir)
     self.remove_offscreen = true
     self.has_entered_arena = false
     if (Game.battle.tense) then
-        self:addFX(ShaderFX("kinoglitch", { ["iTime"] = function () return Kristal.getTime() end, ["scan_line_jitter"] = function () return 0.015 * (5 / 10) end, ["horizontal_shake"] = function () return 0.005 * (5 / 10) end }, false), "glitchy")
+        self:glitch({["scan_line_jitter"] = 0.015 * (5/10), ["horizontal_shake"] = 0.005 * (5 / 10), ["color_drift"] = 0})
     end
     self.last_bounced = "none"
 
