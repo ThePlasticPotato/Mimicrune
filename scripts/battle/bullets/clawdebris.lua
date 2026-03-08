@@ -59,7 +59,9 @@ end
 function ClawDebris:update()
     super.update(self)
     self.rot = self.rot + DTMULT
-    if MathUtils.dist(self.x, self.y, self.target.x, self.target.y) < 8 then
+    local passed = ((self.wave.claw_side < 1) and (self.x <= self.target.x)) or ((self.wave.claw_side >= 1) and (self.x >= self.target.x))
+    if (self.x < 0) or (self.x > SCREEN_WIDTH) then passed = false end
+    if passed then
         self.wave.finished_bullets = self.wave.finished_bullets + 1
         local current_claw = (self.wave.claw_side < 1) and self.wave.left_claw or self.wave.right_claw
         current_claw:shake(0, 2)

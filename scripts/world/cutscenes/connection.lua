@@ -15,7 +15,7 @@ return {
         end
 
         local function interloperText(str, advance, instaclear)
-            text = DialogueText("[speed:2][spacing:6][voice:interloper]" .. str, 240, 50, 640, 480,
+            text = DialogueText("[speed:2][voice:interloper]" .. str, 240, 50, 640, 480,
                                 { auto_size = true, align = "center", font_size = 16 })
             text.layer = WORLD_LAYERS["top"] + 100
             text.skip_speed = true
@@ -33,25 +33,42 @@ return {
                 cutscene:wait(function () return not text:isTyping() end)
                 text:remove()
             end
+            return text
         end
+        local text1 = interloperText("This is an early alpha version of the game, setup to immediately boot you into a Tense Battle for playtesting purposes. It does not reflect the finalized state of the game, nor is it necessarily stable.\n\nDo you wish to PROCEED?", false)
 
-        interloperText("This is an early alpha version of the game, setup to immediately boot you into a Tense Battle for playtesting purposes. It does not reflect the finalized state of the game, nor is it necessarily stable. Do you wish to PROCEED?", false)
-        cutscene:wait(4)
+        cutscene:wait(function () return not text1:isTyping() end)
         local choice2 = ""
         local choicer2 = GonerChoice(SCREEN_WIDTH / 2, (SCREEN_HEIGHT * 3) / 4, nil, function (choiced, x, y) choice2 = choiced end, function() end)
         choicer2.x = choicer2.x - (choicer2.width / 2)
         Game.world:addChild(choicer2)
         cutscene:wait(function () return choice2 ~= "" end)
 
-        cutscene:wait(1)
+        --cutscene:wait(1)
 
         if (choice2 == "NO") then
             love.event.quit()
         else
-            interloperTextFade()
-            cutscene:wait(2)
+            Assets.playSound("egg")
+            interloperTextFade(true)
+
+            local text2 = interloperText("This battle will be hard. You have been given the characters' starting equipment and spells, and a few items and instant-uses.\n[color:lime](H will cease your bleeding, [color:yellow]T will fuel your heart, [color:purple]P will cure your SOUL)[color:reset]\nThough unfinished, you can start with an additional party member who may make this fight easier. Do you wish to recieve the aid of Fredbear?", false)
+
+            cutscene:wait(function () return not text2:isTyping() end)
+
+            local choice1 = ""
+            local choicer1 = GonerChoice(SCREEN_WIDTH / 2, (SCREEN_HEIGHT * 3) / 4, {{{ "TO FRED", -20, 0 }, { "NOT TO FRED", 100, 0 }}}, function (choiced, x, y) choice1 = choiced end, function() end)
+            --choicer1.selected_x = 2
+            choicer1.x = choicer1.x - (choicer1.width / 2)
+            Game.world:addChild(choicer1)
+            cutscene:wait(function () return choice1 ~= "" end)
+            interloperTextFade(true)
+
             cutscene:endCutscene()
             Game:addPartyMember("cassidy")
+            if (choice1 == "TO FRED") then
+                Game:addPartyMember("fredbear")
+            end
             Game.inventory:tryGiveItem("pepperoni_slice", true)
             Game.inventory:tryGiveItem("plain_slice", true)
             Game.inventory:tryGiveItem("plain_slice", true)
@@ -81,7 +98,7 @@ return {
         end
 
         local function interloperText(str, advance, instaclear)
-            text = DialogueText("[speed:2][spacing:6][voice:interloper]" .. str, 240, 50, 640, 480,
+            text = DialogueText("[speed:2][voice:interloper]" .. str, 240, 50, 640, 480,
                                 { auto_size = true, align = "center", font_size = 16 })
             text.layer = WORLD_LAYERS["top"] + 100
             text.skip_speed = true

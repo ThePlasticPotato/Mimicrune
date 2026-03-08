@@ -47,10 +47,13 @@ function TwistedClawgnet:startMagnet()
     if (self.claw_side < 1) then Game.battle.arena:shake(2,2) else Game.battle.arena:shake(-2, 2) end
     local last_spawn_y = 0
     self.timer:doWhile(function () return magnetsound:isPlaying() end, function()
-        self.magnet_strength = MathUtils.approach(self.magnet_strength, 3, DTMULT / 4)
-        if (self.magnet_strength >= 2.99) then
-            self.magnet_strength = MathUtils.approach(self.magnet_strength, 4.25, DTMULT / 8)
+        if self.magnet_strength < 3 then self.magnet_strength = MathUtils.approach(self.magnet_strength, 3, DTMULT / 4) end
+        if (MathUtils.dist(Game.battle.soul.x, Game.battle.soul.y, bullet_target.x, bullet_target.y) < 24) then
+            self.magnet_strength = MathUtils.approach(self.magnet_strength, 4.5, DTMULT / 32)
+        elseif (self.magnet_strength >= 2.99) then
+            self.magnet_strength = MathUtils.approach(self.magnet_strength, 4, DTMULT / 16)
         end
+        
         if (self.claw_side < 1) then
             self.current_top_left = {self.current_top_left[1], MathUtils.approach(self.current_top_left[2], self.og_top_left[2] + 20, DTMULT / 2)}
             self.current_bot_left = {self.current_bot_left[1], MathUtils.approach(self.current_bot_left[2], self.og_bot_left[2] - 20, DTMULT / 2)}
