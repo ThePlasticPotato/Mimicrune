@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="10" height="5" tilewidth="40" tileheight="40" infinite="0" nextlayerid="3" nextobjectid="3">
+ <editorsettings>
+  <export target="void2.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="border" value="generic"/>
+  <property name="light" type="bool" value="false"/>
+ </properties>
+ <layer id="1" name="Tile Layer 1" width="10" height="5">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="objects">
+  <object id="2" name="enemy" x="240" y="80" width="40" height="40">
+   <properties>
+    <property name="actor" value="dummy"/>
+    <property name="encounter" value="dummy"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
