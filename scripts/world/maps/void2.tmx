@@ -4,7 +4,7 @@
   <export target="void2.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="border" value="generic"/>
+  <property name="border" value="DEVICE"/>
   <property name="light" type="bool" value="false"/>
  </properties>
  <layer id="1" name="Tile Layer 1" width="10" height="5">

@@ -1,6 +1,6 @@
 function Mod:init()
     print("Loaded "..self.info.name.."!")
-    self.playtest = true
+    self.playtest = false
 end
 
 function Mod:postInit(new_file)
