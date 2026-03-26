@@ -12,7 +12,7 @@ return {
   nextlayerid = 2,
   nextobjectid = 1,
   properties = {
-    ["border"] = "generic",
+    ["border"] = "DEVICE",
     ["light"] = false
   },
   tilesets = {},

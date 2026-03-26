@@ -25,6 +25,7 @@
     "inventory": {
         "items": [],
         "armors": [],
+        "trinkets": [],
         "weapons": [],
         "key_items": ["cell_phone"]
     },
@@ -42,7 +43,8 @@
     "equipment": {
         "evan": {
             "weapon": "notsogreatsword",
-            "armor": ["faz_bowtie"]
+            "armor": ["dinner_plate"],
+            "trinket": ["faz_bowtie"]
         }
     },
 
