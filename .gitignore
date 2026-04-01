@@ -3,3 +3,5 @@
 run-kristal.bat
 libraries/darkness.zip
 *.aseprite
+libraries/offseteditor-main
+libraries/imgui
