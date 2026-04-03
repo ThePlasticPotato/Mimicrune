@@ -712,97 +712,37 @@ return {
     {
       id = 0,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "concrete"
       }
     },
     {
       id = 1,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "street"
       }
     },
     {
       id = 2,
       properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 3,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 4,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 5,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 6,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 7,
-      properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "dirt"
       }
     },
     {
       id = 15,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "metal"
       }
     },
     {
       id = 16,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "metal"
       }
     },
     {
       id = 17,
       properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 18,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 19,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 20,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 21,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 22,
-      properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "metal"
       }
     },
     {
@@ -814,43 +754,13 @@ return {
     {
       id = 31,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "metal"
       }
     },
     {
       id = 32,
       properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 33,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 34,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 35,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 36,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 37,
-      properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "metal"
       }
     },
     {
@@ -861,42 +771,6 @@ return {
     },
     {
       id = 46,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 47,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 48,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 49,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 50,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 51,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 52,
       properties = {
         ["step_sound"] = "tiles"
       }
@@ -932,12 +806,6 @@ return {
       }
     },
     {
-      id = 65,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
       id = 75,
       properties = {
         ["step_sound"] = "tiles"
@@ -968,93 +836,513 @@ return {
       }
     },
     {
-      id = 80,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
       id = 90,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "concrete"
       }
     },
     {
       id = 91,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 92,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 93,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 94,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 95,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 96,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 97,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 98,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 99,
+      properties = {
+        ["step_sound"] = "concrete"
       }
     },
     {
       id = 105,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "concrete"
       }
     },
     {
       id = 106,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 107,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 108,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 109,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 110,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 111,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 112,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 113,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 114,
+      properties = {
+        ["step_sound"] = "concrete"
       }
     },
     {
       id = 120,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "concrete"
       }
     },
     {
       id = 121,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 122,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 123,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 124,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 125,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 126,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 127,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 128,
+      properties = {
+        ["step_sound"] = "concrete"
       }
     },
     {
       id = 129,
       properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 130,
-      properties = {
-        ["step_sound"] = "tiles"
-      }
-    },
-    {
-      id = 131,
-      properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "concrete"
       }
     },
     {
       id = 135,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "concrete"
       }
     },
     {
       id = 136,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 137,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 138,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 139,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 140,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 141,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 142,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 143,
+      properties = {
+        ["step_sound"] = "concrete"
       }
     },
     {
       id = 144,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "concrete"
       }
     },
     {
-      id = 145,
+      id = 150,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "dirt"
       }
     },
     {
-      id = 146,
+      id = 151,
       properties = {
-        ["step_sound"] = "tiles"
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 152,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 153,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 154,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 155,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 156,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 157,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 158,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 165,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 166,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 167,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 168,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 169,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 170,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 171,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 172,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 173,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 174,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 175,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 176,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 180,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 181,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 182,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 183,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 184,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 185,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 186,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 187,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 188,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 189,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 190,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 191,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 195,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 196,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 197,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 198,
+      properties = {
+        ["step_sound"] = "dirt"
+      }
+    },
+    {
+      id = 199,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 200,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 201,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 202,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 203,
+      properties = {
+        ["step_sound"] = "street"
+      }
+    },
+    {
+      id = 204,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 205,
+      properties = {
+        ["step_sound"] = "concrete"
+      }
+    },
+    {
+      id = 206,
+      properties = {
+        ["step_sound"] = "concrete"
       }
     }
   }
