@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.11" tiledversion="1.12.1" name="nowhere" tilewidth="20" tileheight="20" tilecount="210" columns="21" tilerendersize="grid">
+<tileset version="1.11" tiledversion="1.11.2" name="nowhere" tilewidth="20" tileheight="20" tilecount="210" columns="21" tilerendersize="grid">
+ <editorsettings>
+  <export target="nowhere.lua" format="lua"/>
+ </editorsettings>
  <image source="../../../assets/sprites/tilesets/nowhere.png" width="420" height="200"/>
  <wangsets>
   <wangset name="Base Tiles" type="corner" tile="1">
@@ -109,6 +112,23 @@
    <wangtile tileid="189" wangid="2,2,2,0,0,0,0,0"/>
    <wangtile tileid="190" wangid="2,2,2,0,0,0,2,2"/>
    <wangtile tileid="191" wangid="2,0,0,0,0,0,2,2"/>
+  </wangset>
+  <wangset name="Slopes" type="edge" tile="-1">
+   <wangcolor name="Turfle" color="#ff0000" tile="-1" probability="1"/>
+   <wangcolor name="Blackglass" color="#00ff00" tile="-1" probability="1"/>
+   <wangtile tileid="40" wangid="0,0,0,2,2,2,0,0"/>
+   <wangtile tileid="61" wangid="2,2,0,2,2,2,0,2"/>
+   <wangtile tileid="82" wangid="2,2,0,2,2,2,0,2"/>
+   <wangtile tileid="103" wangid="2,2,0,2,2,2,0,2"/>
+   <wangtile tileid="116" wangid="0,0,0,1,1,1,0,0"/>
+   <wangtile tileid="123" wangid="0,0,2,0,0,0,0,0"/>
+   <wangtile tileid="124" wangid="2,2,2,0,0,0,2,2"/>
+   <wangtile tileid="125" wangid="0,0,0,0,0,0,2,0"/>
+   <wangtile tileid="137" wangid="1,1,0,1,1,1,0,1"/>
+   <wangtile tileid="158" wangid="1,1,0,1,1,1,0,1"/>
+   <wangtile tileid="178" wangid="0,0,1,0,0,0,0,0"/>
+   <wangtile tileid="179" wangid="1,1,1,0,0,0,1,1"/>
+   <wangtile tileid="180" wangid="0,0,0,0,0,0,1,0"/>
   </wangset>
  </wangsets>
 </tileset>
