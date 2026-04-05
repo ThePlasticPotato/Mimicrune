@@ -1,7 +1,7 @@
 return {
   version = "1.11",
   luaversion = "5.1",
-  tiledversion = "1.11.2",
+  tiledversion = "1.12.1",
   name = "townsville_streets",
   class = "",
   tilewidth = 20,
@@ -11,7 +11,7 @@ return {
   columns = 15,
   image = "../../../assets/sprites/tilesets/townsville_streets.png",
   imagewidth = 300,
-  imageheight = 280,
+  imageheight = 380,
   objectalignment = "unspecified",
   tilerendersize = "grid",
   fillmode = "stretch",
@@ -528,7 +528,7 @@ return {
       }
     },
     {
-      name = "Sidewalk",
+      name = "Sidewalk & Pebbles",
       class = "",
       tile = 120,
       wangsettype = "corner",
@@ -536,7 +536,7 @@ return {
       colors = {
         {
           color = { 255, 0, 0 },
-          name = "Variant 1",
+          name = "Sidewalk Variant 1",
           class = "",
           probability = 1,
           tile = 120,
@@ -544,10 +544,26 @@ return {
         },
         {
           color = { 0, 255, 0 },
-          name = "Variant 2",
+          name = "Sidewalk Variant 2",
           class = "",
           probability = 1,
           tile = 122,
+          properties = {}
+        },
+        {
+          color = { 0, 0, 255 },
+          name = "Pebbles",
+          class = "",
+          probability = 1,
+          tile = 212,
+          properties = {}
+        },
+        {
+          color = { 255, 119, 0 },
+          name = "Dirt",
+          class = "",
+          probability = 1,
+          tile = -1,
           properties = {}
         }
       },
@@ -703,11 +719,191 @@ return {
         {
           wangid = { 0, 2, 0, 2, 0, 1, 0, 1 },
           tileid = 156
+        },
+        {
+          wangid = { 0, 3, 0, 3, 0, 3, 0, 3 },
+          tileid = 185
+        },
+        {
+          wangid = { 0, 0, 0, 3, 0, 0, 0, 0 },
+          tileid = 210
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 3, 0, 0 },
+          tileid = 211
+        },
+        {
+          wangid = { 0, 0, 0, 3, 0, 4, 0, 0 },
+          tileid = 212
+        },
+        {
+          wangid = { 0, 0, 0, 3, 0, 3, 0, 0 },
+          tileid = 213
+        },
+        {
+          wangid = { 0, 0, 0, 3, 0, 3, 0, 0 },
+          tileid = 214
+        },
+        {
+          wangid = { 0, 0, 0, 3, 0, 3, 0, 0 },
+          tileid = 215
+        },
+        {
+          wangid = { 0, 0, 0, 4, 0, 3, 0, 0 },
+          tileid = 216
+        },
+        {
+          wangid = { 0, 4, 0, 3, 0, 0, 0, 0 },
+          tileid = 217
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 3, 0, 4 },
+          tileid = 218
+        },
+        {
+          wangid = { 0, 3, 0, 0, 0, 0, 0, 0 },
+          tileid = 225
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 0, 0, 3 },
+          tileid = 226
+        },
+        {
+          wangid = { 0, 3, 0, 0, 0, 0, 0, 4 },
+          tileid = 227
+        },
+        {
+          wangid = { 0, 3, 0, 0, 0, 0, 0, 3 },
+          tileid = 228
+        },
+        {
+          wangid = { 0, 3, 0, 0, 0, 0, 0, 3 },
+          tileid = 229
+        },
+        {
+          wangid = { 0, 3, 0, 0, 0, 0, 0, 3 },
+          tileid = 230
+        },
+        {
+          wangid = { 0, 4, 0, 0, 0, 0, 0, 3 },
+          tileid = 231
+        },
+        {
+          wangid = { 0, 3, 0, 3, 0, 0, 0, 0 },
+          tileid = 232
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 3, 0, 3 },
+          tileid = 233
+        },
+        {
+          wangid = { 0, 3, 0, 0, 0, 3, 0, 3 },
+          tileid = 240
+        },
+        {
+          wangid = { 0, 3, 0, 3, 0, 0, 0, 3 },
+          tileid = 241
+        },
+        {
+          wangid = { 0, 3, 0, 0, 0, 3, 0, 3 },
+          tileid = 242
+        },
+        {
+          wangid = { 0, 3, 0, 3, 0, 0, 0, 3 },
+          tileid = 243
+        },
+        {
+          wangid = { 0, 0, 0, 4, 0, 0, 0, 0 },
+          tileid = 244
+        },
+        {
+          wangid = { 0, 0, 0, 4, 0, 4, 0, 0 },
+          tileid = 245
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 4, 0, 0 },
+          tileid = 246
+        },
+        {
+          wangid = { 0, 3, 0, 3, 0, 0, 0, 0 },
+          tileid = 247
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 3, 0, 3 },
+          tileid = 248
+        },
+        {
+          wangid = { 0, 4, 0, 0, 0, 4, 0, 4 },
+          tileid = 249
+        },
+        {
+          wangid = { 0, 4, 0, 4, 0, 0, 0, 4 },
+          tileid = 250
+        },
+        {
+          wangid = { 0, 0, 0, 3, 0, 3, 0, 3 },
+          tileid = 255
+        },
+        {
+          wangid = { 0, 3, 0, 3, 0, 3, 0, 0 },
+          tileid = 256
+        },
+        {
+          wangid = { 0, 0, 0, 3, 0, 3, 0, 3 },
+          tileid = 257
+        },
+        {
+          wangid = { 0, 3, 0, 3, 0, 3, 0, 0 },
+          tileid = 258
+        },
+        {
+          wangid = { 0, 4, 0, 4, 0, 0, 0, 0 },
+          tileid = 259
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 4, 0, 4 },
+          tileid = 261
+        },
+        {
+          wangid = { 0, 3, 0, 3, 0, 0, 0, 0 },
+          tileid = 262
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 3, 0, 3 },
+          tileid = 263
+        },
+        {
+          wangid = { 0, 0, 0, 4, 0, 4, 0, 4 },
+          tileid = 264
+        },
+        {
+          wangid = { 0, 4, 0, 4, 0, 4, 0, 0 },
+          tileid = 265
+        },
+        {
+          wangid = { 0, 4, 0, 0, 0, 0, 0, 0 },
+          tileid = 274
+        },
+        {
+          wangid = { 0, 4, 0, 0, 0, 0, 0, 4 },
+          tileid = 275
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 0, 0, 4 },
+          tileid = 276
+        },
+        {
+          wangid = { 0, 3, 0, 4, 0, 0, 0, 0 },
+          tileid = 277
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 4, 0, 3 },
+          tileid = 278
         }
       }
     }
   },
-  tilecount = 210,
+  tilecount = 285,
   tiles = {
     {
       id = 0,
