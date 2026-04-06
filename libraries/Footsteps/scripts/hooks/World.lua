@@ -33,4 +33,20 @@ function World:getStepSound(x, y, num, actor)
     end
     return prefix.."default"..tostring(num), nil
 end
+
+function World:getSteppableTile(x, y)
+    if self.map then
+        if true then
+            local tile_x = math.floor(x/40)
+            local tile_y = math.floor(y/40)
+            local tileset, tile_index = self.map:getTile(tile_x, tile_y, self.map.data.properties.step_layer or "stepsounds")
+            if (tileset and tile_index) then
+                return tileset.tile_info[tile_index]
+            end
+            return false
+        end
+        return false
+    end
+    return false
+end
 return World

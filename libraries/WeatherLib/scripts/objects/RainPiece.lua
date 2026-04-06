@@ -21,6 +21,11 @@ function RainPiece:init(number, x, y, speed, handler)
 
     self.addto = handler.addto
     self.handler = handler
+
+    self.splash_point = PointCollider(self, 0, self.rainsprite.height * 2)
+    -- Random depth into the screen at which this piece will attempt to splash
+    self.splash_travel = math.random(SCREEN_HEIGHT * 0.05, SCREEN_HEIGHT * 0.95)
+    self.splash_checked = false
 end
 
 function RainPiece:update()
@@ -59,6 +64,15 @@ function RainPiece:update()
     local y2 = Game.world.camera.y + (SCREEN_HEIGHT/2)
     local x2 = Game.world.camera.x - (SCREEN_WIDTH/2)
 
+    -- One-time walkability check at a random depth into the screen
+    if not self.splash_checked and self.y - self.inity >= self.splash_travel then
+        self.splash_checked = true
+        if self:spawnSplashIfWalkable() then
+            self:remove()
+            return
+        end
+    end
+
     if self.y > y2 then self:remove() end
     --if self.x < x2 then self:remove() end
 
@@ -66,6 +80,32 @@ function RainPiece:update()
         MathUtils.approach(self.rainsprite.alpha, 0, DTMULT)
         if self.alpha < 1 then self:remove() end
     end
+end
+
+function RainPiece:spawnSplashIfWalkable()
+    if self.addto ~= Game.world then return false end
+    if not (Game.world and Game.world.map) then return false end
+    if not Game.world:inBounds(self.x, self.y) then return false end
+    -- if Game.world:checkCollision(self.splash_point, false) then
+    --     return false
+    -- end
+    local tile = Game.world:getSteppableTile(self.x, self.y)
+    if tile then
+        local splashsize = 1
+        if tile["step_sound"] then
+            local sound = tile["step_sound"]
+            local randpitch = MathUtils.random(-0.15, 0.15)
+            if sound and StringUtils.contains(sound, "glass") then
+                Assets.playSound("step/heavyglass" .. MathUtils.randomInt(1,3), 0.1, 1 + randpitch)
+                splashsize = 2
+            end
+        end
+        local splash = RainSplash(self.x, self.y, self.addto, splashsize)
+        self.addto:addChild(splash)
+        splash:setLayer(self.layer + 1)
+        return true
+    end
+    return false
 end
 
 function RainPiece:draw()
