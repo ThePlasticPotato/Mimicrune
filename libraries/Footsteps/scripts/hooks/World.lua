@@ -6,6 +6,8 @@ local World, super = HookSystem.hookScript(World)
 ---@param y number y pos on map
 ---@param num number step interval (1 or 2)
 ---@param actor Actor actor for custom logic
+---@return string
+---@return number?
 function World:getStepSound(x, y, num, actor)
     if (actor:getStepSoundOverride()) then return actor:getStepSoundOverride()..tostring(num) end
     local prefix = "step/"
@@ -18,7 +20,7 @@ function World:getStepSound(x, y, num, actor)
                 if (tileset.tile_info[tile_index] and (tileset.tile_info[tile_index].step_sound)) then
                     local sound = tileset.tile_info[tile_index].step_sound
                     if (sound == "") then sound = "default" end
-                    return prefix..sound..tostring(num)
+                    return prefix..sound..tostring(num), tileset.tile_info[tile_index]["step_pitch"]
                 end
             end
             
@@ -26,9 +28,9 @@ function World:getStepSound(x, y, num, actor)
         if (self.map.step_sound or Game.world.map.data.properties["step_sound"]) then
             local sound = self.map.step_sound or Game.world.map.data.properties["step_sound"]
             if (sound == "") then sound = "default" end
-            return prefix..sound..tostring(num)
+            return prefix..sound..tostring(num), nil
         end
     end
-    return prefix.."default"..tostring(num)
+    return prefix.."default"..tostring(num), nil
 end
 return World

@@ -46,6 +46,7 @@ function Tileset:init(data, path, base_dir)
         end
         if (tile.properties and tile.properties["step_sound"]) then
             info.step_sound = tile.properties["step_sound"]
+            info.step_pitch = tile.properties["step_pitch"] or nil
         end
         self.tile_info[tile.id] = info
         self.id_count = math.max(self.id_count, tile.id + 1)
