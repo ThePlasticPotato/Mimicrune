@@ -43,6 +43,7 @@ end
 function FlippedRainPiece:spawnSplashIfWalkable()
     if self.addto ~= Game.world then return false end
     if not (Game.world and Game.world.map) then return false end
+    if (Game.world.map.inside) then return false end
     if not Game.world:inBounds(self.x, self.y) then return false end
     -- if Game.world:checkCollision(self.splash_point, false) then
     --     return false
