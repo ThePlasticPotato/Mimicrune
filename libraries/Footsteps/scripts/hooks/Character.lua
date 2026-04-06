@@ -10,7 +10,7 @@ function Character:onFootstep(num)
     if (Game:getFlag("audible_footsteps", false) and Game.world and Game.world.map) then
         local randpitch = MathUtils.random(-0.15, 0.15)
         num = MathUtils.wrap(num, 1, 3)
-        Assets.playSound(Game.world:getStepSound(self.x, self.y, num, self.actor), self:getStepVolume(), 1 + randpitch)
+        Assets.stopAndPlaySound(Game.world:getStepSound(self.x, self.y, num, self.actor), self:getStepVolume(), 1 + randpitch)
     end
 end
 

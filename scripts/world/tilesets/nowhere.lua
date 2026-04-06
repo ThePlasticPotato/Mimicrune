@@ -572,5 +572,744 @@ return {
     }
   },
   tilecount = 210,
-  tiles = {}
+  tiles = {
+    {
+      id = 0,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 1,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 2,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 7,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 8,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 9,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 10,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 11,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 12,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 13,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 14,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 15,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 16,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 17,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 18,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 19,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 20,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 21,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 22,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 23,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 25,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 26,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 28,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 29,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 30,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 31,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 32,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 33,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 34,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 35,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 36,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 37,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 38,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 39,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 40,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 41,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 42,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 43,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 44,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 46,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 47,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 49,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 50,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 51,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 53,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 54,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 55,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 56,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 57,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 58,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 59,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 60,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 61,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 62,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 63,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 64,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 65,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 74,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 75,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 76,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 77,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 78,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 79,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 80,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 81,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 82,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 83,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 84,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 85,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 86,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 87,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 88,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 89,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 90,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 95,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 96,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 97,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 98,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 99,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 102,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 103,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 104,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 105,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 106,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 107,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 115,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 116,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 117,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 118,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 123,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 124,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 125,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 126,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 127,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 128,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 130,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 131,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 137,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 144,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 145,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 146,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 147,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 148,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 149,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 151,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 152,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 158,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 168,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 169,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 170,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 179,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 182,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 183,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 184,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 189,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 190,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 191,
+      properties = {
+        ["step_sound"] = "glass"
+      }
+    },
+    {
+      id = 199,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 200,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 201,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 203,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 204,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    },
+    {
+      id = 205,
+      properties = {
+        ["step_sound"] = "wetsand"
+      }
+    }
+  }
 }

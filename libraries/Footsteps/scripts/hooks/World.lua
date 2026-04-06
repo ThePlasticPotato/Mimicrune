@@ -11,9 +11,9 @@ function World:getStepSound(x, y, num, actor)
     local prefix = "step/"
     if (self.map) then
         if (self.map.has_tile_sounds or Game.world.map.data.properties["has_tile_sounds"]) then
-            local tile_x = MathUtils.round(x/40)
-            local tile_y = MathUtils.round(y/40)
-            local tileset, tile_index = self.map:getTile(tile_x, tile_y, "stepsounds")
+            local tile_x = math.floor(x/40)
+            local tile_y = math.floor(y/40)
+            local tileset, tile_index = self.map:getTile(tile_x, tile_y, self.map.data.properties.step_layer or "stepsounds")
             if (tileset and tile_index) then
                 if (tileset.tile_info[tile_index] and (tileset.tile_info[tile_index].step_sound)) then
                     local sound = tileset.tile_info[tile_index].step_sound

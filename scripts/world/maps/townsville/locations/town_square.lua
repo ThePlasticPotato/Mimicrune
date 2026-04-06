@@ -1,7 +1,7 @@
 return {
   version = "1.11",
   luaversion = "5.1",
-  tiledversion = "1.12.1",
+  tiledversion = "1.11.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -11,7 +11,16 @@ return {
   tileheight = 40,
   nextlayerid = 10,
   nextobjectid = 2,
-  properties = {},
+  properties = {
+    ["can_hum"] = true,
+    ["has_tile_sounds"] = true,
+    ["hum_delay"] = 1,
+    ["hum_track"] = "area/light/town/hum",
+    ["light"] = true,
+    ["music"] = "area/light/town/day",
+    ["node_size"] = 20,
+    ["step_sound"] = "dirt"
+  },
   tilesets = {
     {
       name = "townsville_streets",
@@ -1296,7 +1305,6 @@ return {
           width = 0,
           height = 0,
           rotation = 0,
-          opacity = 1,
           visible = true,
           properties = {}
         }
