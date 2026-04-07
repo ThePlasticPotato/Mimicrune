@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.11" tiledversion="1.12.1" name="townsville_streets" tilewidth="20" tileheight="20" tilecount="285" columns="15" tilerendersize="grid">
+<tileset version="1.11" tiledversion="1.11.2" name="townsville_streets" tilewidth="20" tileheight="20" tilecount="285" columns="15" tilerendersize="grid">
  <editorsettings>
   <export target="townsville_streets.lua" format="lua"/>
  </editorsettings>
@@ -734,6 +734,28 @@
    <wangtile tileid="276" wangid="0,0,0,0,0,0,0,4"/>
    <wangtile tileid="277" wangid="0,3,0,4,0,0,0,0"/>
    <wangtile tileid="278" wangid="0,0,0,0,0,4,0,3"/>
+  </wangset>
+  <wangset name="Fences" type="mixed" tile="-1">
+   <wangcolor name="Horizontal" color="#ff0000" tile="-1" probability="1"/>
+   <wangcolor name="Vertical" color="#00ff00" tile="-1" probability="1"/>
+   <wangtile tileid="3" wangid="0,0,0,1,0,0,0,0"/>
+   <wangtile tileid="4" wangid="0,0,0,1,1,1,0,0"/>
+   <wangtile tileid="5" wangid="0,0,0,0,0,1,0,0"/>
+   <wangtile tileid="6" wangid="0,0,0,1,2,0,0,0"/>
+   <wangtile tileid="7" wangid="0,0,0,0,2,1,0,0"/>
+   <wangtile tileid="8" wangid="2,0,0,1,0,0,0,0"/>
+   <wangtile tileid="9" wangid="2,0,0,0,0,1,0,0"/>
+   <wangtile tileid="18" wangid="0,1,1,1,0,0,0,0"/>
+   <wangtile tileid="19" wangid="1,1,1,1,1,1,1,1"/>
+   <wangtile tileid="20" wangid="0,0,0,0,0,1,1,1"/>
+   <wangtile tileid="21" wangid="2,1,1,1,2,0,0,0"/>
+   <wangtile tileid="22" wangid="2,0,0,0,2,1,1,1"/>
+   <wangtile tileid="33" wangid="0,1,0,0,0,0,0,0"/>
+   <wangtile tileid="34" wangid="1,1,0,0,0,0,0,1"/>
+   <wangtile tileid="35" wangid="0,0,0,0,0,0,0,1"/>
+   <wangtile tileid="36" wangid="2,1,0,0,2,0,0,0"/>
+   <wangtile tileid="37" wangid="2,0,0,0,2,0,0,1"/>
+   <wangtile tileid="52" wangid="2,0,0,0,2,0,0,0"/>
   </wangset>
  </wangsets>
 </tileset>

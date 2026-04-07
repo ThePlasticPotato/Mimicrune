@@ -1,7 +1,7 @@
 return {
   version = "1.11",
   luaversion = "5.1",
-  tiledversion = "1.12.1",
+  tiledversion = "1.11.2",
   name = "townsville_streets",
   class = "",
   tilewidth = 20,
@@ -899,6 +899,105 @@ return {
         {
           wangid = { 0, 0, 0, 0, 0, 4, 0, 3 },
           tileid = 278
+        }
+      }
+    },
+    {
+      name = "Fences",
+      class = "",
+      tile = -1,
+      wangsettype = "mixed",
+      properties = {},
+      colors = {
+        {
+          color = { 255, 0, 0 },
+          name = "Horizontal",
+          class = "",
+          probability = 1,
+          tile = -1,
+          properties = {}
+        },
+        {
+          color = { 0, 255, 0 },
+          name = "Vertical",
+          class = "",
+          probability = 1,
+          tile = -1,
+          properties = {}
+        }
+      },
+      wangtiles = {
+        {
+          wangid = { 0, 0, 0, 1, 0, 0, 0, 0 },
+          tileid = 3
+        },
+        {
+          wangid = { 0, 0, 0, 1, 1, 1, 0, 0 },
+          tileid = 4
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 1, 0, 0 },
+          tileid = 5
+        },
+        {
+          wangid = { 0, 0, 0, 1, 2, 0, 0, 0 },
+          tileid = 6
+        },
+        {
+          wangid = { 0, 0, 0, 0, 2, 1, 0, 0 },
+          tileid = 7
+        },
+        {
+          wangid = { 2, 0, 0, 1, 0, 0, 0, 0 },
+          tileid = 8
+        },
+        {
+          wangid = { 2, 0, 0, 0, 0, 1, 0, 0 },
+          tileid = 9
+        },
+        {
+          wangid = { 0, 1, 1, 1, 0, 0, 0, 0 },
+          tileid = 18
+        },
+        {
+          wangid = { 1, 1, 1, 1, 1, 1, 1, 1 },
+          tileid = 19
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 1, 1, 1 },
+          tileid = 20
+        },
+        {
+          wangid = { 2, 1, 1, 1, 2, 0, 0, 0 },
+          tileid = 21
+        },
+        {
+          wangid = { 2, 0, 0, 0, 2, 1, 1, 1 },
+          tileid = 22
+        },
+        {
+          wangid = { 0, 1, 0, 0, 0, 0, 0, 0 },
+          tileid = 33
+        },
+        {
+          wangid = { 1, 1, 0, 0, 0, 0, 0, 1 },
+          tileid = 34
+        },
+        {
+          wangid = { 0, 0, 0, 0, 0, 0, 0, 1 },
+          tileid = 35
+        },
+        {
+          wangid = { 2, 1, 0, 0, 2, 0, 0, 0 },
+          tileid = 36
+        },
+        {
+          wangid = { 2, 0, 0, 0, 2, 0, 0, 1 },
+          tileid = 37
+        },
+        {
+          wangid = { 2, 0, 0, 0, 2, 0, 0, 0 },
+          tileid = 52
         }
       }
     }

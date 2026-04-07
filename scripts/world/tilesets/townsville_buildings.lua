@@ -4,8 +4,8 @@ return {
   tiledversion = "1.11.2",
   name = "townsville_buildings",
   class = "",
-  tilewidth = 606,
-  tileheight = 438,
+  tilewidth = 624,
+  tileheight = 464,
   spacing = 0,
   margin = 0,
   columns = 0,
@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 3,
+  tilecount = 4,
   tiles = {
     {
       id = 0,
@@ -42,6 +42,12 @@ return {
       image = "../../../assets/sprites/props/italianfood.png",
       width = 258,
       height = 438
+    },
+    {
+      id = 3,
+      image = "../../../assets/sprites/props/fountainbase.png",
+      width = 624,
+      height = 464
     }
   }
 }
