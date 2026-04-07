@@ -59,6 +59,17 @@ function FlippedRainPiece:spawnSplashIfWalkable()
                 splashsize = 2
             end
         end
+        if (Game.world and Game.world.map) then
+            local lake = Game.world.map:getEvent("smalllake")
+            if lake then
+                if (self.x <= (lake.x + lake.width/2)) and (self.x >= (lake.x - lake.width/2)) and (self.y <= (lake.y + lake.height/2)) and (self.y >= (lake.y - lake.height/2)) then
+                    local screenPosX, screenPosY = lake:screenToLocalPos(self:localToScreenPos(0,0))
+                    lake:spawnSplash(screenPosX, screenPosY, 5 * splashsize, 1.5, 1)
+                    return true
+                    --Kristal.Console:log("splsih splash")
+                end
+            end
+        end
         local splash = RainSplash(self.x, self.y, self.addto, splashsize)
         self.addto:addChild(splash)
         splash:setLayer(self.layer + 1)

@@ -59,7 +59,7 @@ function RainSplash:draw()
     -- Expanding ring ripple
     Draw.setColor(0.7, 0.8, 1, alpha * 0.5)
     love.graphics.setLineWidth(1)
-    love.graphics.ellipse("line", 0, 0, progress * 5 + 0.5 * self.splash_size, progress * 5 + 0.35 * self.splash_size)
+    love.graphics.ellipse("line", 0, 0, progress * 5 + 0.5 * self.splash_size, progress * 3.5 + 0.35 * self.splash_size)
 
     -- Small scatter droplets
     Draw.setColor(0.8, 0.9, 1, alpha)
