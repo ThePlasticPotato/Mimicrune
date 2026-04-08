@@ -157,7 +157,7 @@ function SmallLake:onEnter(chara)
 		chara:addFX(scissor, "waterscissor")
 		chara.sprite.y = chara.sprite.y + self.depth
 		scissor.height = scissor.height + self.depth * 2
-		Assets.playSound("noise")
+		Assets.playSound("splash")
 		chara.in_water = true
         chara.water_depth = self.depth
 	end
