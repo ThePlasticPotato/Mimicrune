@@ -2,6 +2,118 @@ local lib = {}
 Registry.registerGlobal("WeatherLib", lib)
 WeatherLib = lib
 
+local RAIN_PALETTE_FADE_TIME = 1.2
+local LEAF_SWAY_FADE_TIME = 0.8
+
+local rainytypes = {
+    "rain",
+    "thunder",
+    "overcast",
+    "dark_overcast"
+}
+
+local harsh_rain_types = {
+    thunder = 0.85,
+    dark_overcast = 1
+}
+
+local leaf_sway_weather = {
+    rain = 0.55,
+    overcast = 0.35,
+    dark_overcast = 0.65,
+    thunder = 1.25,
+    wind = 1.25
+}
+
+local function getWeatherType(weather)
+    return weather.type or weather[1]
+end
+
+local function getWeatherIntensity(weather)
+    return weather.intensity or weather.multiplier or weather[2] or 1
+end
+
+local function getRainPaletteTargets(weathers)
+    local amount = 0
+    local harshness = 0
+
+    for _, weather in ipairs(weathers or {}) do
+        local weather_type = getWeatherType(weather)
+        if TableUtils.contains(rainytypes, weather_type) then
+            local intensity = getWeatherIntensity(weather)
+            amount = math.max(amount, intensity)
+            harshness = math.max(harshness, (harsh_rain_types[weather_type] or 0) * intensity)
+        end
+    end
+
+    return MathUtils.clamp(amount, 0, 1), MathUtils.clamp(harshness, 0, 1)
+end
+
+local function getWeatherLeafSwayTarget(weathers)
+    local amount = 0
+
+    for _, weather in ipairs(weathers or {}) do
+        local weather_type = getWeatherType(weather)
+        local intensity = getWeatherIntensity(weather)
+        amount = math.max(amount, (leaf_sway_weather[weather_type] or 0) * intensity)
+    end
+
+    return MathUtils.clamp(amount, 0, 1.5)
+end
+
+local function cancelRainPaletteTween(stage)
+    if stage.rain_palette_tween then
+        stage.timer:cancel(stage.rain_palette_tween)
+        stage.rain_palette_tween = nil
+    end
+end
+
+local function cancelLeafSwayTween(stage)
+    if stage.weather_leaf_sway_tween then
+        stage.timer:cancel(stage.weather_leaf_sway_tween)
+        stage.weather_leaf_sway_tween = nil
+    end
+end
+
+local function fadeRainPalette(stage, target, harshness)
+    cancelRainPaletteTween(stage)
+    harshness = harshness or 0
+
+    stage.rain_palette = stage.rain_palette or {amount = 0, harshness = 0}
+
+    local fx = stage:getFX("rainoverlay")
+    if not fx and target > 0 then
+        fx = stage:addFX(ShaderFX("palettes/rainy", {
+            ["amount"] = function() return stage.rain_palette.amount end,
+            ["harshness"] = function() return stage.rain_palette.harshness end
+        }), "rainoverlay")
+    elseif fx then
+        fx.vars["amount"] = function() return stage.rain_palette.amount end
+        fx.vars["harshness"] = function() return stage.rain_palette.harshness end
+    end
+
+    if not fx then
+        return
+    end
+
+    stage.rain_palette_tween = stage.timer:tween(RAIN_PALETTE_FADE_TIME, stage.rain_palette, {amount = target, harshness = harshness}, "out-sine", function()
+        stage.rain_palette_tween = nil
+
+        if target <= 0 then
+            stage:removeFX("rainoverlay")
+        end
+    end)
+end
+
+local function fadeWeatherLeafSway(stage, target)
+    cancelLeafSwayTween(stage)
+
+    stage.weather_leaf_sway = stage.weather_leaf_sway or {amount = 0}
+    stage.weather_leaf_sway_tween = stage.timer:tween(LEAF_SWAY_FADE_TIME, stage.weather_leaf_sway, {amount = target}, "out-sine", function()
+        stage.weather_leaf_sway_tween = nil
+    end)
+end
+
 function WeatherLib:init()
 
     WeatherRegistry.init()
@@ -95,6 +207,8 @@ function WeatherLib:init()
             Game.stage.weather = {}
             Game.stage.weather_type = typer
             if #Game.stage.weather > 0 then Game:setFlag("weather_save", false) end
+            fadeRainPalette(Game.stage, 0)
+            fadeWeatherLeafSway(Game.stage, 0)
 
             --Game.stage.overlay = nil
             self.addto = nil
@@ -183,6 +297,30 @@ function WeatherLib:init()
             end
             --print(typer)
             self.addto = addto
+
+            local rain_palette_amount, rain_palette_harshness = getRainPaletteTargets(typer)
+            if ((not Game.world.map.inside) and rain_palette_amount > 0) then
+                if (Game.world and Game.world.music and Game.world.music.current) then
+                    if StringUtils.contains(Game.world.music.current, "day") then
+                        Game.world:transitionMusicTimed(StringUtils.split(Game.world.music.current, "day", true)[1] .. "rain", true)
+                    end
+                end
+                fadeRainPalette(Game.stage, rain_palette_amount, rain_palette_harshness)
+            else
+                if (Game.world and Game.world.music and Game.world.music.current) then
+                    if StringUtils.contains(Game.world.music.current, "rain") then
+                        Game.world:transitionMusicTimed(StringUtils.split(Game.world.music.current, "rain", true)[1] .. Game:getFlag("daytime", "day"), true)
+                    end
+                end
+                fadeRainPalette(Game.stage, 0)
+            end
+
+            local leaf_sway_amount = getWeatherLeafSwayTarget(typer)
+            if not (Game.world.map.inside or Game.world.map.data.properties["inside"]) then
+                fadeWeatherLeafSway(Game.stage, leaf_sway_amount)
+            else
+                fadeWeatherLeafSway(Game.stage, 0)
+            end
         end
     end)
 
@@ -410,6 +548,7 @@ function WeatherLib:init()
         if self.map.inside or self.map.data.properties["inside"] then
             --Game.stage:pauseWeather("inside")
             Game.stage:setWeatherLayer(-10)
+            fadeWeatherLeafSway(Game.stage, 0)
             if (not Game.stage.was_weather_inside) then
                 for i, weather in ipairs(Game.stage.weather or {}) do
                     weather.weathersounds.volume = weather.weathersounds.volume / 8
@@ -420,6 +559,7 @@ function WeatherLib:init()
             
         else
             if Game.stage.pause_reason == "inside" then Game.stage:playWeather() Game.stage.wpaused = false print("played") end
+            fadeWeatherLeafSway(Game.stage, getWeatherLeafSwayTarget(Game.stage.weather))
             if (Game.stage.was_weather_inside) then
                 Game.stage:resetWeatherLayer()
                 Game.stage.was_weather_inside = false

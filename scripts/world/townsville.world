@@ -1,4 +1,13 @@
 {
+    "maps": [
+        {
+            "fileName": "maps/townsville/avenue/center.tmx",
+            "height": 3240,
+            "width": 4160,
+            "x": 0,
+            "y": 0
+        }
+    ],
     "onlyShowAdjacentMaps": false,
     "type": "world"
 }
