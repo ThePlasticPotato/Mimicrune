@@ -9,7 +9,7 @@ function DebugTwisted:init()
     -- Battle music ("battle" is rude buster)
     self.music = "battle"
     -- Enables the purple grid battle background
-    self.background = false
+    self.background = true
     self.hide_world = true
 
     -- Add the dummy enemy to the encounter

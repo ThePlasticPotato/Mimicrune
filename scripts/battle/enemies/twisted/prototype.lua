@@ -166,9 +166,9 @@ function Prototype:onAct(battler, name)
                 self.alpha = 0
                 if (#Game.battle:getActiveEnemies() == 1) then
                     Game.battle.twisted_darkness:remove()
-                    Game.battle.fountain:remove()
+                    Game.battle.background.fountain:remove()
                 else
-                    Game.battle.fountain:glitch()--Game.battle.fountain:addFX(ShaderFX("kinoglitch", { ["iTime"] = function () return Kristal.getTime() end, ["scan_line_jitter"] = function () return 0.015 * (5 / 10) end, ["horizontal_shake"] = function () return 0.01 * (5 / 10) end }, false), "glitchy")
+                    Game.battle.background.fountain:glitch()--Game.battle.fountain:addFX(ShaderFX("kinoglitch", { ["iTime"] = function () return Kristal.getTime() end, ["scan_line_jitter"] = function () return 0.015 * (5 / 10) end, ["horizontal_shake"] = function () return 0.01 * (5 / 10) end }, false), "glitchy")
                 end
             end
 
